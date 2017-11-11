@@ -1,0 +1,77 @@
+<?php
+
+/**
+* index.phtml
+* 
+* index view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:37
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0 
+*/
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+                <li><a href="javascript:;">Phân quyền</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="row">
+    <?php if(count($files) > 0):?>
+        <ul class="list-group">
+        <?php foreach($files as $file):?>
+            <li class="list-group-item pull-left list-group-fix col-xs-6 col-sm-3">
+                <strong style="text-transform: uppercase;"><?php echo $file; $methods = $model->getActionsByController($file);?></strong>
+                <?php if(count($methods)>0):?>
+                <ul>
+                <?php foreach($methods as $method):?>
+                    <li id="<?php echo $file;?>">
+                    <?php if($_GET['task'] == "user"):?>
+                        <?php $perUser = $model->getUserPermissionByActionController($method['ACTION_NAME'],$file,$_GET['id'])->PERMISSION_NAME;?>
+                        <input <?php if($perUser == strtolower($method['ACTION_NAME'])):?> checked="" <?php endif;?> type="checkbox" name="permission[]" value="<?php echo $file?>|<?php echo $method['ACTION_NAME'];?>" />
+                    <?php else:?>
+                        <?php $perGroup = $model->getGroupPermissionByActionController($method['ACTION_NAME'],$file,$_GET['id'])->PERMISSION_NAME;?>
+                        <input <?php if($perGroup == strtolower($method['ACTION_NAME'])):?> checked="" <?php endif;?> type="checkbox" name="permission[]" value="<?php echo $file?>|<?php echo $method['ACTION_NAME'];?>" />
+                    <?php endif;?>    
+                        &nbsp;
+                        <?php echo $method['ACTION_NAME'];?>
+                    </li>
+                <?php endforeach;?>
+                </ul>
+                <?php endif;?>
+            </li>
+        <?php endforeach;?>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
+        </div>
+    <?php endif;?>
+    </div>
+</form>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $(".list-group-item").each(function(){
+        if($(this).find('ul').length == 0){
+            $(this).remove();
+        }
+    });
+});
+
+</script>

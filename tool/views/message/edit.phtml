@@ -1,0 +1,82 @@
+<?php
+
+/**
+* edit.phtml
+* 
+* edit view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:39
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li><a href="<?php echo BASE_URL.'message/list'?>">Danh sách Message</a></li>
+            <li class="active">Sửa Message</li>
+            <li class="active"><?php echo $data->MESSAGE_CODE;?></li>
+        </ul>
+     </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-edit fa-fw"></i> 
+            Nhập các thông tin về Message vào form dưới đây:
+        </div>
+        <div class="panel-body">
+            <form action="" id="addMessageForm" method="post" enctype="multipart/form-data">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="hidden" name="task" value="edit" />
+                            <div class="form-group">
+                                <label>MESSAGE CODE</label>
+                                <input class="form-control" type="text" name="message_code" id="message_code" disabled value="<?php echo $data->MESSAGE_CODE;?>" />
+                            </div>
+                            <div class="form-group">
+                                <label>MESSAGE</label>
+								<textarea class="form-control" name="message" id="message"><?php echo $data->MESSAGE;?></textarea>
+							</div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#addMessageForm').validate({
+		rules: {
+			message_code: {
+				required: true
+			},
+			message: {
+				required: true
+			}
+	    },
+	    messages: {
+	    	// Enter custom error text here.
+		}
+	});
+});
+
+</script>

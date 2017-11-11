@@ -1,0 +1,16 @@
+RewriteEngine On
+
+RewriteRule ^admin$ admin/index
+RewriteRule ^login$ login/index
+
+RewriteRule ^index.html$ index.php
+
+RewriteRule ^nhandien.php$ callback/index
+RewriteRule ^logout.php$ callback/logout
+RewriteRule ^login.php$ callback/login
+RewriteRule ^register.php$ callback/register
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

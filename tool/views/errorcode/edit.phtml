@@ -1,0 +1,101 @@
+<?php
+
+/**
+* edit.phtml
+* 
+* edit view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:39
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li><a href="<?php echo BASE_URL.'message/list'?>">Danh sách ErrorCode</a></li>
+            <li class="active">Sửa ErrorCode</li>
+            <li class="active"><?php echo $data->ERROR_CODE;?></li>
+        </ul>
+     </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-edit fa-fw"></i> 
+            Nhập các thông tin về ErrorCode vào form dưới đây:
+        </div>
+        <div class="panel-body">
+            <form action="" id="addErrorCodeForm" method="post" enctype="multipart/form-data">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="hidden" name="task" value="edit" />
+                            
+                            <div class="form-group">
+                                <label>ERROR CODE</label>
+                                <input class="form-control" type="text" name="error_code" id="error_code" disabled value="<?php echo $data->ERROR_CODE;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>ERROR DES</label>
+                                <textarea class="form-control" name="error_des" id="error_des"><?php echo $data->ERROR_DES;?></textarea>
+                            </div>
+							<div class="form-group">
+                                <label>MESSAGE</label>
+                                <textarea class="form-control" name="message" id="message"><?php echo $data->MESSAGE;?></textarea>
+                            </div>
+							<div class="form-group">
+                                <label>SYSTEM</label>
+                                <input class="form-control" type="text" name="system" id="system" value="<?php echo $data->SYSTEM;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>FUNCTION</label>
+                                <input class="form-control" type="text" name="_function" id="_function" value="<?php echo $data->FUNCTION;?>" />
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#addErrorCodeForm').validate({
+		rules: {
+			error_des: {
+				required: true
+			},
+			message: {
+				required: true
+			},
+			system: {
+				required: true
+			},
+			_function: {
+				required: true
+			}
+	    },
+	    messages: {
+	    	// Enter custom error text here.
+		}
+	});
+});
+
+</script>
