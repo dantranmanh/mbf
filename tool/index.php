@@ -17,7 +17,8 @@ ini_set('memory_limit', '-1');
 */
 
 // Base url
-define("BASE_URL", 'http://115.146.126.195/app_web/tool/');
+//define("BASE_URL", 'http://115.146.126.195/app_web/tool/');
+define("BASE_URL", 'http://mbf.local/');
 define("WSDL_URL", "");
 
 define('DS', 				DIRECTORY_SEPARATOR);
