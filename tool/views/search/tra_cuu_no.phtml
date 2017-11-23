@@ -19,8 +19,8 @@
 <div class="row">
     <div class="col-lg-12">
         <ul class="breadcrumb">
-            <li><a href="<?php echo BASE_URL.'admin'?>"><?php echo $mbftext->__('Quản trị'); ?></a></li>
-            <li class="active"><?php echo $mbftext->__('Tra cứu nợ'); ?></li>
+            <li><a href="<?php echo BASE_URL.'admin'?>"><?php $mbftext->__('Quản trị'); ?></a></li>
+            <li class="active"><?php $mbftext->__('Tra cứu nợ'); ?></li>
         </ul>
     </div>
 </div>
@@ -71,16 +71,16 @@
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                             <tr>
-                                <th class="text-center"><?php echo $mbftext->__('Mã nợ'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Mã giao dịch ứng'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Mã thuê bao'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Số thuê bao'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Nợ ban đầu'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Nợ hiện tại'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Ngày GD thanh toán cuối cùng'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Hạn Thanh toán'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Thời hạn hoàn ứng chính thẻ đã ứng'); ?></th>
-								<th class="text-center"><?php echo $mbftext->__('Trạng thái nợ'); ?></th>
+                                <th class="text-center"><?php $mbftext->__('Mã nợ'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Mã giao dịch ứng'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Mã thuê bao'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Số thuê bao'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Nợ ban đầu'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Nợ hiện tại'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Ngày GD thanh toán cuối cùng'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Hạn Thanh toán'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Thời hạn hoàn ứng chính thẻ đã ứng'); ?></th>
+								<th class="text-center"><?php $mbftext->__('Trạng thái nợ'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,15 +97,15 @@
 							<td class="text-center" style="width:150px;"><?php echo date('d-m-Y H:i:s', strtotime($row->LIMIT_CARD_USING_TIME))?></td>
 							<td class="text-center"><?php 
 								if($row->DEBT_STATUS == 0):
-									echo $mbftext->__("Nợ tạm");
+									 $mbftext->__("Nợ tạm");
 								elseif($row->DEBT_STATUS == 1):
-									echo $mbftext->__("Nợ chính thức");
+									$mbftext->__("Nợ chính thức");
 								elseif($row->DEBT_STATUS == 2):
-									echo $mbftext->__("Nợ bị xóa khi không nhận dc mã thẻ");
+									$mbftext->__("Nợ bị xóa khi không nhận dc mã thẻ");
 								elseif($row->DEBT_STATUS == 3):
-									echo $mbftext->__("Nợ bị xóa khi thuê bao đã cắt hủy");
+									$mbftext->__("Nợ bị xóa khi thuê bao đã cắt hủy");
 								else:
-									echo $mbftext->__("Unknown");
+									$mbftext->__("Unknown");
 								endif;
 								
 							?></td>
