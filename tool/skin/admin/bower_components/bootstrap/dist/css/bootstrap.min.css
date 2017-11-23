@@ -1178,7 +1178,8 @@ p {
     text-align: right
 }
 .text-center {
-    text-align: center
+    text-align: center;
+	vertical-align: middle!important;
 }
 .text-justify {
     text-align: justify
@@ -5714,4 +5715,7 @@ tbody {
 }
 .list-group-fix{
     border-radius: 0!important;
+}
+.error-mess{
+    color:red;
 }
