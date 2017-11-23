@@ -40,12 +40,13 @@ class Translate_Model{
      */
     public function __($text)
     {
-        if (empty($text)) return $text;
+        if (empty($text)) echo $text;
         $translate = $this->mbftext[$text];
         if (empty($translate))
-            return $text;
+            echo $text;
         else
-            return $translate;
+            echo $translate;
+        return;
     }
 	
 	
