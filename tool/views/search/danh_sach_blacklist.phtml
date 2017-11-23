@@ -61,9 +61,13 @@
             </div>
         </form>
 
-        <?php if(empty($data['reason'])):?>
-            <p class="no-data"><?php echo "Không tìm thấy thuê bao ". $data['msisdn']." trong danh sách Blacklist";?></p>
-        <?php else:?>
+        <?php if (count($data['collection']) < 1): ?>
+            <p class="no-data"><?php echo "Không tìm thấy thuê bao " . $data['msisdn'] . " trong danh sách Blacklist"; ?></p>
+            <?php if ((int)$data['return_value'] != 1): ?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : " . $data['description']; ?></p>
+            <?php endif; ?>
+        <?php else: ?>
         <form action="" name="" method="post" id="MyForm">
             <div class="col-sm-12">
                 <div class="row">
@@ -78,13 +82,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="grade odd">
-                            <td><?php echo $data['msisdn']; ?></td>
-                            <td><?php echo $data['createdate']; ?></td>
-                            <td><?php echo $data['status']; ?></td>
-                            <td><?php echo $data['reason']; ?></td>
-                            <td><?php echo $data['reasonname']; ?></td>
-                        </tr>
+                        <?php $line = 0; ?>
+                        <?php foreach ($data['collection'] as $entry): ?>
+                            <?php
+                            $class = "";
+                            if (($line % 2) == 0) $class .= " even-line";
+                            else $class .= " odd-line";
+                            if ($line == 0) $class .= " first";
+                            $line++;
+                            ?>
+                            <tr class="grade odd<?php echo $class; ?>">
+                                <td><?php echo $entry['MSISDN']; ?></td>
+                                <td><?php echo $entry['CREATE_DATE']; ?></td>
+                                <td><?php ((int)$entry['STATUS'] == 1) ? $mbftext->__("Còn hiệu lực") : $mbftext->__("Hết hiệu lực"); ?></td>
+                                <td><?php echo $entry['REASON_CODE']; ?></td>
+                                <td><?php echo $entry['REASON_NAME']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

@@ -211,7 +211,7 @@ class Search_Controller extends Core_Controller{
 	// Ong code tiep 4 ham duoi nay nhe.!
     public function danh_sach_blacklistAction()
     {
-        #ini_set('display_errors', 1);
+        //ini_set('display_errors', 1);
         if (!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
             exit;
@@ -228,22 +228,19 @@ class Search_Controller extends Core_Controller{
         oci_bind_by_name($stmt, ':v_Return', $result, 5);
         oci_execute($stmt);
         oci_execute($p_data_cursor);
-        if ($entry = oci_fetch_array($p_data_cursor)) {
-            $data = array(
-                'title' => "Tra cứu Blacklist",
-                'msisdn' => $msisdn,
-                'createdate' => $entry['CREATE_DATE'],
-                'reason' => $entry['REASON_CODE'],
-                'reasonname' => (strtolower($entry['REASON_NAME']) == 'n/a' || empty($entry['REASON_NAME'])) ? "" : $entry['REASON_NAME'],
-                'status' => ((int)$entry['STATUS'] == 1) ? "Còn hiệu lực" : "Hết hiệu lực",
-                'return_value' => $result,
-                'description' => $description
-            );
-        } else $data = array(
-            'title' => "Tra cứu Blacklist",
+
+        $collection=array();
+        while (($row = oci_fetch_array($p_data_cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+
+        $data = array(
             'msisdn' => $msisdn,
             'return_value' => $result,
-            'description' => $description
+            'collection' => $collection,
+            'description' => $description,
+            'title' => "Tra cứu Blacklist"
         );
 
         $this->view->assign('search/danh_sach_blacklist', $data, $this->layoutAdmin);
@@ -268,20 +265,18 @@ class Search_Controller extends Core_Controller{
         oci_bind_by_name($stmt,':v_Return', $result, 5);
         oci_execute($stmt);
         oci_execute($p_data_cursor);
-        if ($entry = oci_fetch_array($p_data_cursor)) {
-            $data = array(
-                'title' => "Tra cứu thông tin thuê bao",
-                'msisdn' => $msisdn,
-                'sub_id' => $entry['SUB_ID'],
-                'last_active_date' => $entry['LAST_ACTIVE_DATE'],
-                'deactive_date' => $entry['DEACTIVE_DATE'],
-                'status' => ((int)$entry['STATUS'] == 1) ? "Đang active" : "Đã hủy",
-                'return_value' => $result,
-                'description' => $description
-            );
-        }else $data = array(
+
+        $collection=array();
+        while (($row = oci_fetch_array($p_data_cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+        //var_dump($collection);
+        $data = array(
             'title' => "Tra cứu thông tin thuê bao",
             'msisdn' => $msisdn,
+            'collection' => $collection,
+            'return_value' => $result,
             'description' => $description
         );
 		$this->view->assign('search/thong_tin_thue_bao', $data, $this->layoutAdmin);
@@ -306,26 +301,18 @@ class Search_Controller extends Core_Controller{
         oci_bind_by_name($stmt,':v_Return', $result, 5);
         oci_execute($stmt);
         oci_execute($p_data_cursor);
-        if ($entry = oci_fetch_array($p_data_cursor)) {
-            $status="n/a";
-            if((int)$entry['STATUS'] == 0) $status= "Sẵn sàng sử dụng";
-            if((int)$entry['STATUS'] == 1) $status= "Đã sử dụng";
-            if((int)$entry['STATUS'] == 2) $status= "<p style='font-weight:bold;color:red;'>Tạm giữ thẻ</p>";
-            if((int)$entry['STATUS'] == 3) $status= "Được tái sử dụng";
-            if((int)$entry['STATUS'] == 4) $status= "Hủy bỏ không sử dụng";
-            $data = array(
-                'title' => "Tra cứu thông tin thẻ cào",
-                'serial' => $msisdn,
-                'card_id' => $entry['CARD_ID'],
-                'card_amount' => $entry['CARD_AMOUNT'],
-                'create_date' => $entry['CREATE_DATE'],
-                'status' => $status,
-                'return_value' => $result,
-                'description' => $description
-            );
-        }else $data = array(
+
+        $collection=array();
+        while (($row = oci_fetch_array($p_data_cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+        //var_dump($collection);
+        $data = array(
             'title' => "Tra cứu thông tin thẻ cào",
             'msisdn' => $msisdn,
+            'collection' => $collection,
+            'return_value' => $result,
             'description' => $description
         );
 		$this->view->assign('search/trang_thai_the_cao', $data, $this->layoutAdmin);
@@ -367,21 +354,12 @@ class Search_Controller extends Core_Controller{
             $collection[] = $row;
         }
         //var_dump($collection);
-        if (count($collection)) {
-            $data = array(
-                'title' => "Tra cứu thông tin SMS",
-                'msisdn' => $msisdn,
-                'f_date' => $this->_arrParams['f_date'],
-                't_date' => $this->_arrParams['t_date'],
-                'collection' => $collection,
-                'return_value' => $result,
-                'description' => $description
-            );
-        }else $data = array(
+        $data = array(
             'title' => "Tra cứu thông tin SMS",
+            'msisdn' => $msisdn,
             'f_date' => $this->_arrParams['f_date'],
             't_date' => $this->_arrParams['t_date'],
-            'msisdn' => $msisdn,
+            'collection' => $collection,
             'return_value' => $result,
             'description' => $description
         );

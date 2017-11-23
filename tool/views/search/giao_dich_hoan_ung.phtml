@@ -78,7 +78,7 @@
             </div>
         </form>
 
-        <?php if (empty($data['collection'])): ?>
+        <?php if (count($data['collection']) < 1): ?>
             <p class="no-data"><?php echo NODATA; ?></p>
             <?php if ((int)$data['return_value'] != 1): ?>
                 <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
