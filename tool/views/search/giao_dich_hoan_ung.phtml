@@ -1,26 +1,26 @@
 <?php
 
 /**
-* list.phtml
-* 
-* list view file
-* 
-* @project mvc 
-* @author duong bien
-* @email bien.duongvan@yahoo.com 
-* @date 16/7/2015
-* @time 11:41
-* @copyright 2015 Copyright duong bien
-* @license duong bien
-* @version 1.0.0
-*/
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
 
 ?>
 <div class="row">
     <div class="col-lg-12">
         <ul class="breadcrumb">
-            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
-            <li class="active"><?php echo $mbftext->__('Tra cứu giao dịch hoàn ứng');?></li>
+            <li><a href="<?php echo BASE_URL . 'admin' ?>">Quản trị</a></li>
+            <li class="active"><?php echo $mbftext->__('Tra cứu giao dịch hoàn ứng'); ?></li>
         </ul>
     </div>
 </div>
@@ -28,8 +28,8 @@
 <div class="row">
 
     <div class="col-lg-12">
-		
-		<form action="" name="filterForm" method="post" id="filterForm">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
             <div class="col-lg-12">
                 <div class="row">
                     <div class="panel panel-default">
@@ -45,10 +45,13 @@
                                 <div class="col-sm-3">
                                     <div class="form-group small">
                                         <label>Nhập số điện thoại</label>
-                                        <input placeholder="918014988" onfocus="this.placeholder = ''" onblur="this.placeholder = '918014988'" class="form-control small" name="msisdn" id="msisdn" value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>" />
+                                        <input placeholder="918014988" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '918014988'" class="form-control small"
+                                               name="msisdn" id="msisdn"
+                                               value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
-								<div class="col-sm-3">
+                                <div class="col-sm-3">
                                     <div class="form-group small">
                                         <label>Từ ngày</label>
                                         <input class="form-control small" name="f_date" id="f_date"
@@ -64,8 +67,8 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group small" style="margin-top: 20px;">
-                                        <input type="hidden" name="task" value="filter" />
-										<input class="btn btn-primary btn-sm" type="submit" value="Tra cứu" />
+                                        <input type="hidden" name="task" value="filter"/>
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Tra cứu"/>
                                     </div>
                                 </div>
                             </div>
@@ -74,84 +77,105 @@
                 </div>
             </div>
         </form>
-		
-        <?php if($data['curs'] == null):?>
-            <p class="no-data"><?php echo NODATA;?></p>
-        <?php else:?>
 
-		<?php //print_r($data['curs']);?>
+        <?php if (empty($data['collection'])): ?>
+            <p class="no-data"><?php echo NODATA; ?></p>
+            <?php if ((int)$data['return_value'] != 1): ?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : " . $data['description']; ?></p>
+            <?php endif; ?>
+        <?php else: ?>
+
+        <?php //print_r($data['curs']);?>
         <form action="" name="" method="post" id="MyForm">
+            <p class="success-mess">Tổng số <?php echo count($data['collection']); ?> bản ghi được tìm thấy.</p>
             <div class="col-sm-12">
                 <div class="row">
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
-                            <tr>
-                                <th class="text-center"><?php $mbftext->__("Mã giao dịch hoàn ứng");?></th>
-								<th class="text-center"><?php $mbftext->__("Mã giao dịch ứng");?></th>
-								<th class="text-center"><?php $mbftext->__("Mã nợ");?></th>
-								<th class="text-center"><?php $mbftext->__("Mã thuê bao");?></th>
-								<th class="text-center"><?php $mbftext->__("Số thuê bao");?></th>
-								<th class="text-center"><?php $mbftext->__("Số tiền nạp");?></th>
-								<th class="text-center"><?php $mbftext->__("Số tiền đã hoàn ứng");?></th>
-								<th class="text-center"><?php $mbftext->__("Hạn hoàn ứng");?></th>
-								<th class="text-center"><?php $mbftext->__("Nợ xấu");?></th>
-                                <th class="text-center"><?php $mbftext->__("SMS gửi KH");?></th>
-                            </tr>
+                        <tr>
+                            <th><?php $mbftext->__("Mã giao dịch hoàn ứng"); ?></th>
+                            <th><?php $mbftext->__("Mã giao dịch ứng"); ?></th>
+                            <th><?php $mbftext->__("Mã nợ"); ?></th>
+                            <th><?php $mbftext->__("Mã thuê bao"); ?></th>
+                            <th><?php $mbftext->__("Số thuê bao"); ?></th>
+                            <th><?php $mbftext->__("Số tiền nạp"); ?></th>
+                            <th style="min-width:60px;"><?php $mbftext->__("Số tiền đã hoàn ứng"); ?></th>
+                            <th style="min-width: 100px;"><?php $mbftext->__("Hạn hoàn ứng"); ?></th>
+                            <th><?php $mbftext->__("Nợ xấu"); ?></th>
+                            <th><?php $mbftext->__("SMS gửi KH"); ?></th>
+                        </tr>
                         </thead>
                         <tbody>
                         <tr class="grade odd">
-							<?php $row = $data['curs'];?>
-							<td class="text-center"><?php echo $row->PAYMENT_TRANS_ID?></td>
-							<td class="text-center"><?php echo $row->CREDIT_TRANS_ID?></td>
-							<td class="text-center"><?php echo $row->SUBS_DEBT_ID?></td>
-							<td class="text-center"><?php echo $row->SUB_ID?></td>
-							<td class="text-center"><?php echo $row->MSISDN?></td>
-							<td class="text-center"><?php echo number_format($row->RECHARGE_CARD_AMOUNT)?><sub class="vnd">đ</sub></td>
-							<td class="text-center"><?php echo number_format($row->PAYMENT_CARD_AMOUNT + $row->PAYMENT_FEE_AMOUNT)?><sub class="vnd">đ</sub></td>
-							<td style="min-width: 150px;" class="text-center"><?php echo date('d-m-Y H:i:s', strtotime($row->PAYMENT_DATE))?></td>
-							<td class="text-center"><?php echo ($row->BAD_DEBT == 0) ? $mbftext->__('Nợ trong kỳ đối soát') : $mbftext->__('Nợ xấu không đối soát');?></td>
-                            <td class="text-center"><?php echo $row->SMS?></td>
-						</tr>
+
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <?php $line = 0; ?>
+                        <?php foreach ($data['collection'] as $entry): ?>
+                            <?php
+                            $class = "";
+                            if (($line % 2) == 0) $class .= " even-line";
+                            else $class .= " odd-line";
+                            if ($line == 0) $class .= " first";
+                            $line++;
+                            ?>
+                            <tr class="grade odd<?php echo $class; ?>">
+                                <td><?php echo $entry['PAYMENT_TRANS_ID']; ?></td>
+                                <td><?php echo $entry['CREDIT_TRANS_ID'] ?></td>
+                                <td><?php echo $entry['SUBS_DEBT_ID'] ?></td>
+                                <td><?php echo $entry['SUB_ID'] ?></td>
+                                <td><?php echo $entry['MSISDN'] ?></td>
+                                <td><?php echo number_format($entry['RECHARGE_CARD_AMOUNT']) ?><sub
+                                            class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['PAYMENT_CARD_AMOUNT'] + $entry['PAYMENT_FEE_AMOUNT']) ?>
+                                    <sub class="vnd">đ</sub></td>
+                                <td><?php echo date('d-m-Y H:i:s', strtotime($entry['PAYMENT_DATE'])) ?></td>
+                                <td><?php echo ($entry['BAD_DEBT'] == 0) ? $mbftext->__('Nợ trong kỳ đối soát') : $mbftext->__('Nợ xấu không đối soát'); ?></td>
+                                <td><?php echo $entry['SMS'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </form>
     </div>
-    <?php endif;?>
+    <?php endif; ?>
 
 </div>
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-    $('#filterForm').validate({
-		rules: {
-			msisdn: {
-				required: true
-			}
-	    },
-	    messages: {
-	    	// Enter custom error text here.
-		}
-	});
-	
-	$("#f_date").datepicker({
-		dateFormat: 'dd-mm-yy',
-		showAnim: 'slideDown',
-		onSelect: function (selected) {
-			$("#t_date").datepicker("option", "minDate", selected)
-		}
-	});
+    $(document).ready(function () {
+        $('#filterForm').validate({
+            rules: {
+                msisdn: {
+                    required: true
+                }
+            },
+            messages: {
+                // Enter custom error text here.
+            }
+        });
 
-	$("#t_date").datepicker({
-		dateFormat: 'dd-mm-yy',
-		showAnim: 'slideDown',
-		onSelect: function (selected) {
-			$("#f_date").datepicker("option", "maxDate", selected)
-		}
-	});
-    
-});
+        $("#f_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            showAnim: 'slideDown',
+            onSelect: function (selected) {
+                $("#t_date").datepicker("option", "minDate", selected)
+            }
+        });
+
+        $("#t_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            showAnim: 'slideDown',
+            onSelect: function (selected) {
+                $("#f_date").datepicker("option", "maxDate", selected)
+            }
+        });
+
+    });
 
 </script>

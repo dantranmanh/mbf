@@ -121,6 +121,16 @@ class Permission_Controller extends Core_Controller{
         
         if($_POST){
             if($this->model->addAction($this->_arrParams)){
+				
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Them action <b>".$this->_arrParams['action_name']."</b> vao  Controller <b>".$this->_arrParams['controller_name']."</b>",
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
                 $this->_redirect($this->baseUrl."permission/action");
             }
             
@@ -136,7 +146,20 @@ class Permission_Controller extends Core_Controller{
         }
         //print_r($_GET);
         if($_GET){
+			
+			$action = $this->model->getActionsById($_GET['id']);
+			//print_r($action);
+			// Insert log
+			$arrLOG = array(
+				'USER_ID' => Core_Login::getUserId(),
+				'USERNAME' => Core_Login::getUserName(),
+				'LOCATION' => $this->controller." => ".$this->action,
+				'DESCRIPTIONS' => "Xoa action <b>".$action->ACTION_NAME."</b> cua Controller <b>".$action->CONTROLLER_NAME."</b>",
+			);
+			Core_Logs::AddImpactlogs($arrLOG);
+			
             if($this->model->deleteAction($_GET['id'])){
+				
                 $this->_redirect($this->baseUrl."permission/action");
             }else{
                 echo "Error";

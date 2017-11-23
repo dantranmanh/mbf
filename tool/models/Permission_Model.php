@@ -101,4 +101,13 @@ class Permission_Model extends Core_Model{
         $this->Query($sql);
 		return $this->GetExecuteStatus();
     }
+	
+	public function getActionsById($id){
+		
+		$select = $this->Select("SELECT * FROM ".$this->prefix."core_action WHERE ACTION_ID = $id");
+        $result = $this->FetchObject($select);
+		if($this->NumRows($select) > 0){
+            return $result;
+        }
+    }
 }

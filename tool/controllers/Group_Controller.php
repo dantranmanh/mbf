@@ -74,7 +74,7 @@ class Group_Controller extends Core_Controller
 					'USER_ID' => Core_Login::getUserId(),
 					'USERNAME' => Core_Login::getUserName(),
 					'LOCATION' => $this->controller." => ".$this->action,
-					'DESCRIPTIONS' => "Them nhom user ".$group_name,
+					'DESCRIPTIONS' => "Them nhom user <b>".$group_name."</b>",
 				);
 				Core_Logs::AddImpactlogs($arrLOG);
 				
@@ -109,7 +109,7 @@ class Group_Controller extends Core_Controller
 					'USER_ID' => Core_Login::getUserId(),
 					'USERNAME' => Core_Login::getUserName(),
 					'LOCATION' => $this->controller." => ".$this->action,
-					'DESCRIPTIONS' => "Sua nhom user ".$data['group']->GROUP_NAME." thanh ".$this->_arrParams['group_name'],
+					'DESCRIPTIONS' => "Sua nhom user <b>".$data['group']->GROUP_NAME."</b> thanh <b>".$this->_arrParams['group_name']."</b>",
 				);
 				Core_Logs::AddImpactlogs($arrLOG);
 				
@@ -119,7 +119,7 @@ class Group_Controller extends Core_Controller
 
         $this->view->assign('group/edit', $data, $this->layoutAdmin);
     }
-/// Dang lam do o day
+
     public function deleteAction()
     {
 
@@ -132,18 +132,17 @@ class Group_Controller extends Core_Controller
         if (count($ids) > 0) {
             foreach ($ids as $id) {
 				
+				$group = $this->model->getGroupById($id);
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Xoa nhom user <b>".$group->GROUP_NAME."</b>",
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
                 if ($this->model->delete($id)) {
-					
-					$groupName = $this->model->getGroupById($id)->GROUP_NAME;
-					//echo $groupName;
-					// Insert log
-					$arrLOG = array(
-						'USER_ID' => Core_Login::getUserId(),
-						'USERNAME' => Core_Login::getUserName(),
-						'LOCATION' => $this->controller." => ".$this->action,
-						'DESCRIPTIONS' => "Xoa nhom user ".$groupName,
-					);
-					Core_Logs::AddImpactlogs($arrLOG);
 					
                     $this->_redirect($this->baseUrl . 'group/list');
                 }
@@ -163,6 +162,17 @@ class Group_Controller extends Core_Controller
         $ids = $this->_arrParams['ids'];
         if (count($ids) > 0) {
             foreach ($ids as $id) {
+				
+				$group = $this->model->getGroupById($id);
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Doi trang thai nhom user <b>".$group->GROUP_NAME."</b>",
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
                 if ($this->model->toggleStatus($id)) {
                     $this->_redirect($this->baseUrl . 'group/list');
                 }

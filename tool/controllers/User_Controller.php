@@ -144,8 +144,17 @@ class User_Controller extends Core_Controller{
             $model = new User_Model();
 			$id = $model->add($this->_arrParams);
             if($id){
+				
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Them user <b>".$this->_arrParams['full_name']."</b>",
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
                 $this->_redirect($this->baseUrl.'user/list'); 
-                //$data = array('message'=>'Người dùng mới đã được thêm thành công.');  
             }
 			/**
 			// Add default permission
@@ -195,7 +204,19 @@ class User_Controller extends Core_Controller{
             
             if($model->update($id, $this->_arrParams)){
                 
-                //$data['message'] = 'Sửa người dùng thành công.';
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Sua user:<br> 
+					Full name: <b>".$data['user']->FULL_NAME."</b> thanh <b>".$this->_arrParams['full_name']."</b><br/>
+					User name: <b>".$data['user']->USER_NAME."</b> thanh <b>".$this->_arrParams['user_name']."</b><br/>
+					Email: <b>".$data['user']->EMAIL."</b> thanh <b>".$this->_arrParams['email']."</b><br/>
+					Group: <b>".$data['user']->GROUP_ID."</b> thanh <b>".$this->_arrParams['group_id']."</b><br/>",
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
 				$this->_redirect($this->baseUrl.'user/list'); 
             }
         }
@@ -218,6 +239,17 @@ class User_Controller extends Core_Controller{
             $model = new User_Model();
             foreach($ids as $id){
                 if($id != Core_Login::getUserId()){
+					
+					$user = $model->getUserById($id);
+					// Insert log
+					$arrLOG = array(
+						'USER_ID' => Core_Login::getUserId(),
+						'USERNAME' => Core_Login::getUserName(),
+						'LOCATION' => $this->controller." => ".$this->action,
+						'DESCRIPTIONS' => "Xoa user <b>".$user->FULL_NAME."</b>",
+					);
+					Core_Logs::AddImpactlogs($arrLOG);
+					
                     if($model->delete($id)){
                        $this->_redirect($this->baseUrl.'user/list'); 
                     }
@@ -239,6 +271,17 @@ class User_Controller extends Core_Controller{
         if(count($ids) > 0){
             foreach($ids as $id){
                 if($id != Core_Login::getUserId()){
+					
+					$user = $model->getUserById($id);
+					// Insert log
+					$arrLOG = array(
+						'USER_ID' => Core_Login::getUserId(),
+						'USERNAME' => Core_Login::getUserName(),
+						'LOCATION' => $this->controller." => ".$this->action,
+						'DESCRIPTIONS' => "Doi trang thai user <b>".$user->FULL_NAME."</b>",
+					);
+					Core_Logs::AddImpactlogs($arrLOG);
+					
                     if($model->toggleStatus($id)){
                         $this->_redirect($this->baseUrl.'user/list'); 
                     }

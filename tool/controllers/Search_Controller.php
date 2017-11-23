@@ -55,11 +55,15 @@ class Search_Controller extends Core_Controller{
 		oci_bind_by_name($stmt,':P_OUT', $description, 255);
 		oci_bind_by_name($stmt,':v_Return', $result, 5);
 		oci_execute($stmt);
-		
+
+		$entry=array('amount' => ($amount)?($amount):0 );
+		$collection = array();
+		$collection[] = $entry;
+
         $data = array(
 			'msisdn' => $msisdn,
 			'return_value' => $result,
-			'amount' => ($amount)?($amount):0,
+			'collection' => $collection,
 			'description' => $description,
             'title' => "Tra cứu mức thẻ ứng áp dụng cho thuê bao"
         );
@@ -95,15 +99,19 @@ class Search_Controller extends Core_Controller{
 		oci_bind_by_name($stmt,':v_Return', $result, 5);
 		oci_execute($stmt);
 		oci_execute($curs);
-		
-		$entry = oci_fetch_object($curs);
-		
+
+        $collection=array();
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+
         $data = array(
 			'msisdn' => $msisdn,
 			'f_date' => $f_date,
 			't_date' => $t_date,
 			'return_value' => $result,
-			'p_data_cursor' => $p_data_cursor,
+			'collection' => $collection,
 			'description' => $description,
 			'curs' => $entry,
             'title' => "Tra cứu mức thẻ ứng áp dụng cho thuê bao"
@@ -141,17 +149,21 @@ class Search_Controller extends Core_Controller{
 		oci_bind_by_name($stmt,':v_Return', $result, 5);
 		oci_execute($stmt);
 		oci_execute($curs);
-		
-		$entry = oci_fetch_object($curs);
-		//print_r($entry);
+
+
+        $collection=array();
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+
         $data = array(
 			'msisdn' => $msisdn,
 			'f_date' => $f_date,
 			't_date' => $t_date,
 			'return_value' => $result,
-			'p_data_cursor' => $p_data_cursor,
+			'collection' => $collection,
 			'description' => $description,
-			'curs' => $entry,
             'title' => "Tra cứu giao dịch hoàn ứng"
         );
         $this->view->assign('search/giao_dich_hoan_ung', $data, $this->layoutAdmin);
@@ -178,15 +190,18 @@ class Search_Controller extends Core_Controller{
 		oci_bind_by_name($stmt,':v_Return', $result, 5);
 		oci_execute($stmt);
 		oci_execute($curs);
-		
-		$entry = oci_fetch_object($curs);
-		//print_r($entry);
+
+        $collection=array();
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+
         $data = array(
 			'msisdn' => $msisdn,
 			'return_value' => $result,
-			'p_data_cursor' => $p_data_cursor,
+			'collection' => $collection,
 			'description' => $description,
-			'curs' => $entry,
             'title' => "Tra cứu nợ"
         );
 
@@ -356,17 +371,16 @@ class Search_Controller extends Core_Controller{
             $data = array(
                 'title' => "Tra cứu thông tin SMS",
                 'msisdn' => $msisdn,
-                'f_date' => $f_date,
-                't_date' => $t_date,
+                'f_date' => $this->_arrParams['f_date'],
+                't_date' => $this->_arrParams['t_date'],
                 'collection' => $collection,
-                'deliver_status' => $entry['DELIVER_STATUS'],
                 'return_value' => $result,
                 'description' => $description
             );
         }else $data = array(
             'title' => "Tra cứu thông tin SMS",
-            'f_date' => $fdate,
-            't_date' => $tdate,
+            'f_date' => $this->_arrParams['f_date'],
+            't_date' => $this->_arrParams['t_date'],
             'msisdn' => $msisdn,
             'return_value' => $result,
             'description' => $description
