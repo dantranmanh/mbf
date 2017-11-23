@@ -66,3 +66,4 @@
 "Unknown","Unknown"
 "Thue bao khong du dieu kien ung the","Thuê bao không đủ điều kiện ứng thẻ"
 "invalid-input : to_date must greater than from_date","Ngày tháng không hợp lệ-Đến ngày phải lớn hơn Từ ngày"
+"invalid-input : (to_date - from_date) must less than 30 days  ","Ngày tháng không hợp lệ-Từ ngày và Đến ngày phải cách nhau dưới 30 ngày!"
