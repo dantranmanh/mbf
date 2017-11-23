@@ -475,3 +475,11 @@ th{
     font-style: italic;
     opacity:0.6;
 }
+.error-mess, .empty-data {
+    color:red;
+    font-size: 17px;
+    font-weight: bold;
+}
+.empty-data{
+    color:grey!important;
+}

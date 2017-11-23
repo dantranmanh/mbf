@@ -60,9 +60,13 @@
                 </div>
             </div>
         </form>
-		
-        <?php if($data['return_value'] == 0):?>
-            <p class="no-data"><?php echo NODATA;?></p>
+
+        <?php if(count($data['collection']) < 1):?>
+            <p class="no-data empty-data"><?php echo NODATA;?></p>
+            <?php if((int)$data['return_value'] != 1 && !empty($data['msisdn'])):?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: ". $data['return_value'];?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : "; $mbftext->__($data['description']);?></p>
+            <?php endif; ?>
         <?php else:?>
         <form action="" name="" method="post" id="MyForm">
            <!-- <p class="success-mess">Tổng số <?php /*echo count($data['collection']); */?> bản ghi được tìm thấy.</p>-->
@@ -85,7 +89,7 @@
                             $line++;
                             ?>
                             <tr class="grade odd<?php echo $class; ?>">
-                                <td style="font-size:22px;font-weight:bold;"><?php echo number_format($entry['amount']);?><sub class="vnd" style="font-size:20px!important;">đ</sub></td>
+                                <td style="font-size:45px;font-weight:bold;"><?php echo number_format($entry['amount']);?><sub class="vnd" style="font-size:30px!important;">đ</sub></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

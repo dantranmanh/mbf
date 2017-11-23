@@ -52,14 +52,14 @@
                                     <div class="form-group small">
                                         <label>Từ ngày</label>
                                         <input class="form-control small" name="f_date" id="f_date"
-                                               value="<?php if (isset($data['f_date'])) : ?><?php echo date("d-m-Y", strtotime($data['f_date'])); ?><?php endif; ?>"/>
+                                               value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group small">
                                         <label>Đến ngày</label>
                                         <input class="form-control small" name="t_date" id="t_date"
-                                               value="<?php if (isset($data['t_date'])) : ?><?php echo date("d-m-Y", strtotime($data['t_date'])); ?><?php endif; ?>"/>
+                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
@@ -76,10 +76,10 @@
         </form>
 
         <?php if(count($data['collection']) < 1):?>
-            <p class="no-data"><?php echo NODATA;?></p>
-            <?php if((int)$data['return_value'] != 1):?>
+            <p class="no-data empty-data"><?php echo NODATA;?></p>
+            <?php if((int)$data['return_value'] != 1 && !empty($data['msisdn'])):?>
                 <p class="error-mess"><?php echo "Mã kết quả trả về: ". $data['return_value'];?></p>
-                <p class="error-mess"><?php echo "Thông tin lỗi : ". $data['description'];?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : "; $mbftext->__($data['description']);?></p>
             <?php endif; ?>
         <?php else:?>
 

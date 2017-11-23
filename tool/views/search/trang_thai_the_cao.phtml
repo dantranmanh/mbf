@@ -62,10 +62,10 @@
         </form>
 
         <?php if(count($data['collection']) < 1):?>
-            <p class="no-data"><?php echo "Không tìm thấy dữ liệu về thẻ cào có số serial: ".$data['msisdn'];?></p>
-            <?php if((int)$data['return_value'] != 1):?>
+            <p class="no-data empty-data"><?php echo NODATA;?></p>
+            <?php if((int)$data['return_value'] != 1 && !empty($data['msisdn'])):?>
                 <p class="error-mess"><?php echo "Mã kết quả trả về: ". $data['return_value'];?></p>
-                <p class="error-mess"><?php echo "Thông tin lỗi : ". $data['description'];?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : "; $mbftext->__($data['description']);?></p>
             <?php endif; ?>
         <?php else:?>
         <form action="" name="" method="post" id="MyForm">
