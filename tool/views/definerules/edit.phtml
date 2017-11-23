@@ -1,0 +1,110 @@
+<?php
+
+/**
+* edit.phtml
+* 
+* edit view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:39
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li><a href="<?php echo BASE_URL.'definerules/list'?>">Cấu hình quy tắc ứng thẻ</a></li>
+            <li class="active">Cấu hình quy tắc ứng thẻ</li>
+        </ul>
+     </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-edit fa-fw"></i> 
+            Nhập các thông tin về cấu hình quy tắc ứng thẻ vào form dưới đây:
+        </div>
+        <div class="panel-body">
+            <form action="" id="editForm" method="post" enctype="multipart/form-data">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="hidden" name="task" value="edit" />
+                            
+                            <div class="form-group">
+                                <label>RULE NAME</label>
+                                <input class="form-control" type="text" name="rule_name" id="rule_name" value="<?php echo $data->RULE_NAME;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>BLOCK POS</label>
+                                <input class="form-control" type="text" name="block_pos" id="block_pos" value="<?php echo $data->BLOCK_POS;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>BREAK LEVEL TABLE</label>
+                                <input class="form-control" type="text" name="break_level_table" id="break_level_table" value="<?php echo $data->BREAK_LEVEL_TABLE;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>SUBS BIT POS TABLE</label>
+                                <input class="form-control" type="text" name="subs_bit_pos_table" id="subs_bit_pos_table" value="<?php echo $data->SUBS_BIT_POS_TABLE;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>STATUS</label>
+                                <input class="form-control" type="text" name="status" id="status" value="<?php echo $data->STATUS;?>" />
+                            </div>
+							<div class="form-group">
+                                <label>PARTITON TIME TYPE</label>
+                                <input class="form-control" type="text" name="partiton_time_type" id="partiton_time_type" value="<?php echo $data->PARTITON_TIME_TYPE;?>" />
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#editForm').validate({
+		rules: {
+			rule_name: {
+				required: true,
+			},
+			block_pos: {
+				required: true
+			},
+			break_level_table: {
+				required: true,
+			},
+			subs_bit_pos_table: {
+				//required: true
+			},
+			status: {
+				required: true
+			},
+			partiton_time_type: {
+				//required: true
+			}
+	    },
+	    messages: {
+	    	// Enter custom error text here.
+		}
+	});
+});
+
+</script>

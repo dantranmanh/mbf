@@ -1,0 +1,108 @@
+<?php
+
+/**
+* list.phtml
+* 
+* list view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:41
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li class="active">Tra cứu mức thẻ ứng áp dụng cho thuê bao</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+		
+		<form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group small">
+                                        <label>Nhập số điện thoại</label>
+                                        <input placeholder="918014988" onfocus="this.placeholder = ''" onblur="this.placeholder = '918014988'" class="form-control small" name="msisdn" id="msisdn" value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter" />
+										<input class="btn btn-primary btn-sm" type="submit" value="Tra cứu" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+		
+        <?php if($data['return_value'] == 0):?>
+            <p class="no-data"><?php echo NODATA;?></p>
+        <?php else:?>
+        <form action="" name="" method="post" id="MyForm">
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 300px;">Mức ứng tối đa của TB</th>
+                                <th>Mô tả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="grade odd">
+							<td><?php echo number_format($data['amount']);?><sub class="vnd">đ</sub></td>
+							<td><?php echo $data['description'];?></td>
+						</tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif;?>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#filterForm').validate({
+		rules: {
+			msisdn: {
+				required: true
+			}
+	    },
+	    messages: {
+	    	// Enter custom error text here.
+		}
+	});
+    
+});
+
+</script>

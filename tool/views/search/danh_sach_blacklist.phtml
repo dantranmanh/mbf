@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li class="active"><?php echo $mbftext->__('Tra cứu thuê bao Blacklist'); ?></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row ds-blacklist">
+
+    <div class="col-lg-12">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group small">
+                                        <label>Nhập số thuê bao</label>
+                                        <input placeholder="918014988" onfocus="this.placeholder = ''" onblur="this.placeholder = '918014988'" class="form-control small" name="msisdn" id="msisdn" value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter" />
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Tra cứu" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <?php if(empty($data['reason'])):?>
+            <p class="no-data"><?php echo "Không tìm thấy thuê bao ". $data['msisdn']." trong danh sách Blacklist";?></p>
+        <?php else:?>
+        <form action="" name="" method="post" id="MyForm">
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                        <tr>
+                            <th class= "text-center" style="width: 70px;">Số thuê bao</th>
+                            <th class= "text-center" style="width: 70px;">Ngày tạo</th>
+                            <th class= "text-center" style="width: 40px;">Trạng Thái</th>
+                            <th class= "text-center" style="width: 80px;"><?php echo $mbftext->__('Lý do'); ?></th>
+                            <th class= "text-center" style="width: 250px;"><?php echo $mbftext->__('Tên lý do'); ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="grade odd">
+                            <td class="text-center"><?php echo $data['msisdn']; ?></td>
+                            <td class="text-center"><?php echo $data['createdate']; ?></td>
+                            <td class="text-center"><?php echo $data['status']; ?></td>
+                            <td class="text-center"><?php echo $data['reason']; ?></td>
+                            <td class="text-center"><?php echo $data['reasonname']; ?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif;?>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#filterForm').validate({
+            rules: {
+                msisdn: {
+                    required: true
+                }
+            },
+            messages: {
+                // Enter custom error text here.
+            }
+        });
+
+    });
+
+</script>

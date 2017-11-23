@@ -38,6 +38,7 @@ class User_Controller extends Core_Controller{
         }
         
         $this->acl = new Core_Acl();
+		
     }
     
     public function listAction(){
@@ -48,6 +49,7 @@ class User_Controller extends Core_Controller{
         } 
 		
         $model = new User_Model();
+
         if(Core_Login::getUserId() != 1){
             $exp = array(
                 "created_user_id" => Core_Login::getUserId(),
@@ -274,7 +276,7 @@ class User_Controller extends Core_Controller{
 		
 		$exp = array(
 			'keyword' 	=> $keyword,
-            'type' => 'REPORT'
+            'type' => 'TOOL'
 		);
         
         $model = new User_Model();
@@ -284,7 +286,7 @@ class User_Controller extends Core_Controller{
 		//	$response[] = $user->user_name;
 	//	}
 		//echo json_encode($response);
-        echo str_replace(array('user_id','full_name'), array("id","value"), json_encode($users));
+        echo str_replace(array('USER_ID','FULL_NAME'), array("id","value"), json_encode($users));
 	}
 }
 

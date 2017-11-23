@@ -1,5 +1,4 @@
 <?php
-//echo __DIR__;
 session_start();
 ini_set('session.cookie_httponly', 1);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -18,6 +17,7 @@ ini_set('memory_limit', '-1');
 
 // Base url
 define("BASE_URL", 'http://115.146.126.195/app_web/tool/');
+//define("BASE_URL", 'http://mbf.local/');
 define("WSDL_URL", "");
 
 define('DS', 				DIRECTORY_SEPARATOR);

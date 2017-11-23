@@ -68,9 +68,20 @@ class Group_Controller extends Core_Controller
 			//var_dump($r);
 			//echo $r;
             if ($this->model->add($group_name)) {
+				
+				// Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Them nhom user ".$group_name,
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
                 $data = array('message' => 'Nhóm mới đã được thêm thành công.');
             }
         }
+		
         $data['title'] = "Thêm nhóm mới";
         $this->view->assign('group/add', $data, $this->layoutAdmin);
     }
@@ -93,14 +104,22 @@ class Group_Controller extends Core_Controller
 
             if ($this->model->update($id, $this->_arrParams)) {
 
-                //$data['message'] = 'Sửa nhóm thành công.';
+                // Insert log
+				$arrLOG = array(
+					'USER_ID' => Core_Login::getUserId(),
+					'USERNAME' => Core_Login::getUserName(),
+					'LOCATION' => $this->controller." => ".$this->action,
+					'DESCRIPTIONS' => "Sua nhom user ".$data['group']->GROUP_NAME." thanh ".$this->_arrParams['group_name'],
+				);
+				Core_Logs::AddImpactlogs($arrLOG);
+				
 				$this->_redirect($this->baseUrl . 'group/list');
             }
         }
 
         $this->view->assign('group/edit', $data, $this->layoutAdmin);
     }
-
+/// Dang lam do o day
     public function deleteAction()
     {
 
@@ -112,7 +131,20 @@ class Group_Controller extends Core_Controller
         $ids = $this->_arrParams['ids'];
         if (count($ids) > 0) {
             foreach ($ids as $id) {
+				
                 if ($this->model->delete($id)) {
+					
+					$groupName = $this->model->getGroupById($id)->GROUP_NAME;
+					//echo $groupName;
+					// Insert log
+					$arrLOG = array(
+						'USER_ID' => Core_Login::getUserId(),
+						'USERNAME' => Core_Login::getUserName(),
+						'LOCATION' => $this->controller." => ".$this->action,
+						'DESCRIPTIONS' => "Xoa nhom user ".$groupName,
+					);
+					Core_Logs::AddImpactlogs($arrLOG);
+					
                     $this->_redirect($this->baseUrl . 'group/list');
                 }
             }

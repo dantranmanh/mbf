@@ -11,7 +11,7 @@
   
   class ORACLE {
     private static $_instance;
-    private $conn_handle;
+    public $conn_handle;
     private $conn_data;
     private $errors_pool;
     private $statements = array();
@@ -24,7 +24,9 @@
     private $session_mode = OCI_DEFAULT;
 	
 	public $prefix = DB_PREFIX;
-
+    public  function getAutocommit(){
+        return $this->autocommit;
+    }
     /**
     * Set array fetching mode for Fetch methods
     * 
@@ -135,7 +137,7 @@
         return $bind_type;
     }
 	
-	private function con(){
+	public function con(){
 		$this->Connect(STR_CONNECT, DB_USER,DB_PASSWORD);
 		$this->SetFetchMode(OCI_ASSOC); 
 		$this->SetAutoCommit(true); 
@@ -169,7 +171,7 @@
     }
 	
 	/**
-	* Query nhu binh thuong =))
+	* Query nhu binh thuong 
 	* Example: $sql = 'UPDATE '.$this->prefix.'core_usergroups SET IS_ACTIVE = 1 - IS_ACTIVE WHERE GROUP_ID = '.$id;
 	*/
 	public function Query($sql, $bind = false){
@@ -471,7 +473,7 @@
     public function NewCollection($typename, $schema = null){
         return oci_new_collection($this->conn_handle, $typename, $schema);
     }   
-    
+	
     // Support stored procedures and functions
     
     /**
@@ -483,9 +485,11 @@
     * @return resource
     */
     public function StoredProc($name, $params = false, &$bind = false){
+		//$this->con();
         if ($params) {
           if (is_array($params)) $params = implode(",", $params);
-          $sql = "begin $name($params); end;";  
+          $sql = "begin $name($params); end;";
+			echo $sql;
         } else {
           $sql = "begin $name; end;";
         }
@@ -520,7 +524,7 @@
     * @return resource
     * @example Cursor("utils.get_cursor", "dataset"); //begin utils.get_cursor(:dataset); end;
     */
-    public function Cursor($stored_proc, $bind){
+	public function Cursor($stored_proc, $bind){
         if (!is_resource($this->conn_handle)) return false;
         $sql = "begin $stored_proc(:$bind); end;";
         $curs = oci_new_cursor($this->conn_handle);
@@ -531,7 +535,7 @@
         $this->FreeStatement($stmt);
         return $curs;
     }
-    
+
     /**
     * Invalidates a cursor, freeing all associated resources and cancels the ability to read from it. 
     * 
@@ -576,6 +580,7 @@
     * @author Sergey Pimenov 
     */
     public function Commit(){
+		$this->con();
         if (is_resource($this->conn_handle))
           return @oci_commit($this->conn_handle);
         else 
@@ -589,6 +594,7 @@
     * @author Sergey Pimenov 
     */
     public function Rollback(){
+		$this->con();
         if (is_resource($this->conn_handle))
           return @oci_rollback($this->conn_handle);
         else 
@@ -625,6 +631,7 @@
     * @return string | false
     */
     public function ServerVer(){
+		$this->con();
         if (is_resource($this->conn_handle))
           return @oci_server_version($this->conn_handle);
         else 

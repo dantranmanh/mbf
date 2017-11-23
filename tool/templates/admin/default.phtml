@@ -160,7 +160,8 @@ $acl = new Core_Acl();
                         <?php if($acl->allow("group","list") || 
                                 $acl->allow("user","list") || 
                                 $acl->allow("user","add") || 
-                                $acl->allow("permission","action")):
+                                $acl->allow("permission","action") || 
+								$acl->allow("impactlogs","list")):
                         ?>
                         <li class="menu-user">
                             <a href="javascript:;"><i class="fa fa-user fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
@@ -178,6 +179,11 @@ $acl = new Core_Acl();
                                 <?php if($acl->allow("permission","action")):?>
                                 <li class="menu-user">
                                     <a href="<?php echo BASE_URL.'permission/action'?>"><i class="fa  fa-caret-right fa-fw"></i> Danh sách action</a>
+                                </li>
+                                <?php endif;?>
+								<?php if($acl->allow("impactlogs","list")):?>
+                                <li class="menu-user">
+                                    <a href="<?php echo BASE_URL.'impactlogs/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Logs tác động hệ thống</a>
                                 </li>
                                 <?php endif;?>
                             </ul>
@@ -206,14 +212,105 @@ $acl = new Core_Acl();
                         </li>
                         <?php endif;?>
 						
-						<?php if($acl->allow("systemparam","list")):
+						<?php if($acl->allow("quanlybpm","lich_chay_process") || 
+						$acl->allow("quanlybpm","cau_hinh_process_bpm") || 
+						$acl->allow("quanlybpm","tra_cuu_process_execution")):
                         ?>
+                        <li class="menu-user">
+                            <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Quản ly BPM<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="menu-user">
+									<?php if($acl->allow("quanlybpm","lich_chay_process")):?>
+                                    <a href="<?php echo BASE_URL.'quanlybpm/lich_chay_process'?>"><i class="fa  fa-caret-right fa-fw"></i> Lịch chạy process</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("quanlybpm","cau_hinh_process_bpm")):?>
+                                    <a href="<?php echo BASE_URL.'quanlybpm/cau_hinh_process_bpm'?>"><i class="fa  fa-caret-right fa-fw"></i> Cấu hình process BPM</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("quanlybpm","tra_cuu_process_execution")):?>
+                                    <a href="<?php echo BASE_URL.'quanlybpm/tra_cuu_process_execution'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu process excution</a>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endif;?>
+						
+						<?php if($acl->allow("defineagelevel","list") || 
+						$acl->allow("definerules","list") || 
+						$acl->allow("defineusagelevel","list")):
+                        ?>
+                        <li class="menu-user">
+                            <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Cấu hình điều kiện ứng thẻ<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="menu-user">
+									<?php if($acl->allow("defineagelevel","list")):?>
+                                    <a href="<?php echo BASE_URL.'defineagelevel/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Định nghĩa mức tuổi thọ</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("defineusagelevel","list")):?>
+                                    <a href="<?php echo BASE_URL.'defineusagelevel/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Định nghĩa mức tiêu dùng</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("definerules","list")):?>
+                                    <a href="<?php echo BASE_URL.'definerules/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Cấu hình quy tắc điều kiện ứng</a>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endif;?>
+						
+						<?php if($acl->allow("systemparam","list")):?>
                         <li class="menu-user">
                             <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Điều khiển hệ thống<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li class="menu-user">
 									<?php if($acl->allow("systemparam","list")):?>
                                     <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Hiệu chỉnh tham số hệ thống</a>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endif;?>
+						
+						<?php if($acl->allow("search","muc_the_ung") | 
+								$acl->allow("search","giao_dich_ung_the") | 
+								$acl->allow("search","giao_dich_hoan_ung") | 
+								$acl->allow("search","tra_cuu_no") | 
+								$acl->allow("search","danh_sach_blacklist") | 
+								$acl->allow("search","thong_tin_thue_bao") | 
+								$acl->allow("search","trang_thai_the_cao") | 
+								$acl->allow("search","sms_log")):?>
+                        <li class="menu-user">
+                            <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Tra cứu<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="menu-user">
+									<?php if($acl->allow("search","muc_the_ung")):?>
+                                    <a href="<?php echo BASE_URL.'search/muc_the_ung'?>"><i class="fa  fa-caret-right fa-fw"></i> Mức thẻ ứng áp dụng cho TB</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","giao_dich_ung_the")):?>
+                                    <a href="<?php echo BASE_URL.'search/giao_dich_ung_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Giao dịch ứng thẻ</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","giao_dich_hoan_ung")):?>
+                                    <a href="<?php echo BASE_URL.'search/giao_dich_hoan_ung'?>"><i class="fa  fa-caret-right fa-fw"></i> Giao dịch hoàn ứng</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","tra_cuu_no")):?>
+                                    <a href="<?php echo BASE_URL.'search/tra_cuu_no'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu nợ</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","danh_sach_blacklist")):?>
+                                    <a href="<?php echo BASE_URL.'search/danh_sach_blacklist'?>"><i class="fa  fa-caret-right fa-fw"></i> Danh sách blacklist</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","thong_tin_thue_bao")):?>
+                                    <a href="<?php echo BASE_URL.'search/thong_tin_thue_bao'?>"><i class="fa  fa-caret-right fa-fw"></i> Thông tin thuê bao</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","trang_thai_the_cao")):?>
+                                    <a href="<?php echo BASE_URL.'search/trang_thai_the_cao'?>"><i class="fa  fa-caret-right fa-fw"></i> Trạng thái thẻ cào</a>
+                                    <?php endif;?>
+									
+									<?php if($acl->allow("search","sms_log")):?>
+                                    <a href="<?php echo BASE_URL.'search/sms_log'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu SMS log</a>
                                     <?php endif;?>
                                 </li>
                             </ul>

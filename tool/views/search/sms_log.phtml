@@ -1,0 +1,156 @@
+<?php
+
+/**
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li class="active">Tra cứu SMS log</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Nhập số điện thoại</label>
+                                        <input placeholder="918014988" onfocus="this.placeholder = ''" onblur="this.placeholder = '918014988'" class="form-control small" name="msisdn" id="msisdn" value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Từ ngày</label>
+                                        <input class="form-control small" name="f_date" id="f_date"
+                                               value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Đến ngày</label>
+                                        <input class="form-control small" name="t_date" id="t_date"
+                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter" />
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Tra cứu" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <?php if(empty($data['collection'])):?>
+            <p class="no-data"><?php echo NODATA;?></p>
+            <?php if((int)$data['return_value'] != 1):?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: ". $data['return_value'];?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : ". $data['description'];?></p>
+            <?php endif; ?>
+        <?php else:?>
+
+        <form action="" name="" method="post" id="MyForm">
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Số thuê bao</th>
+                            <th class="text-center">Thời gian gửi</th>
+                            <th class="text-center">SMS ID</th>
+                            <th class="text-center">SMS</th>
+                            <th class="text-center">Submit Status</th>
+                            <th class="text-center">Delivery Status</th>
+                            <th class="text-center">Thời gian phản hồi</th>
+                            <th class="text-center">Delivery Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($data['collection'] as $entry): ?>
+                            <tr class="grade odd">
+                                <td class="text-center"><?php echo $data['msisdn']; ?></td>
+                                <td class="text-center"><?php echo $entry['SENT_TIME']; ?></td>
+                                <td class="text-center"><?php echo $entry['SMS_ID']; ?></td>
+                                <td class="text-center" style="max-width:500px;"><?php echo $entry['SMS']; ?></td>
+                                <td class="text-center"><?php echo $entry['SUBMIT_STATUS']; ?></td>
+                                <td class="text-center"><?php echo $entry['DELIVER_STATUS']; ?></td>
+                                <td class="text-center"><?php echo $entry['RESPONSE_TIME']; ?></td>
+                                <td class="text-center"><?php echo $entry['deliver_time']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif;?>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('#filterForm').validate({
+            rules: {
+                msisdn: {
+                    required: true
+                }
+            },
+            messages: {
+                // Enter custom error text here.
+            }
+        });
+
+        $("#f_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            showAnim: 'slideDown',
+            onSelect: function (selected) {
+                $("#t_date").datepicker("option", "minDate", selected)
+            }
+        });
+
+        $("#t_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            showAnim: 'slideDown',
+            onSelect: function (selected) {
+                $("#f_date").datepicker("option", "maxDate", selected)
+            }
+        });
+
+    });
+
+</script>

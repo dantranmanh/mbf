@@ -15,11 +15,10 @@
 */
 
 class Core_View {
-    
+
     function __construct(){
-        
     }
-    
+
     public static function assign($name, $data = null, $layout = "admin"){
         
         if($data != null){
@@ -27,7 +26,17 @@ class Core_View {
                 $$key = $value;
             }
         }
-        
+        /**
+         * Load change text model
+         */
+        $path = "models".DS."Translate_Model.php";
+        if(file_exists($path)){
+            require_once($path);
+
+        }else  throw new Exception("Can not load translate model!");
+        $mbftext = new Translate_Model();
+
+
         if($layout){
             require "templates".DS.$layout.DS."default.phtml";
         }
@@ -38,7 +47,6 @@ class Core_View {
             require "templates".DS.$layout.DS."bottom.phtml";
         }
     }
-    
     public static function _view($name, $data = null){
         
         if($data != null){

@@ -74,16 +74,16 @@ class Search_Controller extends Core_Controller{
         } 
 		
 		$msisdn = $this->_arrParams['msisdn'];
-		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("Y-m-d");
-        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("Y-m-d");
+		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("d-m-Y H:i:s");
+        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("d-m-Y H:i:s");
 
 		$str_fdate = strtotime($f_date);
 		$str_tdate = strtotime($t_date);
-		$fdate = date('d-M-y', $str_fdate);
-		$tdate = date('d-M-y', $str_tdate); 
-		
+		$fdate = date('d-m-Y H:i:s', $str_fdate);
+		$tdate = date('d-m-Y H:i:s', $str_tdate);
 		$sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_CREDIT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
 		$this->model->con();
+		$this->updateDateFormatForCurrentSession();
 		$stmt = oci_parse($this->model->conn_handle,$sql);
 		$curs = oci_new_cursor($this->model->conn_handle);
 		
@@ -119,16 +119,17 @@ class Search_Controller extends Core_Controller{
         } 
 		
 		$msisdn = $this->_arrParams['msisdn'];
-		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("Y-m-d");
-        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("Y-m-d");
+		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("d-m-Y H:i:s");
+        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("d-m-Y H:i:s");
 
 		$str_fdate = strtotime($f_date);
 		$str_tdate = strtotime($t_date);
-		$fdate = date('d-M-y', $str_fdate);
-		$tdate = date('d-M-y', $str_tdate); 
+		$fdate = date('d-m-Y H:i:s', $str_fdate);
+		$tdate = date('d-m-Y H:i:s', $str_tdate);
 		
 		$sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_PAYMENT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
 		$this->model->con();
+		$this->updateDateFormatForCurrentSession();
 		$stmt = oci_parse($this->model->conn_handle,$sql);
 		$curs = oci_new_cursor($this->model->conn_handle);
 		
@@ -167,6 +168,7 @@ class Search_Controller extends Core_Controller{
 		
 		$sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_DEBT(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
 		$this->model->con();
+		$this->updateDateFormatForCurrentSession();
 		$stmt = oci_parse($this->model->conn_handle,$sql);
 		$curs = oci_new_cursor($this->model->conn_handle);
 		
@@ -195,7 +197,6 @@ class Search_Controller extends Core_Controller{
     public function danh_sach_blacklistAction()
     {
         #ini_set('display_errors', 1);
-
         if (!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
             exit;
@@ -203,24 +204,20 @@ class Search_Controller extends Core_Controller{
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_BLACKLIST(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
+        $this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle, $sql);
         oci_bind_by_name($stmt, ':P_MSISDN', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
         oci_bind_by_name($stmt, ':P_DATA_CURSOR', $p_data_cursor, -1, OCI_B_CURSOR);
-
         oci_bind_by_name($stmt, ':P_OUT', $description, 255);
         oci_bind_by_name($stmt, ':v_Return', $result, 5);
         oci_execute($stmt);
         oci_execute($p_data_cursor);
         if ($entry = oci_fetch_array($p_data_cursor)) {
-            $date = strtotime($entry['CREATE_DATE']);
-            $cDate = date('d-m-Y', $date);
-
-
             $data = array(
                 'title' => "Tra cứu Blacklist",
                 'msisdn' => $msisdn,
-                'createdate' => $cDate,
+                'createdate' => $entry['CREATE_DATE'],
                 'reason' => $entry['REASON_CODE'],
                 'reasonname' => (strtolower($entry['REASON_NAME']) == 'n/a' || empty($entry['REASON_NAME'])) ? "" : $entry['REASON_NAME'],
                 'status' => ((int)$entry['STATUS'] == 1) ? "Còn hiệu lực" : "Hết hiệu lực",
@@ -236,16 +233,17 @@ class Search_Controller extends Core_Controller{
 
         $this->view->assign('search/danh_sach_blacklist', $data, $this->layoutAdmin);
     }
-	
+
 	public function thong_tin_thue_baoAction(){
         if(!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
             exit;
         }
-        #ini_set('display_errors', 1);
+        //ini_set('display_errors', 1);
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_SUBS_INF(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
+        $this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle,$sql);
         oci_bind_by_name($stmt,':P_MSISDN', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
@@ -260,8 +258,8 @@ class Search_Controller extends Core_Controller{
                 'title' => "Tra cứu thông tin thuê bao",
                 'msisdn' => $msisdn,
                 'sub_id' => $entry['SUB_ID'],
-                'last_active_date' => $this->convertDateDMY($entry['LAST_ACTIVE_DATE']),
-                'deactive_date' => $this->convertDateDMY($entry['DEACTIVE_DATE']),
+                'last_active_date' => $entry['LAST_ACTIVE_DATE'],
+                'deactive_date' => $entry['DEACTIVE_DATE'],
                 'status' => ((int)$entry['STATUS'] == 1) ? "Đang active" : "Đã hủy",
                 'return_value' => $result,
                 'description' => $description
@@ -283,6 +281,7 @@ class Search_Controller extends Core_Controller{
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_CARD_STORE(:P_SERIAL, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
+        $this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle,$sql);
         oci_bind_by_name($stmt,':P_SERIAL', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
@@ -304,7 +303,7 @@ class Search_Controller extends Core_Controller{
                 'serial' => $msisdn,
                 'card_id' => $entry['CARD_ID'],
                 'card_amount' => $entry['CARD_AMOUNT'],
-                'create_date' => $this->convertDateDMY($entry['CREATE_DATE']),
+                'create_date' => $entry['CREATE_DATE'],
                 'status' => $status,
                 'return_value' => $result,
                 'description' => $description
@@ -318,22 +317,23 @@ class Search_Controller extends Core_Controller{
     }
 	
 	public function sms_logAction(){
-        /*
+
         if(!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
             exit;
-        }*/
+        }
         //ini_set('display_errors', 1);
         $msisdn = $this->_arrParams['msisdn'];
-        $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("Y-m-d");
-        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("Y-m-d");
+        $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("d-m-Y");
+        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("d-m-Y");
 
         $str_fdate = strtotime($f_date);
         $str_tdate = strtotime($t_date);
-        $fdate = date('d-M-y', $str_fdate);
-        $tdate = date('d-M-y', $str_tdate);
+        $fdate = date('d-m-Y H:i:s', $str_fdate);
+        $tdate = date('d-m-Y H:i:s', $str_tdate);
         $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_SMS_LOG(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
+        $this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle,$sql);
         $curs = oci_new_cursor($this->model->conn_handle);
 
@@ -344,26 +344,21 @@ class Search_Controller extends Core_Controller{
         oci_bind_by_name($stmt,':P_OUT', $description, 255);
         oci_bind_by_name($stmt,':v_Return', $result, 5);
         oci_execute($stmt);
+
         oci_execute($curs);
-        //var_dump(array($result,$description));
-        if ($entry = oci_fetch_array($curs)) { var_dump($entry);
-            $status="n/a";
-            if((int)$entry['STATUS'] == 0) $status= "Sẵn sàng sử dụng";
-            if((int)$entry['STATUS'] == 1) $status= "Đã sử dụng";
-            if((int)$entry['STATUS'] == 2) $status= "<p style='font-weight:bold;color:red;'>Tạm giữ thẻ</p>";
-            if((int)$entry['STATUS'] == 3) $status= "Được tái sử dụng";
-            if((int)$entry['STATUS'] == 4) $status= "Hủy bỏ không sử dụng";
+        $collection=array();
+        while (($row = oci_fetch_array($curs, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+            if(count($row) < 1 ) continue;
+            $collection[] = $row;
+        }
+        //var_dump($collection);
+        if (count($collection)) {
             $data = array(
                 'title' => "Tra cứu thông tin SMS",
                 'msisdn' => $msisdn,
-                'sms' => $entry['SMS'],
-                'f_date' => $fdate,
-                't_date' => $tdate,
-                'sent_time' => $this->convertDateDMY($entry['SENT_TIME']),
-                'response_time' => $this->convertDateDMY($entry['RESPONSE_TIME']),
-                'deliver_time' => $this->convertDateDMY($entry['DELIVER_TIME']),
-                'sms_id' => $entry['SMS_ID'],
-                'submit_status' =>$entry['SUBMIT_STATUS'],
+                'f_date' => $f_date,
+                't_date' => $t_date,
+                'collection' => $collection,
                 'deliver_status' => $entry['DELIVER_STATUS'],
                 'return_value' => $result,
                 'description' => $description
@@ -378,9 +373,15 @@ class Search_Controller extends Core_Controller{
         );
 		$this->view->assign('search/sms_log', $data, $this->layoutAdmin);
     }
-    public function convertDateDMY($date){
-	    if(empty($date)) return '';
-        return date('d-m-Y', strtotime($date));
+
+    /**
+     * @param string $format
+     */
+    public function updateDateFormatForCurrentSession($format = 'DD-MM-YYYY HH24:MI:SS'){
+
+        $com_mode = $this->model->getAutocommit() ? OCI_COMMIT_ON_SUCCESS : OCI_DEFAULT;
+        $updatedate = @oci_parse($this->model->conn_handle, "ALTER SESSION SET NLS_DATE_FORMAT = '".$format."'");
+        oci_execute($updatedate,$com_mode);
     }
     public function convertCurrency($amount){
 
