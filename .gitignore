@@ -1,1 +1,9 @@
+/tool/index.php
+.svn
+*.original
+*.disabled
 
+.idea
+ehthumbs.db
+Thumbs.db
+.DS_Store
