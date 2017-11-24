@@ -475,11 +475,15 @@ th{
     font-style: italic;
     opacity:0.6;
 }
-.error-mess, .empty-data {
+.error-mess, .empty-data, .required {
     color:red;
     font-size: 17px;
     font-weight: bold;
 }
 .empty-data{
     color:grey!important;
+}
+.required{
+    font-size: 15px;
+    padding-left:5px;
 }

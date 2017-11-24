@@ -69,7 +69,7 @@
 								<td class="text-center"><input type="checkbox" id="ids" class="ids" value="<?php echo $row['REASON_CODE'];?>" name="ids[]" /></td>
                                 <td><?php echo $row['REASON_CODE'];?></td>
 								<td><?php echo $row['REASON_NAME'];?></td>
-                                <td><?php echo $row['CREATE_DATE'];?></td>
+                                <td><?php echo date('d-m-Y H:i:s', strtotime($row['CREATE_DATE'])) ?></td>
                             </tr>
                             
                         <?php endforeach;?>

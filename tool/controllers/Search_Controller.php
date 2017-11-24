@@ -101,7 +101,7 @@ class Search_Controller extends Core_Controller
             $tdate = date('d-m-Y H:i:s', $str_tdate);
             $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_CREDIT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
             $this->model->con();
-            $this->updateDateFormatForCurrentSession();
+            //$this->updateDateFormatForCurrentSession();
             $stmt = oci_parse($this->model->conn_handle, $sql);
             $curs = oci_new_cursor($this->model->conn_handle);
 
@@ -162,7 +162,7 @@ class Search_Controller extends Core_Controller
 
             $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_PAYMENT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
             $this->model->con();
-            $this->updateDateFormatForCurrentSession();
+            //$this->updateDateFormatForCurrentSession();
             $stmt = oci_parse($this->model->conn_handle, $sql);
             $curs = oci_new_cursor($this->model->conn_handle);
 
@@ -214,7 +214,7 @@ class Search_Controller extends Core_Controller
 
         $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_DEBT(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
-        $this->updateDateFormatForCurrentSession();
+        //$this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle, $sql);
         $curs = oci_new_cursor($this->model->conn_handle);
 
@@ -259,7 +259,7 @@ class Search_Controller extends Core_Controller
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_BLACKLIST(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
-        $this->updateDateFormatForCurrentSession();
+        //$this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle, $sql);
         oci_bind_by_name($stmt, ':P_MSISDN', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
@@ -301,7 +301,7 @@ class Search_Controller extends Core_Controller
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_SUBS_INF(:P_MSISDN, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
-        $this->updateDateFormatForCurrentSession();
+        //$this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle, $sql);
         oci_bind_by_name($stmt, ':P_MSISDN', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
@@ -343,7 +343,7 @@ class Search_Controller extends Core_Controller
         $msisdn = $this->_arrParams['msisdn'];
         $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_CARD_STORE(:P_SERIAL, :P_DATA_CURSOR, :P_OUT); END;';
         $this->model->con();
-        $this->updateDateFormatForCurrentSession();
+        //$this->updateDateFormatForCurrentSession();
         $stmt = oci_parse($this->model->conn_handle, $sql);
         oci_bind_by_name($stmt, ':P_SERIAL', $msisdn, 20);
         $p_data_cursor = oci_new_cursor($this->model->conn_handle);
@@ -393,7 +393,7 @@ class Search_Controller extends Core_Controller
             $tdate = date('d-m-Y H:i:s', $str_tdate);
             $sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_SMS_LOG(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
             $this->model->con();
-            $this->updateDateFormatForCurrentSession();
+            //$this->updateDateFormatForCurrentSession();
             $stmt = oci_parse($this->model->conn_handle, $sql);
             $curs = oci_new_cursor($this->model->conn_handle);
 
@@ -425,17 +425,6 @@ class Search_Controller extends Core_Controller
             'description' => $description
         );
         $this->view->assign('search/sms_log', $data, $this->layoutAdmin);
-    }
-
-    /**
-     * @param string $format
-     */
-    public function updateDateFormatForCurrentSession($format = 'DD-MM-YYYY HH24:MI:SS')
-    {
-
-        $com_mode = $this->model->getAutocommit() ? OCI_COMMIT_ON_SUCCESS : OCI_DEFAULT;
-        $updatedate = @oci_parse($this->model->conn_handle, "ALTER SESSION SET NLS_DATE_FORMAT = '" . $format . "'");
-        oci_execute($updatedate, $com_mode);
     }
 
     public function convertCurrency($amount)

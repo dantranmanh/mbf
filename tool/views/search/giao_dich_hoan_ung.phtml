@@ -55,6 +55,8 @@
                                     <div class="form-group small">
                                         <label>Từ ngày</label>
                                         <input class="form-control small" name="f_date" id="f_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '01/02/2017'"
                                                value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
@@ -62,6 +64,8 @@
                                     <div class="form-group small">
                                         <label>Đến ngày</label>
                                         <input class="form-control small" name="t_date" id="t_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '01/02/2017'"
                                                value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
@@ -82,7 +86,8 @@
             <p class="no-data empty-data"><?php echo NODATA; ?></p>
             <?php if ((int)$data['return_value'] != 1 && !empty($data['msisdn'])): ?>
                 <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
-                <p class="error-mess"><?php echo "Thông tin lỗi : " ; $mbftext->__($data['description']); ?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+                    $mbftext->__($data['description']); ?></p>
             <?php endif; ?>
         <?php else: ?>
 
@@ -145,37 +150,3 @@
     <?php endif; ?>
 
 </div>
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        $('#filterForm').validate({
-            rules: {
-                msisdn: {
-                    required: true
-                }
-            },
-            messages: {
-                // Enter custom error text here.
-            }
-        });
-
-        $("#f_date").datepicker({
-            dateFormat: 'dd-mm-yy',
-            showAnim: 'slideDown',
-            onSelect: function (selected) {
-                $("#t_date").datepicker("option", "minDate", selected)
-            }
-        });
-
-        $("#t_date").datepicker({
-            dateFormat: 'dd-mm-yy',
-            showAnim: 'slideDown',
-            onSelect: function (selected) {
-                $("#f_date").datepicker("option", "maxDate", selected)
-            }
-        });
-
-    });
-
-</script>

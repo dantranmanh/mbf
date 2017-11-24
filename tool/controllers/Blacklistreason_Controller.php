@@ -128,6 +128,7 @@ class Blacklistreason_Controller extends Core_Controller{
     		echo ($result == true) ? "false" : "true";
         }
 	}
+	
 }
 
 

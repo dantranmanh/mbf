@@ -141,6 +141,7 @@
 		$this->Connect(STR_CONNECT, DB_USER,DB_PASSWORD);
 		$this->SetFetchMode(OCI_ASSOC); 
 		$this->SetAutoCommit(true); 
+		$this->updateDateFormatForCurrentSession();
 	}
     
     /**
@@ -678,5 +679,15 @@
     public function get_handle(){
         return $this->conn_handle;
     }   
+	
+	/**
+     * @param string $format
+     */
+    private function updateDateFormatForCurrentSession($format = 'DD-MM-YYYY HH24:MI:SS'){
+
+        $com_mode = $this->getAutocommit() ? OCI_COMMIT_ON_SUCCESS : OCI_DEFAULT;
+        $updatedate = @oci_parse($this->conn_handle, "ALTER SESSION SET NLS_DATE_FORMAT = '" . $format . "'");
+        oci_execute($updatedate, $com_mode);
+    }
   }
 ?>

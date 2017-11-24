@@ -9,6 +9,7 @@
 "invalid-input : (to_date - from_date) must less than 5 days  ","Đầu vào không hợp lệ-Cần chọn Từ ngày-Đến ngày với khoảng cách dưới 5 ngày!"
 "Id thẻ cào","Id thẻ cào"
 "Không đủ điều kiện","Không đủ điều kiện"
+"Không được bỏ trống giá trị này!","Không được bỏ trống giá trị này!"
 "Lý do","Lý do"
 "Mã nợ","Mã nợ"
 "Mã lỗi","Mã lỗi"

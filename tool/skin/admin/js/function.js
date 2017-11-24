@@ -18,6 +18,10 @@ $(document).ready(function(){
     $("#dropdown-toggle").click(function(){
         $(this).parent().parent().find('.panel-body').slideToggle("slow");
     });
+    /**
+     * Init Form element js
+     */
+    initMbfForm();
 });
 
 function checkAll(listchkOneName,chkAllobj){
@@ -169,5 +173,48 @@ function moxmanBrowseFile(field_id){
     	view: 'file',
     	fields: field_id,
     	extensions:'mp4,mp3,flv,wmv'
+    });
+}
+
+function initMbfForm(formId = "filterForm",datefromId = "f_date",datetoId = "t_date"){
+    $('#'+formId).validate({
+        rules: {
+            msisdn: {
+                required: true
+            },
+            f_date: {
+                required: true
+            },
+            t_date: {
+                required: true
+            },
+        },
+        messages: {
+            msisdn: {
+                required: requirewarnning
+            },
+            f_date: {
+                required: requirewarnning
+            },
+            t_date: {
+                required: requirewarnning
+            },
+        }
+    });
+
+    $("#"+datefromId).datepicker({
+        dateFormat: 'dd-mm-yy',
+        showAnim: 'slideDown',
+        onSelect: function (selected) {
+            $("#t_date").datepicker("option", "minDate", selected)
+        }
+    });
+
+    $("#"+datetoId).datepicker({
+        dateFormat: 'dd-mm-yy',
+        showAnim: 'slideDown',
+        onSelect: function (selected) {
+            $("#f_date").datepicker("option", "maxDate", selected)
+        }
     });
 }
