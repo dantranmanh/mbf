@@ -66,7 +66,7 @@ class Search_Controller extends Core_Controller
 
         $entry = array('amount' => ($amount) ? ($amount) : 0);
         $collection = array();
-        $collection[] = $entry;
+        if(!empty($msisdn)) $collection[] = $entry;
 
         $data = array(
             'msisdn' => $msisdn,
