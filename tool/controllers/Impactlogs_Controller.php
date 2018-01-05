@@ -44,14 +44,14 @@ class Impactlogs_Controller extends Core_Controller{
         } 
 		$exp = array();
 		//print_r($this->_arrParams);
-		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("d-m-Y H:i:s");
+		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("d-m-Y", strtotime(date("d-m-Y")." -5 day"));
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("d-m-Y H:i:s");
 		
 		if ($f_date) {
-            $exp['f_date'] = date("Y-m-d", strtotime($f_date));
+            $exp['f_date'] = date("d-M-Y", strtotime($f_date));
         }
         if ($t_date) {
-            $exp['t_date'] = date("Y-m-d", strtotime($t_date));
+            $exp['t_date'] = date("d-M-Y", strtotime($t_date));
         }
 		
 		if ($_POST && ($_POST['task'] == "filter")) {

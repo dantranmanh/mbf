@@ -76,7 +76,7 @@
     * 
     */
     public function __construct(){
-        $this->SetNlsLang('CL8MSWIN1251');
+        $this->SetNlsLang('VN8MSWIN1258');
         $this->SetFetchMode(OCI_ASSOC);
         $this->SetAutoCommit(false);
     }
@@ -100,7 +100,7 @@
               $this->conn_handle = oci_new_connect($user, $pass, $host, $this->charset, $mode);
           }; break;
           default: 
-              $this->conn_handle = oci_connect($user, $pass, $host, $this->charset, $mode);
+              $this->conn_handle = oci_connect($user, $pass, $host,'utf8', $mode);
       }        
       return is_resource($this->conn_handle) ? true : false;
     }

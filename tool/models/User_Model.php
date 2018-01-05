@@ -70,21 +70,28 @@ class User_Model extends Core_Model{
 		return $this->GetExecuteStatus();
 	}
 	
-	public function update($id, $arrParams){
+	public function edit($id, $arrParams){
+		
+		if($arrParams['group_id'] == '' && $arrParams['group_id'] == null){
+			$group_id = 2;
+		}else{
+			$group_id = $arrParams['group_id'];
+		}
+		
 		$data = array(
-			'USER_NAME' => "'".$arrParams['user_name']."'",
+			//'USER_NAME' => "'".$arrParams['user_name']."'",
 			'FULL_NAME' => "'".$arrParams['full_name']."'",
 			'EMAIL' 	=> "'".$arrParams['email']."'",
-			'GROUP_ID' 	=> "'".$arrParams['group_id']."'",
+			'GROUP_ID' 	=> "'".$group_id."'",
             'TYPE'      => "'TOOL'"
 		);
 		
 		if (null != $arrParams['password'] && $arrParams['password'] != ''){
 			$data['PASSWORD'] = "'".md5($arrParams['password'])."'";
 		} 
-
+		//print_r($data);exit;
 		$this->UpdateRow($this->prefix.'core_user', $data, "USER_ID=$id");
-		//$this->DumpQueriesStack(); 
+		//$this->DumpQueriesStack(); exit;
 		return $this->GetExecuteStatus();
 	}
 	

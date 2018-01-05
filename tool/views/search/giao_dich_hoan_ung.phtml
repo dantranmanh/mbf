@@ -108,7 +108,8 @@
                             <th style="min-width:60px;"><?php $mbftext->__("Số tiền đã hoàn ứng"); ?></th>
                             <th style="min-width: 100px;"><?php $mbftext->__("Hạn hoàn ứng"); ?></th>
                             <th><?php $mbftext->__("Nợ xấu"); ?></th>
-                            <th><?php $mbftext->__("SMS gửi KH"); ?></th>
+                            <th class="sms-content150"><?php $mbftext->__("SMS gửi KH"); ?></th>
+                            <th><?php $mbftext->__('Giải quyết khiếu nại'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -139,6 +140,11 @@
                                 <td><?php echo date('d-m-Y H:i:s', strtotime($entry['PAYMENT_DATE'])) ?></td>
                                 <td><?php echo ($entry['BAD_DEBT'] == 0) ? $mbftext->__('Nợ trong kỳ đối soát') : $mbftext->__('Nợ xấu không đối soát'); ?></td>
                                 <td><?php echo $entry['SMS'] ?></td>
+                                <td>
+								<?php if($acl->allow("ajax","smsresendhoanung")):?>
+									<a class="resend-sms" onclick="ajaxGuiLaiSms('<?php echo $entry['PAYMENT_TRANS_ID'];?>','<?php echo BASE_URL .'ajax/smsresendhoanung';?>')"><?php $mbftext->__('Gửi lại SMS');?></a>
+								<?php endif;?>
+								</td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

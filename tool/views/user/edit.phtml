@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Tên đăng nhập</label>
-                                <input class="form-control" type="text" name="user_name" id="user_name" value="<?php echo $user->USER_NAME;?>" />
+                                <input class="form-control" type="text" name="user_name" disabled id="user_name" value="<?php echo $user->USER_NAME;?>" />
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu</label>
@@ -69,17 +69,19 @@
                                 <label>Email</label>
                                 <input class="form-control" type="email" name="email" id="email" value="<?php echo $user->EMAIL;?>" />
                             </div>
+							<?php if (Core_Login::getUserId() == ADMIN_ID || Core_Login::getUserId() == ROOT_ID):?>
                             <?php if(count($groups)>0):?>
                             <div class="form-group">
                                 <label>Nhóm</label>
                                 <select class="form-control" name="group_id" id="group_id">
                                     <option value="">----</option>
-                                    <?php foreach($groups as $row):?>
-                                    <option <?php if($user->GROUP_ID == $row['GROUP_ID']):?> selected="" <?php endif;?> value="<?php echo $row['GROUP_ID'];?>"><?php echo $row['GROUP_NAME'];?></option>
-                                    <?php endforeach;?>
+									<?php foreach($groups as $row):?>
+									<option <?php if($user->GROUP_ID == $row['GROUP_ID']):?> selected="" <?php endif;?> value="<?php echo $row['GROUP_ID'];?>"><?php echo $row['GROUP_NAME'];?></option>
+									<?php endforeach;?>
                                 </select>
                             </div> 
                             <?php endif;?>
+							<?php endif;?>
                             <div class="form-group">
                                 <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
                             </div>

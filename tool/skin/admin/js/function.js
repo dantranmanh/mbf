@@ -201,13 +201,23 @@ function initMbfForm(formId = "filterForm",datefromId = "f_date",datetoId = "t_d
             },
         }
     });
+    $.datepicker.regional['de'] = {
+        monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+            'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+        monthNamesShort: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6',
+            'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+        dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+        dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
+    };
 
+    $.datepicker.setDefaults($.datepicker.regional['de']);
     $("#"+datefromId).datepicker({
         dateFormat: 'dd-mm-yy',
         showAnim: 'slideDown',
         onSelect: function (selected) {
             $("#t_date").datepicker("option", "minDate", selected)
-        }
+        },
+        maxDate: '+0D'
     });
 
     $("#"+datetoId).datepicker({
@@ -215,6 +225,7 @@ function initMbfForm(formId = "filterForm",datefromId = "f_date",datetoId = "t_d
         showAnim: 'slideDown',
         onSelect: function (selected) {
             $("#f_date").datepicker("option", "maxDate", selected)
-        }
+        },
+        maxDate: '+0D'
     });
 }

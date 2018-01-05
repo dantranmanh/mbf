@@ -61,7 +61,7 @@ class Permission_Controller extends Core_Controller{
             $task = $this->_arrParams['task'];
             $task_list = $this->_arrParams['task-list'];
             $id = $this->_arrParams['id'];
-            
+            //exit;
             // Xóa các quyen cu
             if($task_list != "submit"){
                 if($task == "user"){
@@ -86,10 +86,12 @@ class Permission_Controller extends Core_Controller{
                         "PERMISSION_TYPE" => 1,
                         "CONTROLLER_NAME" => "'".$controller."'",
                     );
+					
+					//print_r($params);exit;
                     
                     // Add cac quyen moi
                     if($task == "user"){
-                        $params['userid'] = $id;
+                        $params['USERID'] = $id;
                         $this->model->addUserPermission($params);
                     }else if($task == "group"){
                         $params['group_id'] = $id;

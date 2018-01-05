@@ -57,8 +57,10 @@ $acl = new Core_Acl();
     <script src="<?php echo SKIN_URL;?>/admin/bootstrap_select/dist/js/bootstrap-select.js"></script>
     
     <!-- Admin Custom -->
+    <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/js/smalljs.js"></script>
+    <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/js/ajax.js"></script>
     <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/js/function.js"></script>
-    
+
     <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/js/jquery.cookie/jquery.cookie.js"></script>
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -261,8 +263,42 @@ $acl = new Core_Acl();
                             <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Điều khiển hệ thống<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li class="menu-user">
+                                    <?php if($acl->allow("systemparam","list")):?>
+                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Khai báo Event</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("systemparam","list")):?>
+                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Tạo event trigger</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("systemparam","list")):?>
+                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu event log</a>
+                                    <?php endif;?>
 									<?php if($acl->allow("systemparam","list")):?>
                                     <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Hiệu chỉnh tham số hệ thống</a>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endif;?>
+						
+						<?php if($acl->allow("complain","xoa_no_do_khieu_nai") || 
+								$acl->allow("complain","bu_the_do_khieu_nai") || 
+								$acl->allow("complain","dua_thue_bao_vao_blacklist") || 
+								$acl->allow("complain","danh_sach_blacklist")):?>
+                        <li class="menu-user">
+                            <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Giải quyết KN cho quản trị<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="menu-user">
+                                    <?php if($acl->allow("complain","xoa_no_do_khieu_nai")):?>
+                                        <a href="<?php echo BASE_URL.'complain/xoa_no_do_khieu_nai'?>"><i class="fa  fa-caret-right fa-fw"></i> Xóa nợ do khiếu nại</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("complain","bu_the_do_khieu_nai")):?>
+                                        <a href="<?php echo BASE_URL.'complain/bu_the_do_khieu_nai'?>"><i class="fa  fa-caret-right fa-fw"></i> Bù thẻ mới do khiếu nại</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("complain","dua_thue_bao_vao_blacklist")):?>
+                                        <a href="<?php echo BASE_URL.'complain/dua_thue_bao_vao_blacklist'?>"><i class="fa  fa-caret-right fa-fw"></i> Đưa thuê bao vào blacklist</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("complain","danh_sach_blacklist")):?>
+                                        <a href="<?php echo BASE_URL.'complain/danh_sach_blacklist'?>"><i class="fa  fa-caret-right fa-fw"></i> Danh sách thuê bao black list</a>
                                     <?php endif;?>
                                 </li>
                             </ul>
@@ -316,6 +352,71 @@ $acl = new Core_Acl();
                             </ul>
                         </li>
                         <?php endif;?>
+
+
+                        <?php if($acl->allow("report","tongquan") || 
+							$acl->allow("report","phan_tich_moi_ung") || 
+							$acl->allow("report","bao_cao_the_ung") || 
+							$acl->allow("report","bao_cao_thu_no") || 
+							$acl->allow("report","bao_cao_kho_the")):?>
+                            <li class="menu-user">
+                                <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Báo cáo thống kê<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li class="menu-user">
+                                        <?php if($acl->allow("report","tongquan")):?>
+                                            <a href="<?php echo BASE_URL.'report/tongquan'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo tổng quan</a>
+                                        <?php endif;?>
+										<?php if($acl->allow("report","phan_tich_moi_ung")):?>
+                                            <a href="<?php echo BASE_URL.'report/phan_tich_moi_ung'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo phân tích mời ứng</a>
+                                        <?php endif;?>
+										<?php if($acl->allow("report","bao_cao_the_ung")):?>
+                                            <a href="<?php echo BASE_URL.'report/bao_cao_the_ung'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo thẻ ứng</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("report","bao_cao_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'report/bao_cao_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo nợ xấu</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("report","bieu_do_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/bieu_do_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Biểu đồ số tiền nợ xấu theo ngày</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("report","bieu_do_no_xau_tuan")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/bieu_do_no_xau_tuan'?>"><i class="fa  fa-caret-right fa-fw"></i> Biểu đồ số tiền nợ xấu theo tuần</a>
+                                        <?php endif;?>
+										<?php if($acl->allow("report","bao_cao_thu_no")):?>
+                                            <a href="<?php echo BASE_URL.'report/bao_cao_thu_no'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo thu nợ</a>
+                                        <?php endif;?>
+										<?php if($acl->allow("report","bao_cao_kho_the")):?>
+                                            <a href="<?php echo BASE_URL.'report/bao_cao_kho_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo kho thẻ</a>
+                                        <?php endif;?>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif;?>
+
+						<?php if($acl->allow("kpi","kpi_mt") || 
+								$acl->allow("kpi","kpi_mo") || 
+								$acl->allow("kpi","tyle_ungthe_thanhcong") || 
+								$acl->allow("kpi","tyle_hoanung_thanhcong")):?>
+                        <li class="menu-user">
+                            <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> KPI hệ thống<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li class="menu-user">
+                                    <?php if($acl->allow("kpi","kpi_mt")):?>
+                                        <a href="<?php echo BASE_URL.'kpi/kpi_mt'?>"><i class="fa  fa-caret-right fa-fw"></i> Tỷ lệ MT thành công</a>
+                                    <?php endif;?>
+                                    <?php if($acl->allow("kpi","kpi_mo")):?>
+                                        <a href="<?php echo BASE_URL.'kpi/kpi_mo'?>"><i class="fa  fa-caret-right fa-fw"></i> KPI MO</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("kpi","tyle_ungthe_thanhcong")):?>
+                                        <a href="<?php echo BASE_URL.'kpi/tyle_ungthe_thanhcong'?>"><i class="fa  fa-caret-right fa-fw"></i> Tỷ lệ ứng thẻ thành công</a>
+                                    <?php endif;?>
+									<?php if($acl->allow("kpi","tyle_hoanung_thanhcong")):?>
+                                        <a href="<?php echo BASE_URL.'kpi/tyle_hoanung_thanhcong'?>"><i class="fa  fa-caret-right fa-fw"></i> Tỷ lệ hoàn ứng thành công</a>
+                                    <?php endif;?>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php endif;?>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

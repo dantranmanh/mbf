@@ -1,0 +1,74 @@
+<?php
+
+/**
+* list.phtml
+* 
+* list view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:41
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li class="active">Danh sách thuê bao blacklist</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+<?php if(count($blacklist) == 0):?>
+<p class="no-data"><?php echo NODATA;?></p>
+<?php else:?>
+    <div class="col-lg-12">  
+        <form action="" name="" method="post" id="MyForm">
+			<div class="col-sm-12 bottom-10">
+				<div class="row">
+					<?php if($acl->allow("complain","delete")):?>
+					<input onclick="gotoAction('delete','complain');" type="submit" disabled="" id="delete" class="btn-action btn btn-danger btn-sm pull-right right-10" value="Xóa" />
+                    <?php endif;?>
+					<input type="hidden" name="task-list" value="submit" />
+				</div>
+			</div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+								<th class="text-center" style="width:15px;"><input id="checkall" class="ids" onclick="checkAll('ids[]',this);" type="checkbox" /></th>
+                                <th style="width: 200px;">Số thuê bao</th>
+                                <th>Ngày thêm</th>
+								<th>Lý do blacklist</th>
+								<th>Mô tả</th>
+								<th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($blacklist as $row):?>
+                            <tr class="grade odd">
+								<td class="text-center"><input type="checkbox" id="ids" class="ids" value="<?php echo $row['MSISDN'];?>" name="ids[]" /></td>
+                                <td><?php echo $row['MSISDN'];?></td>
+								<td><?php echo $row['CREATE_DATE'];?></td>
+                                <td><?php echo $row['REASON_CODE'];?></td>
+								<td><?php echo $row['DES'];?></td>
+                                <td><?php echo $row['STATUS'];?></td>
+                            </tr>
+                            
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+<?php endif;?>
+</div>

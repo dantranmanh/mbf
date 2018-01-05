@@ -64,7 +64,7 @@
                                 <div class="col-sm-2">
                                     <div class="form-group small" style="margin-top: 20px;">
                                         <input type="hidden" name="task" value="filter"/>
-                                        <input class="btn btn-primary btn-sm" type="submit" value="Tra cứu"/>
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Xem Thống Kê"/>
                                     </div>
                                 </div>
                             </div>
@@ -85,30 +85,41 @@
 
         <form action="" name="" method="post" id="MyForm">
             <div class="message-action">
-                <div class="col-sm-7">
-                    <?php $mbftext->renderFormMessage(count($data['collection']));?>
-                </div>
-                <div class="col-sm-5">
-                    <?php $mbftext->renderExcelFileButton();?>
-                    <?php $mbftext->renderCsvFileButton();?>
-                </div>
-
             </div>
-
             <div class="col-sm-12">
                 <div class="row">
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                         <tr>
-                            <th><?php $mbftext->__('Ngày tháng'); ?></th>
-                            <th><?php $mbftext->__('Số lượng giao dịch ứng'); ?></th>
-                            <th><?php $mbftext->__('Số tiền ứng thẻ'); ?></th>
-                            <th><?php $mbftext->__('Số lượng hoàn ứng'); ?></th>
-                            <th><?php $mbftext->__('Số tiền hoàn ứng'); ?></th>
+                            <th class="report-header" colspan="14">Thống kê từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?> đến ngày <?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th class="gdu" colspan="2">Thống kê giao dịch ứng</th>
+                            <th class="gdhu" colspan="3">Thống kê giao dịch hoàn ứng</th>
+                            <th class = 'tkn' colspan="2">Thống kê nợ </th>
+                            <th class = "khothe" colspan="7">Thống kê số lượng kho thẻ</th>
+                        </tr>
+                        <tr>
+                            <th class="gdu"><?php $mbftext->__('Số lượng ứng'); ?></th>
+                            <th class="gdu"><?php $mbftext->__('Số tiền đã ứng'); ?></th>
+                            <th class="gdhu"><?php $mbftext->__('Tiền hoàn ứng gốc'); ?></th>
+                            <th class="gdhu"><?php $mbftext->__('Phí thu được'); ?></th>
+                            <th class="gdhu"><?php $mbftext->__('Tổng tiền hoàn ứng(gốc+phí)'); ?></th>
+                            <th class = 'tkn'><?php $mbftext->__('Nợ trong kỳ hạn'); ?></th>
+                            <th class = 'tkn'><?php $mbftext->__('Nợ xấu'); ?></th>
+                            <th class = "khothe">10k</th>
+                            <th class = "khothe">20k</th>
+                            <th class = "khothe">30k</th>
+                            <th class = "khothe">50k</th>
+                            <th class = "khothe">100k</th>
+                            <th class = "khothe">200k</th>
+                            <th class = "khothe">500k</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $line = 0; ?>
+                        <?php $line = 0;?>
                         <?php foreach ($data['collection'] as $entry): ?>
                             <?php
                             $class = "";
@@ -116,13 +127,61 @@
                             else $class .= " odd-line";
                             if ($line == 0) $class .= " first";
                             $line++;
+                            $cards = $entry['kho_the'];
+
+                            $ten = 0;
+                            $twenty = 0;
+                            $thirty = 0;
+                            $fifty = 0;
+                            $hundred = 0;
+                            $twohun = 0;
+                            $fivehun = 0;
+                            foreach ($cards as $card){
+                                $amount = $card['AMOUNT'];
+                                switch ($amount) {
+                                    case '10000':
+                                        $ten = $card['NUM'];
+                                        break;
+                                    case '20000':
+                                        $twenty = $card['NUM'];
+                                        break;
+
+                                    case '30000':
+                                        $thirty = $card['NUM'];
+                                        break;
+                                    case '50000':
+                                        $fifty = $card['NUM'];
+                                        break;
+                                    case '100000':
+                                        $hundred = $card['NUM'];
+                                        break;
+                                    case '200000':
+                                        $twohun = $card['NUM'];
+                                        break;
+                                    case '500000':
+                                        $fivehun = $card['NUM'];
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+
                             ?>
                             <tr class="grade odd<?php echo $class; ?>">
-                                <td><?php echo $entry['date']; ?></td>
-                                <td><?php echo $entry['num_ung']; ?></td>
-                                <td><?php echo number_format($entry['total_ung']) ?><sub class="vnd">đ</sub></td>
-                                <td><?php echo $entry['num_hoan']; ?></td>
-                                <td><?php echo number_format($entry['total_hoan']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo $entry['sl_ung'];?></td>
+                                <td><?php echo number_format($entry['tien_ung']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['tien_hoan_ung_goc']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['tien_hoan_ung_phi']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['hoan_ung_tong']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['no_bt']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['no_xau']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo $ten;?></td>
+                                <td><?php echo $twenty;?></td>
+                                <td><?php echo $thirty;?></td>
+                                <td><?php echo $fifty;?></td>
+                                <td><?php echo $hundred;?></td>
+                                <td><?php echo $twohun;?></td>
+                                <td><?php echo $fivehun;?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -132,5 +191,4 @@
         </form>
     </div>
     <?php endif; ?>
-
 </div>

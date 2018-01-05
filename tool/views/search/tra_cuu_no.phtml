@@ -84,9 +84,9 @@
                             <th><?php $mbftext->__('Số thuê bao'); ?></th>
                             <th><?php $mbftext->__('Nợ ban đầu'); ?></th>
                             <th><?php $mbftext->__('Nợ hiện tại'); ?></th>
-                            <th><?php $mbftext->__('Ngày GD thanh toán cuối cùng'); ?></th>
+                            <th><?php $mbftext->__('Ngày ứng'); ?></th>
                             <th><?php $mbftext->__('Hạn Thanh toán'); ?></th>
-                            <th><?php $mbftext->__('Thời hạn hoàn ứng chính thẻ đã ứng'); ?></th>
+                            <th><?php $mbftext->__('Thời hạn hoàn ứng'); ?></th>
                             <th><?php $mbftext->__('Trạng thái nợ'); ?></th>
                         </tr>
                         </thead>
@@ -111,7 +111,7 @@
                                     <sub class="vnd">đ</sub></td>
                                 <td style="width:150px;"><?php echo number_format($entry['CURRENT_CARD_DEBT'] + $entry['CURRENT_FEE_DEBT']) ?>
                                     <sub class="vnd">đ</sub></td>
-                                <td style="width:150px;"><?php echo ($entry['LAST_PAYMENT_DATE'] == null) ? "Null" : date('d-m-Y H:i:s', strtotime($entry['LAST_PAYMENT_DATE'])); ?></td>
+                                <td style="width:150px;"><?php echo ($entry['CREATE_DATE'] == null) ? "Null" : date('d-m-Y H:i:s', strtotime($entry['CREATE_DATE'])); ?></td>
                                 <td style="width:150px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['PAYMENT_DEADLINE'])) ?></td>
                                 <td style="width:150px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['LIMIT_CARD_USING_TIME'])) ?></td>
                                 <td><?php

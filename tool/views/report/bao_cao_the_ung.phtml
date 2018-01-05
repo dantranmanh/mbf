@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL . 'admin' ?>">Quản trị</a></li>
+            <li class="active"><?php echo $title;?></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Từ ngày</label>
+                                        <input class="form-control small" name="f_date" id="f_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''
+                                               onblur="this.placeholder = '01/02/2017'"
+                                               value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Đến ngày</label>
+                                        <input class="form-control small" name="t_date" id="t_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '01/02/2017'"
+                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter"/>
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Xem thống kê"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <?php if (count($data['collection']) < 1): ?>
+            <p class="no-data empty-data"><?php echo NODATA; ?></p>
+            <?php if ((int)$data['return_value'] != 1 && !empty($data['msisdn'])): ?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+                    $mbftext->__($data['description']); ?></p>
+            <?php endif; ?>
+        <?php else: ?>
+
+        <form action="" name="" method="post" id="MyForm">
+            <p class="success-mess">Tổng số <?php echo count($data['collection']); ?> bản ghi được tìm thấy.</p>
+            <p class="error-mess"></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                        <tr>
+                            <th style="width: 300px;">Ngày</th>
+                            <th>Mệnh giá</th>
+                            <th>Số lượng thuê bao </th>
+							<th>Số lượng giao dịch </th>
+							<th>Tổng tiền ứng</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $line = 0; ?>
+                        <?php foreach ($data['collection'] as $entry): ?>
+                            <?php
+                            $class = "";
+                            if (($line % 2) == 0) $class .= " even-line";
+                            else $class .= " odd-line";
+                            if ($line == 0) $class .= " first";
+                            $line++;
+							$SUBS += $entry['SUBS'];
+							$CREDIT_COUNTS += $entry['CREDIT_COUNTS'];
+							$SUM_CARD += $entry['SUM_CARD']; 
+                            /**
+                             *  'LOG_DATE' => string '17-12-2017 00:00:00' (length=19)
+                            'CARD_AMOUNT' => string '10000' (length=5)
+                            'SUBS' => string '1' (length=1)
+                            'CREDIT_COUNTS' => string '5' (length=1)
+                            'SUM(CARD_AMOUNT)' => string '50000' (length=5)
+                             */
+                            ?>
+                            <tr class="grade odd<?php echo $class; ?>">
+                                <td><?php echo date("d/m/Y", strtotime($entry['LOG_DATE'])) ?></td>
+                                <td><?php echo number_format($entry['CARD_AMOUNT']) ?><sub class="vnd">đ</sub></td>
+                                <td><?php echo $entry['SUBS'] ?></td>
+                                <td><?php echo $entry['CREDIT_COUNTS'] ?></td>
+                                <td><?php echo number_format($entry['SUM_CARD']) ?><sub class="vnd">đ</sub></td>
+								
+                            </tr>
+                        <?php endforeach; ?>
+							<tr style="font-weight:bold;">
+								<td colspan="2">Tổng: </td>
+								<td><?php echo number_format($SUBS) ?></td>
+								<td><?php echo number_format($CREDIT_COUNTS) ?></td>
+								<td><?php echo number_format($SUM_CARD) ?><sub class="vnd">đ</sub></td>
+							</tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif; ?>
+
+</div>

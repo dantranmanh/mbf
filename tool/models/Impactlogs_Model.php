@@ -43,12 +43,11 @@ class Impactlogs_Model extends Core_Model{
         
         $where = null;        
 		if (isset($exp['user_id'])){
-			$where = $where."AND user_id = '".$exp['user_id']."' ";
+			$select = $this->query("SELECT * FROM idvn_impact_logs WHERE create_date >= '" . $exp['f_date'] . "' AND create_date <= '" . $exp['t_date'] . "' AND user_id = '".$exp['user_id']."' ORDER BY LOG_ID DESC");
+		}else{
+			$select = $this->query("SELECT * FROM idvn_impact_logs WHERE create_date >= '" . $exp['f_date'] . "' AND create_date <= '" . $exp['t_date'] . "' ORDER BY LOG_ID DESC");
 		}
 
-		//$where = $where."AND TO_DATE(create_date) >= '" . $exp['f_date'] . "' AND TO_DATE(create_date) <= '" . $exp['t_date'] . "'";
-        
-		$select = $this->query("SELECT * FROM idvn_impact_logs WHERE 1=1 ".$where." ORDER BY LOG_ID DESC");
         $result = $this->FetchAll($select);
 		//$this->DumpQueriesStack(); 
 		if($this->NumRows($select) > 0){

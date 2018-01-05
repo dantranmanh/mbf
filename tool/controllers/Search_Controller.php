@@ -89,25 +89,27 @@ class Search_Controller extends Core_Controller
         $collection = array();
         $description = "";
         $result = null;
-        $title = "Tra cứu mức thẻ ứng áp dụng cho thuê bao";
+        $title = "Tra cứu giao dịch ứng thẻ";
 
-        $msisdn = $this->_arrParams['msisdn'];
+        $msisdn = $this->_arrParams['_msisdn'];
+		$serial = $this->_arrParams['serial'];
         $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
         if ($f_date && $t_date) {
             $str_fdate = strtotime($f_date);
             $str_tdate = strtotime($t_date);
-            $fdate = date('d-m-Y H:i:s', $str_fdate);
-            $tdate = date('d-m-Y H:i:s', $str_tdate);
-            $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_CREDIT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
+            $fdate = date('d-M-Y', $str_fdate);
+            $tdate = date('d-M-Y', $str_tdate);
+            $sql = 'BEGIN :v_Return := pkg_query.FUNC_QUERY_CREDIT_TRANS(:P_MSISDN, :CARD_SERIAL, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
             $this->model->con();
             //$this->updateDateFormatForCurrentSession();
             $stmt = oci_parse($this->model->conn_handle, $sql);
             $curs = oci_new_cursor($this->model->conn_handle);
-
+			//echo $f_date;
             oci_bind_by_name($stmt, ':P_MSISDN', $msisdn, 20);
             oci_bind_by_name($stmt, ':F_DATE', $fdate, 20);
             oci_bind_by_name($stmt, ':T_DATE', $tdate, 20);
+			oci_bind_by_name($stmt, ':CARD_SERIAL', $serial, 20);
             oci_bind_by_name($stmt, ':P_DATA_CURSOR', $curs, -1, OCI_B_CURSOR);
             oci_bind_by_name($stmt, ':P_OUT', $description, 255);
             oci_bind_by_name($stmt, ':v_Return', $result, 5);
@@ -122,12 +124,15 @@ class Search_Controller extends Core_Controller
             $description = "Thông tin ngày tháng không hợp lệ.";
             $result = null;
         }
-
-
+		//echo "<pre>";
+		//print_r($collection);
+		//echo "</pre>";
+		
         $data = array(
             'msisdn' => $msisdn,
             'f_date' => $f_date,
             't_date' => $t_date,
+			'serial' => $serial,
             'return_value' => $result,
             'collection' => $collection,
             'description' => $description,
@@ -230,7 +235,9 @@ class Search_Controller extends Core_Controller
             if (count($row) < 1) continue;
             $collection[] = $row;
         }
-
+		//echo "<pre>";
+		//print_r($collection);
+		//echo "</pre>";
         $data = array(
             'msisdn' => $msisdn,
             'return_value' => $result,
@@ -414,6 +421,11 @@ class Search_Controller extends Core_Controller
             $description = "Thông tin ngày tháng không hợp lệ.";
             $result = null;
         }
+		
+		//echo "<pre>";
+		//print_r($collection);
+		//echo "</pre>";
+		
         //var_dump($collection);
         $data = array(
             'title' => $title,

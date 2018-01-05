@@ -119,12 +119,14 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width:15px;"><input id="checkall" class="ids" onclick="checkAll('ids[]',this);" type="checkbox" /></th>
-                                <th class="sorting" style="width: 50px;">ID</th>
-                                <th class="sorting_desc" style="width: 115px;">Username</th>
-                                <th class="sorting" style="width: 203px;">Full Name</th>
-                                <th class="sorting_asc" style="width: 184px;">Email</th>
-                                <th class="sorting_asc" style="width: 80px;">Nhóm</th>
-                                <th class="sorting text-center" style="width: 120px;">Trạng thái</th>
+                                <?php if (Core_Login::getUserId() == ADMIN_ID):?>
+								<th class="" style="width: 50px;">ID</th>
+								<?php endif;?>
+                                <th class="" style="width: 115px;">Username</th>
+                                <th class="" style="width: 203px;">Full Name</th>
+                                <th class="" style="width: 184px;">Email</th>
+                                <th class="" style="width: 80px;">Nhóm</th>
+                                <th class="text-center" style="width: 120px;">Trạng thái</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -132,7 +134,9 @@
                         <?php foreach($users as $user):?>
                             <tr class="grade odd">
                                 <td class="text-center"><input type="checkbox" id="ids" class="ids" value="<?php echo $user['USER_ID'];?>" name="ids[]" /></td>
-                                <td class="text-center"><?php echo $user['USER_ID'];?></td>
+                                <?php if (Core_Login::getUserId() == ADMIN_ID):?>
+								<td class="text-center"><?php echo $user['USER_ID'];?></td>
+								<?php endif;?>
                                 <td><?php echo $user['USER_NAME'];?></td>
                                 <td><?php echo $user['FULL_NAME'];?></td>
                                 <td><?php echo $user['EMAIL'];?></td>

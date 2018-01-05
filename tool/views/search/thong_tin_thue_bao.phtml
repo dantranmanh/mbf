@@ -100,7 +100,7 @@
                                 <td><?php echo $entry['MSISDN']; ?></td>
                                 <td><?php echo $entry['SUB_ID']; ?></td>
                                 <td><?php ((int)$entry['STATUS'] == 1) ? $mbftext->__("Đang active") : $mbftext->__("Đã hủy"); ?></td>
-                                <td><?php echo $entry['LAST_ACTIVE_DATE']; ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($entry['LAST_ACTIVE_DATE']) ); ?></td>
                                 <td><?php echo $entry['DEACTIVE_DATE']; ?></td>
                             </tr>
                         <?php endforeach; ?>

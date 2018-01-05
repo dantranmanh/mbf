@@ -48,6 +48,26 @@ class Translate_Model{
             echo $translate;
         return;
     }
+
+    /**
+     * @param null $total
+     * @param null $error
+     */
+    public function renderFormMessage($total = null,$error =null){
+        echo '<div class="form-message">
+                <p class="success-mess">Tổng số '.$total.' bản ghi được tìm thấy.</p>
+                <p class="error-mess">'.$error.'</p>
+            </div>';
+        return;
+    }
+	public function renderExcelFileButton($id = false, $onclick = "return;"){
+        if(!$id)  return '';
+        echo '<input class="btn btn-primary" id = "'.$id.'" onclick = "'.$onclick.'" type="button" value="Xuất file Exel">';
+    }
+    public function renderCsvFileButton($id = false, $onclick = "return;"){
+        if(!$id)  return '';
+        echo '<input class="btn btn-primary" onclick = "" type="button" id = "'.$id.'" onclick = "'.$onclick.'" value="Xuất file Csv">';
+    }
 	
 	
 }

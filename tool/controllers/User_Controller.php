@@ -199,10 +199,12 @@ class User_Controller extends Core_Controller{
             "user" => $model->getUserById($id),
             "title" => "Sửa người dùng"
         );
+		
+		//print_r($data);exit;
         
         if($_POST && $_POST['task'] == 'edit'){
-            
-            if($model->update($id, $this->_arrParams)){
+            //print_r($this->_arrParams);exit;
+            if($model->edit($id, $this->_arrParams)){
                 
 				// Insert log
 				$arrLOG = array(
@@ -217,7 +219,7 @@ class User_Controller extends Core_Controller{
 				);
 				Core_Logs::AddImpactlogs($arrLOG);
 				
-				$this->_redirect($this->baseUrl.'user/list'); 
+				$this->_redirect($this->baseUrl.'user/edit?id='.$id); 
             }
         }
         $groups = $this->mdGroup->getGroups();
@@ -292,11 +294,6 @@ class User_Controller extends Core_Controller{
     }
     
     public function checkAction(){
-		
-		if(!$this->acl->allow($this->controller, $this->action)) {
-            $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
-            exit;
-        } 
 		
 		if(IS_AJAX){
     		$checkType 	= $this->_arrParams['check_type'];

@@ -42,16 +42,25 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <div class="form-group small">
                                         <label>Nhập số điện thoại</label>
                                         <input placeholder="918014988" onfocus="this.placeholder = ''"
                                                onblur="this.placeholder = '918014988'" class="form-control small"
-                                               name="msisdn" id="msisdn"
+                                               name="_msisdn" id="_msisdn"
                                                value="<?php if (isset($data['msisdn'])) : ?><?php echo $data['msisdn']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+								<div class="col-sm-2">
+                                    <div class="form-group small">
+                                        <label>Nhập số Serial</label>
+                                        <input placeholder="066741000002660" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '066741000002660'" class="form-control small"
+                                               name="serial" id="serial"
+                                               value="<?php if (isset($data['serial'])) : ?><?php echo $data['serial']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
                                     <div class="form-group small">
                                         <label>Từ ngày</label>
                                         <input class="form-control small" name="f_date" id="f_date"
@@ -60,7 +69,7 @@
                                                value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     <div class="form-group small">
                                         <label>Đến ngày</label>
                                         <input class="form-control small" name="t_date" id="t_date"
@@ -93,6 +102,7 @@
 
         <form action="" name="" method="post" id="MyForm">
             <p class="success-mess">Tổng số <?php echo count($data['collection']); ?> bản ghi được tìm thấy.</p>
+            <p class="error-mess"></p>
             <div class="col-sm-12">
                 <div class="row">
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
@@ -110,6 +120,7 @@
                             <th><?php $mbftext->__('Trạng thái giao dịch'); ?></th>
                             <th><?php $mbftext->__('Mã lỗi'); ?></th>
                             <th><?php $mbftext->__('SMS gửi khách hàng'); ?></th>
+                            <th><?php $mbftext->__('Giải quyết khiếu nại'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -133,21 +144,26 @@
                                 <td><?php echo ($entry['CONDITION_STATUS'] == 1) ? '<span style="color: green;">' . $mbftext->__('Đủ điều kiện') . '</span>' : '<span style="color: red;">' . $mbftext->__('Không đủ điều kiện') . '</span>'; ?></td>
                                 <td><?php
                                     if ($entry['MT_STATUS'] == 0):
-                                        echo $mbftext->__("Trong Queue");
+                                        $mbftext->__("Trong Queue");
                                     elseif ($entry['MT_STATUS'] == 1):
-                                        echo $mbftext->__("Đã gửi đến SMSC");
+                                        $mbftext->__("Đã gửi đến SMSC");
                                     elseif ($entry['MT_STATUS'] == 2):
-                                        echo $mbftext->__("Thuê bao đã nhận dc MT");
+                                        $mbftext->__("Thuê bao đã nhận dc MT");
                                     elseif ($entry['MT_STATUS'] == 3):
-                                        echo $mbftext->__("TB không nhận dc MT");
+                                        $mbftext->__("TB không nhận dc MT");
                                     else:
-                                        echo $mbftext->__("Unknown");
+                                        $mbftext->__("Unknown");
                                     endif;
 
                                     ?></td>
                                 <td><?php echo ($entry['STATUS'] == 0) ? '<span style="color: red;">' . $mbftext->__('Lỗi') . '</span>' : '<span style="color: green;">' . $mbftext->__('Thành công') . '</span>' ?></td>
                                 <td><?php echo $entry['ERROR_CODE'] ?></td>
-                                <td><?php echo $entry['MT_SMS'] ?></td>
+                                <td class="sms-content"><?php echo $entry['MT_SMS'] ?></td>
+                                <td>
+								<?php if($acl->allow("ajax","smsresendgiaodichung")):?>
+									<a class="resend-sms" onclick="ajaxGuiLaiSms('<?php echo $entry['CREDIT_TRANS_ID'];?>','<?php echo BASE_URL .'ajax/smsresendgiaodichung';?>')"><?php $mbftext->__('Gửi lại SMS');?></a>
+								<?php endif;?>
+								</td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

@@ -1,0 +1,154 @@
+<?php
+
+/**
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL . 'admin' ?>">Quản trị</a></li>
+            <li class="active"><?php echo $title;?></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Nợ xấu tính đến ngày</label>
+                                        <input class="form-control small" name="t_date" id="t_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '01/02/2017'"
+                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter"/>
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Xem thống kê"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <?php if (count($data['collection']) < 1): ?>
+            <p class="no-data empty-data"><?php echo NODATA; ?></p>
+            <?php if ((int)$data['return_value'] != 1 && !empty($data['msisdn'])): ?>
+                <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
+                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+                    $mbftext->__($data['description']); ?></p>
+            <?php endif; ?>
+        <?php else: ?>
+
+        <form action="" name="" method="post" id="MyForm">
+            <p style="text-align:center;font-size: 18px;font-weight: bold;color: red;margin-bottom: 15px;">Nợ xấu theo MỆNH GIÁ THẺ tính tới ngày <?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?></p><table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+            <p class="error-mess"></p>
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                        <tr>
+
+                            <th>Mệnh giá</th>
+                            <th>Nợ xấu</th>
+                            <th style = "display:none;">Tiền phí </th>
+                            <th style = "display:none;">Gốc + phí</th>
+                            <th>Số lượng thuê bao</th>
+                            <th>Tỷ lệ % Nợ xấu (*)</th>
+                            <th>Tỷ lệ % lượng thuê bao Nợ xấu (**)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $line = 0; ?>
+                        <?php
+
+                        ?>
+                        <?php
+                        /**
+                         * array (size=8)
+                        'CREATE_DATE' => string '29-12-2017 02:10:51' (length=19)
+                        'CARD_AMOUNT' => string '10000' (length=5)
+                        'ORG_DEBT' => string '10000' (length=5)
+                        'FEE_DEBT' => string '2000' (length=4)
+                        'TOTAL_DEBT' => string '12000' (length=5)
+                        'TOTAL_SUBS' => string '1' (length=1)
+                        'TOTAL_PERCENT' => int 100
+                        'SUBS_PERCENT' => int 100
+                         */
+
+                        ?>
+                        <?php foreach ($data['collection'] as $entry): ?>
+                            <?php
+                            $class = "";
+                            if (($line % 2) == 0) $class .= " even-line";
+                            else $class .= " odd-line";
+                            if ($line == 0) $class .= " first";
+                            $line++;
+                            ?>
+                            <tr class="grade odd<?php echo $class; ?>">
+                                <td><?php echo number_format($entry['CARD_AMOUNT'])?><sub class="vnd">đ</sub></td>
+								<td><?php echo number_format($entry['ORG_DEBT']); ?><sub class="vnd">đ</sub></td>
+								<td style = "display:none;"><?php echo number_format($entry['FEE_DEBT']); ?><sub class="vnd">đ</sub></td>
+								<td style = "display:none;"><?php echo number_format($entry['TOTAL_DEBT']); ?><sub class="vnd">đ</sub></td>
+								<td><?php echo ($entry['TOTAL_SUBS']); ?></td>
+								<td><?php echo number_format($entry['TOTAL_PERCENT'])?>%</td>
+								<td><?php echo number_format($entry['SUBS_PERCENT'])?>%</td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php
+                            $sum = $data['sum'];
+                        ?>
+							<tr style="font-weight:bold;">
+								<td>Tổng toàn hệ thống: </td>
+								<td><?php echo number_format($sum['no_xau']) ?><sub class="vnd">đ</sub></td>
+								<td style = "display:none;"><?php echo number_format($sum['phi']) ?><sub class="vnd">đ</sub></td>
+								<td style = "display:none;"><?php echo number_format($sum['tong']) ?><sub class="vnd">đ</sub></td>
+								<td><?php echo ($sum['subs']) ?></td>
+								<td><?php echo ($sum['tt_percent']) ?>%</td>
+								<td><?php echo ($sum['subs_percent']) ?>%</td>
+							</tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <p class = "comment-field"> (*) Tỷ lệ % Nợ xấu = Tổng tiền nợ xấu / Tổng tiền gốc đã ứng của hệ thống</p>
+                    <p class = "comment-field"> (**) Tỷ lệ % lượng thuê bao Nợ xấu = số lượng thuê bao nợ xấu / tổng số thuê bao của hệ thống</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php endif; ?>
+
+</div>

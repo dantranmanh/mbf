@@ -75,6 +75,7 @@ class Permission_Model extends Core_Model{
     public function addUserPermission($arrParams){
 		
 		$this->Insert($this->prefix.'core_user_permissions', $arrParams);
+		//$this->DumpQueriesStack(); 
 		return $this->GetExecuteStatus();
 	}
     

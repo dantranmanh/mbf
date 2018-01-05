@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * list.phtml
+ *
+ * list view file
+ *
+ * @project mvc
+ * @author duong bien
+ * @email bien.duongvan@yahoo.com
+ * @date 16/7/2015
+ * @time 11:41
+ * @copyright 2015 Copyright duong bien
+ * @license duong bien
+ * @version 1.0.0
+ */
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL . 'admin' ?>">Quản trị</a></li>
+            <li class="active"><?php echo $title;?></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <form action="" name="filterForm" method="post" id="filterForm">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><i class="fa fa-search"></i> Lọc dữ liệu
+                            <div class="btn-group pull-right" id="dropdown-toggle">
+                                <button class="btn btn-default btn-xs" type="button">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Từ ngày</label>
+                                        <input class="form-control small" name="f_date" id="f_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''
+                                               onblur="this.placeholder = '01/02/2017'"
+                                        value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Đến ngày</label>
+                                        <input class="form-control small" name="t_date" id="t_date"
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = '01/02/2017'"
+                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group small" style="margin-top: 20px;">
+                                        <input type="hidden" name="task" value="filter"/>
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Xem thống kê"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <?php if (empty($data['chartdata'])): ?>
+            <p class="no-data empty-data"><?php echo NODATA; ?></p>
+            <?php if (!empty($data['description'])): ?>
+                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+                    $mbftext->__($data['description']); ?></p>
+            <?php endif; ?>
+        <?php else: ?>
+        <?php
+             $amount = array(
+                'chartdataall' => 'TẤT CẢ MỆNH GIÁ',
+                'chartdata10k' => '10K',
+                'chartdata20k' => '20K',
+                'chartdata30k' => '30K',
+                'chartdata50k' => '50K',
+                'chartdata100k' => '100K',
+                'chartdata200k' => '200K',
+                'chartdata500k' => '500K'
+            );
+        ?>
+        <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/dist/js/google-chart.js"></script>
+        <?php foreach ($data['chartdata'] as $card => $chart):?>
+            <p class = "chart-title">Biểu đồ số Tiền nợ xấu theo ngày trên mệnh giá thẻ : <?php echo $amount[$card]; ?> </p>
+            <div id="<?php echo $card;?>" class = "report-chart bad-debt debt body-chart <?php echo $card;?>"></div>
+            <script>
+                google.charts.load('current', {packages: ['corechart', 'line']});
+                google.charts.setOnLoadCallback(drawBackgroundColor<?php echo $card;?>);
+
+                function drawBackgroundColor<?php echo $card;?>() {
+                    var data<?php echo $card;?> = new google.visualization.DataTable();
+                    data<?php echo $card;?>.addColumn('string', 'X');
+                    data<?php echo $card;?>.addColumn('number', 'Nợ xấu <?php echo $amount[$card];?>');
+
+                    data<?php echo $card;?>.addRows([<?php echo $chart;?>
+                    ]);
+
+                    var options<?php echo $card;?> = {
+                        hAxis: {
+                            title: 'Ngày',
+                            ticks: [ <?php echo $data['xaxis'];?>],
+                            textStyle : {
+                                fontSize: 9
+                            },
+                            slantedText: true
+                        },
+                        vAxis: {
+                            title: 'Nợ xấu'
+                        },
+                        backgroundColor: '#f1f8e9',
+                        height: 500
+                    };
+
+                    var chart<?php echo $card;?> = new google.visualization.LineChart(document.getElementById('<?php echo $card;?>'));
+                    chart<?php echo $card;?>.draw(data<?php echo $card;?>, options<?php echo $card;?>);
+                }
+            </script>
+        <?php endforeach;?>
+
+
+    <?php endif; ?>
+    </div>
+
+</div>

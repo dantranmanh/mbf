@@ -40,10 +40,13 @@ class Message_Model extends Core_Model{
 	}
 	
 	public function add($arrParams){
-
+		
+		$converted =  iconv("UTF-8//IGNORE", "WINDOWS-1258//IGNORE", $arrParams['message']);
+		$converted =  iconv("WINDOWS-1258//IGNORE", "UTF-8//IGNORE", $converted);
+		
 		$arr = array(
             'MESSAGE_CODE' => "'".strtoupper($arrParams['message_code'])."'",
-			'MESSAGE'  => "'".$arrParams['message']."'",
+			'MESSAGE'  => "'".$converted."'",
 		);
 		$this->Insert('def_message', $arr);
 		return $this->GetExecuteStatus();

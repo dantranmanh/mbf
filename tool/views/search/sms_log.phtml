@@ -101,11 +101,10 @@
                             <th><?php $mbftext->__('Số thuê bao'); ?></th>
                             <th><?php $mbftext->__('Thời gian gửi'); ?></th>
                             <th><?php $mbftext->__('SMS ID'); ?></th>
-                            <th><?php $mbftext->__('SMS'); ?></th>
+							<th><?php $mbftext->__('MO'); ?></th>
+                            <th><?php $mbftext->__('MT'); ?></th>
                             <th><?php $mbftext->__('Submit Status'); ?></th>
-                            <th><?php $mbftext->__('Delivery Status'); ?></th>
                             <th><?php $mbftext->__('Thời gian phản hồi'); ?></th>
-                            <th><?php $mbftext->__('Delivery Time'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -122,11 +121,10 @@
                                 <td><?php echo $data['msisdn']; ?></td>
                                 <td><?php echo $entry['SENT_TIME']; ?></td>
                                 <td><?php echo $entry['SMS_ID']; ?></td>
+								<td><?php echo $entry['MO']; ?></td>
                                 <td style="max-width:500px;"><?php echo $entry['SMS']; ?></td>
                                 <td><?php echo $entry['SUBMIT_STATUS']; ?></td>
-                                <td><?php echo $entry['DELIVER_STATUS']; ?></td>
                                 <td><?php echo $entry['RESPONSE_TIME']; ?></td>
-                                <td><?php echo $entry['deliver_time']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

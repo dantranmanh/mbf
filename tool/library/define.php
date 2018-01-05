@@ -2,8 +2,9 @@
 define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 define('NODATA',            'KHÔNG CÓ DỮ LIỆU');
 define('TEMP_SLUG', '');
-define('PREFIX_ID', 9858);
-define('ADMIN_ID',10);
+define('PREFIX_ID', '');
+define('ADMIN_ID',1);
+define('ROOT_ID',114);
 define('AMOUNT', 3000);
 define('AMOUNT_TONGHOP', 4000);
 

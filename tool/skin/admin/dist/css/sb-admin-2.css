@@ -279,7 +279,7 @@ table.dataTable>tbody>tr:hover{
     background: #aeff9e;
 }
 table.dataTable .odd-line{
-    background: #edffe9;
+    background: #E4F6FF;
 }
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
@@ -486,4 +486,62 @@ th{
 .required{
     font-size: 15px;
     padding-left:5px;
+}
+.sms-content150{
+    width:150px;
+}
+.sms-content{
+    width:80px;
+}
+.resend-sms{
+    font-weight: bold;
+    cursor:pointer;
+}
+#ajaxLoading
+{
+    display : none;
+}
+#ajaxLoading.show
+{
+    display : block;
+    position : fixed;
+    z-index: 100;
+    /*background-image : url('http://loadinggif.com/images/image-selection/3.gif');*/
+    background-image : url('../images/ajax-loader.gif');
+    background-color:#666;
+    opacity : 0.4;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}
+#loadinggif.show
+{
+    left : 50%;
+    top : 50%;
+    position : absolute;
+    z-index : 101;
+    width : 32px;
+    height : 32px;
+    margin-left : -16px;
+    margin-top : -16px;
+}
+div.content {
+    width : 1000px;
+    height : 1000px;
+}
+.comment-field{
+    font-size: 15px;
+    color: blue;
+}
+.body-chart{
+    clear: both;
+}
+.chart-title{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: brown;
 }
