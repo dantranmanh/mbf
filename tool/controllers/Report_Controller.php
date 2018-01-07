@@ -170,6 +170,7 @@ class Report_Controller extends Core_Controller
         $msisdn = $this->_arrParams['msisdn'];
         $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
+		
         if ($f_date && $t_date) {
             $str_fdate = strtotime($f_date);
             $str_tdate = strtotime($t_date);
@@ -228,6 +229,7 @@ class Report_Controller extends Core_Controller
         $collection = array();
         $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
+		$card_amount = isset($this->_arrParams['card_amount']) ? $this->_arrParams['card_amount'] : false;
         if ($f_date && $t_date) {
             $t_date = $t_date." 23:59:59";
             $description = "";
@@ -236,15 +238,16 @@ class Report_Controller extends Core_Controller
 
             $str_fdate = strtotime($f_date);
             $str_tdate = strtotime($t_date);
-            $fdate = date('d-m-Y H:i:s', $str_fdate);
-            $tdate = date('d-m-Y H:i:s', $str_tdate);
-            $collection = $this->model->bao_cao_the_ung($fdate, $tdate);
+            $fdate = date('d-m-Y', $str_fdate);
+            $tdate = date('d-m-Y', $str_tdate);
+            $collection = $this->model->bao_cao_the_ung($fdate, $tdate, $card_amount);
             $data = array(
                 'description' => $description,
                 'title' => $title,
                 'collection' => $collection,
                 'f_date' => $this->_arrParams['f_date'],
-                't_date' => $this->_arrParams['t_date']
+                't_date' => $this->_arrParams['t_date'],
+				'card_amount' => $this->_arrParams['card_amount']
             );
         } else {
             $description = "Thông tin ngày tháng không hợp lệ.";
@@ -256,70 +259,6 @@ class Report_Controller extends Core_Controller
         }
 		$this->view->assign('report/bao_cao_the_ung', $data, $this->layoutAdmin);
 	}
-    public function bao_cao_no_xauAction()
-    {
-
-        if (!$this->acl->allow($this->controller, $this->action)) {
-            $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
-            exit;
-        }
-
-        //$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
-        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
-
-        $str_tdate = strtotime($t_date);
-        $tdate = date('d-M-Y', $str_tdate);
-        //echo $fdate;
-        $model = new Report_Model();
-        $collection = array();
-        $collection = $model->BaoCaoNoXauTheoNgay($tdate);
-        $result = array();
-        $total_orgin = 0;
-        $total_fee = 0;
-        $total_debt = 0;
-        $total_subs = 0;
-        foreach ($collection as $index => $data){
-            $card = $data['CARD_AMOUNT'];
-            $percent = $model->getReportCreditTransByCardAmount($card,false,$t_date);
-            if($percent['NUM'] && $percent['TOTAL']){
-                $data['TOTAL_PERCENT'] = ($data['ORG_DEBT']* 100)/$percent['TOTAL'];
-                $data['SUBS_PERCENT'] = ($data['TOTAL_SUBS']* 100)/$percent['NUM'];
-            }
-            $total_orgin = $total_orgin + $data['ORG_DEBT'];
-            $total_fee = $total_fee + $data['FEE_DEBT'];
-            $total_debt = $total_debt + $data['TOTAL_DEBT'];
-            $total_subs = $total_subs + $data['TOTAL_SUBS'];
-            $result[] = $data;
-        }
-        $tt_trans = $model->getReportCreditTrans(false,$t_date);
-        //var_dump($tt_trans);
-        $tt_percent = "n/a";
-        $subs_percent = "n/a";
-        if($tt_trans['NUM'] && $tt_trans['TOTAL']){
-            $tt_percent = ($total_orgin* 100)/$tt_trans['TOTAL'];
-            $subs_percent = ($total_subs * 100)/$tt_trans['NUM'];
-        }
-        /*var_dump($result);*/
-        $sumary = array(
-            'no_xau'=> $total_orgin,
-            'phi'=> $total_fee,
-            'tong'=> $total_debt,
-            'subs'=> $total_subs,
-            'tt_percent' =>$tt_percent,
-            'subs_percent'=>$subs_percent
-        );
-        $data = array(
-            'title' => "Thống kê nợ xấu",
-            'collection' => $result,
-            'sum'       =>$sumary,
-            't_date' => $t_date,
-        );
-        //echo "<pre>";
-        //print_r($data);
-        //echo "</pre>";
-
-        $this->view->assign('report/bao_cao_no_xau', $data, $this->layoutAdmin);
-    }
 	
 	public function bao_cao_thu_noAction()
     {
@@ -331,6 +270,7 @@ class Report_Controller extends Core_Controller
 		
 		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
+		$card_amount = isset($this->_arrParams['card_amount']) ? $this->_arrParams['card_amount'] : false;
 		
 		//$f_date = date("d-m-Y", strtotime(date("d-m-Y")." -7 day"));
 		//$f_date = date("d-m-Y");
@@ -344,9 +284,10 @@ class Report_Controller extends Core_Controller
 		$model = new Report_Model();
         $data = array(
             'title' => "Báo cáo thu nợ",
-			'collection' => $model->BaoCaoThuNo($fdate, $tdate),
+			'collection' => $model->BaoCaoThuNo($fdate, $tdate, $card_amount),
 			'f_date' => $f_date,
             't_date' => $t_date,
+			'card_amount' => $card_amount
         );
 		//echo "<pre>";
 		//print_r($data);
@@ -374,6 +315,39 @@ class Report_Controller extends Core_Controller
         );
 		$this->view->assign('report/bao_cao_kho_the', $data, $this->layoutAdmin);
 	}
+    public function thong_ke_thue_bao_no_xauAction()
+    {
+
+        if (!$this->acl->allow($this->controller, $this->action)) {
+            $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
+            exit;
+        }
+        $title = "Thống kê thuê bao nợ xấu";
+        $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
+        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
+        if ($f_date && $t_date) {
+            $model = new Report_Model();
+            $collection = array();
+            $collection = $model->bao_cao_thue_bao_no_xau($f_date,$t_date);
+            $data = array(
+                'title' => $title,
+                'collection' => $collection,
+                'f_date' => $this->_arrParams['f_date'],
+                't_date' => $this->_arrParams['t_date']
+            );
+        }else{
+            $description = "Thông tin ngày tháng không hợp lệ.";
+            $data = array(
+                'description' => $description,
+                'title' => $title,
+                'f_date' => $this->_arrParams['f_date'],
+                't_date' => $this->_arrParams['t_date']
+            );
+        }
+
+        $this->view->assign('report/thong_ke_thue_bao_no_xau', $data, $this->layoutAdmin);
+    }
+
 }
 
 

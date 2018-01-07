@@ -46,7 +46,7 @@
                                     <div class="form-group small">
                                         <label>Từ ngày</label>
                                         <input class="form-control small" name="f_date" id="f_date"
-                                               placeholder="01/02/2017" onfocus="this.placeholder = ''
+                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
                                                onblur="this.placeholder = '01/02/2017'"
                                                value="<?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>"/>
                                     </div>
@@ -58,6 +58,15 @@
                                                placeholder="01/02/2017" onfocus="this.placeholder = ''"
                                                onblur="this.placeholder = '01/02/2017'"
                                                value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                    </div>
+                                </div>
+								<div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <label>Mệnh giá thẻ</label>
+                                        <input class="form-control small" name="card_amount" id="card_amount"
+                                               placeholder="Ví dụ: 10000" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = 'Ví dụ: 10000'"
+                                               value="<?php if (isset($data['card_amount'])) : ?><?php echo $data['card_amount']; ?><?php endif; ?>"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
@@ -91,6 +100,7 @@
                         <thead>
                         <tr>
                             <th style="width: 300px;">Ngày</th>
+							<th>Loại thẻ</th>
                             <th>Tổng hợp trừ cước thu nợ</th>
 							<th>Phí</th>
 							<th>Tổng tiền thu được</th>
@@ -107,30 +117,32 @@
                             if ($line == 0) $class .= " first";
                             $line++;
 							/**
-								[LOG_DATE] => 24-12-2017 00:00:00
-								[CARD_AMOUNT] => 20000
-								[FEE_AMOUNT] => 4000
-								[TOTAL] => 24000
-								[SUBS] => 2
+								[LOG_DATE] => 19-12-2017 00:00:00
+								[CARD_AMOUNT] => 10000
+								[PAY_CARD_AMOUNT] => 2000
+								[PAY_FEE_AMOUNT] => 0
+								[TOTAL] => 2000
+								[SUBS] => 1
 							*/
 							
-							$CARD_AMOUNT += $entry['CARD_AMOUNT'];
-							$FEE_AMOUNT += $entry['FEE_AMOUNT'];
+							$PAY_CARD_AMOUNT += $entry['CARD_AMOUNT'];
+							$PAY_FEE_AMOUNT += $entry['PAY_FEE_AMOUNT'];
 							$TOTAL += $entry['TOTAL'];
 							$SUBS += $entry['SUBS'];
                             ?>
                             <tr class="grade odd<?php echo $class; ?>">
                                 <td><?php echo date("d/m/Y", strtotime($entry['LOG_DATE'])) ?></td>
-                                <td><?php echo number_format($entry['CARD_AMOUNT'])?><sub class="vnd">đ</sub></td>
-								<td><?php echo number_format($entry['FEE_AMOUNT']); ?><sub class="vnd">đ</sub></td>
+								<td><?php echo number_format($entry['CARD_AMOUNT'])?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($entry['PAY_CARD_AMOUNT'])?><sub class="vnd">đ</sub></td>
+								<td><?php echo number_format($entry['PAY_FEE_AMOUNT']); ?><sub class="vnd">đ</sub></td>
 								<td><?php echo number_format($entry['TOTAL'])?><sub class="vnd">đ</sub></td>
 								<td><?php echo $entry['SUBS'] ?></td>
                             </tr>
                         <?php endforeach; ?>
 							<tr style="font-weight:bold;">
-								<td>Tổng: </td>
-								<td><?php echo number_format($CARD_AMOUNT) ?><sub class="vnd">đ</sub></td>
-								<td><?php echo number_format($FEE_AMOUNT) ?><sub class="vnd">đ</sub></td>
+								<td colspan="2">Tổng: </td>
+								<td><?php echo number_format($PAY_CARD_AMOUNT) ?><sub class="vnd">đ</sub></td>
+								<td><?php echo number_format($PAY_FEE_AMOUNT) ?><sub class="vnd">đ</sub></td>
 								<td><?php echo number_format($TOTAL) ?><sub class="vnd">đ</sub></td>
 								<td><?php echo number_format($SUBS) ?></td>
 							</tr>

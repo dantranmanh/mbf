@@ -21,16 +21,4 @@ class Core_Model extends ORACLE{
     function __construct(){
         parent::__construct();
     }
-    public function log($data,$filename="custom.log"){
-        $logFile=ROOT_DIR.DS."vars" . DS."log".DS.$filename;
-        if (!$log=fopen($logFile, "a+")) {
-            throw new Exception("Cannot open file ".$logFile);
-            // die;
-        }else{
-            fwrite($log,'Date:'.date('d-m-Y H:i:s'));
-            fwrite($log,print_r($data, TRUE)."\n");
-            fclose($log);
-        }
-    }
-
 }

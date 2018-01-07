@@ -113,13 +113,13 @@
 
                             ?>
                             <tr class="grade odd<?php echo $class; ?>">
-                                <td><?php echo $ten;?></td>
-                                <td><?php echo $twenty;?></td>
-                                <td><?php echo $thirty;?></td>
-                                <td><?php echo $fifty;?></td>
-                                <td><?php echo $hundred;?></td>
-                                <td><?php echo $twohun;?></td>
-                                <td><?php echo $fivehun;?></td>
+                                <td><?php echo number_format($ten*10000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($twenty*20000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($thirty*30000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($fifty*50000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($hundred*100000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($twohun*200000);?><sub class="vnd">đ</sub></td>
+                                <td><?php echo number_format($fivehun*500000);?><sub class="vnd">đ</sub></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

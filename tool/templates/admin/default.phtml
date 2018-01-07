@@ -213,7 +213,7 @@ $acl = new Core_Acl();
                             </ul>
                         </li>
                         <?php endif;?>
-						
+						<!--
 						<?php if($acl->allow("quanlybpm","lich_chay_process") || 
 						$acl->allow("quanlybpm","cau_hinh_process_bpm") || 
 						$acl->allow("quanlybpm","tra_cuu_process_execution")):
@@ -235,7 +235,7 @@ $acl = new Core_Acl();
                             </ul>
                         </li>
                         <?php endif;?>
-						
+						-->
 						<?php if($acl->allow("defineagelevel","list") || 
 						$acl->allow("definerules","list") || 
 						$acl->allow("defineusagelevel","list")):
@@ -258,22 +258,17 @@ $acl = new Core_Acl();
                         </li>
                         <?php endif;?>
 						
-						<?php if($acl->allow("systemparam","list")):?>
+						<?php if($acl->allow("controlsystem","add") || 
+								$acl->allow("controlsystem","list")):?>
                         <li class="menu-user">
                             <a href="javascript:;"><i class="fa fa-th-list fa-fw"></i> Điều khiển hệ thống<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li class="menu-user">
-                                    <?php if($acl->allow("systemparam","list")):?>
-                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Khai báo Event</a>
+                                    <?php if($acl->allow("controlsystem","add")):?>
+                                        <a href="<?php echo BASE_URL.'controlsystem/add'?>"><i class="fa  fa-caret-right fa-fw"></i> Tạo trigger</a>
                                     <?php endif;?>
-                                    <?php if($acl->allow("systemparam","list")):?>
-                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Tạo event trigger</a>
-                                    <?php endif;?>
-                                    <?php if($acl->allow("systemparam","list")):?>
-                                        <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu event log</a>
-                                    <?php endif;?>
-									<?php if($acl->allow("systemparam","list")):?>
-                                    <a href="<?php echo BASE_URL.'systemparam/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Hiệu chỉnh tham số hệ thống</a>
+                                    <?php if($acl->allow("controlsystem","list")):?>
+                                        <a href="<?php echo BASE_URL.'controlsystem/list'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu event log</a>
                                     <?php endif;?>
                                 </li>
                             </ul>
@@ -372,20 +367,33 @@ $acl = new Core_Acl();
 										<?php if($acl->allow("report","bao_cao_the_ung")):?>
                                             <a href="<?php echo BASE_URL.'report/bao_cao_the_ung'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo thẻ ứng</a>
                                         <?php endif;?>
-                                        <?php if($acl->allow("report","bao_cao_no_xau")):?>
-                                            <a href="<?php echo BASE_URL.'report/bao_cao_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo nợ xấu</a>
-                                        <?php endif;?>
-                                        <?php if($acl->allow("report","bieu_do_no_xau")):?>
-                                            <a href="<?php echo BASE_URL.'statistics/bieu_do_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Biểu đồ số tiền nợ xấu theo ngày</a>
-                                        <?php endif;?>
-                                        <?php if($acl->allow("report","bieu_do_no_xau_tuan")):?>
-                                            <a href="<?php echo BASE_URL.'statistics/bieu_do_no_xau_tuan'?>"><i class="fa  fa-caret-right fa-fw"></i> Biểu đồ số tiền nợ xấu theo tuần</a>
-                                        <?php endif;?>
 										<?php if($acl->allow("report","bao_cao_thu_no")):?>
                                             <a href="<?php echo BASE_URL.'report/bao_cao_thu_no'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo thu nợ</a>
                                         <?php endif;?>
 										<?php if($acl->allow("report","bao_cao_kho_the")):?>
                                             <a href="<?php echo BASE_URL.'report/bao_cao_kho_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo kho thẻ</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("statistics","bao_cao_tien_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/bao_cao_tien_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo tiền nợ xấu</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("statistics","bao_cao_sl_giao_dich_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/bao_cao_sl_giao_dich_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo số lượng giao dịch nợ xấu</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("statistics","bao_cao_ty_le_giao_dich_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/bao_cao_ty_le_giao_dich_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i> Báo cáo tỷ lệ giao dịch nợ xấu</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("report","thong_ke_thue_bao_no_xau")):?>
+                                            <a href="<?php echo BASE_URL.'report/thong_ke_thue_bao_no_xau'?>"><i class="fa  fa-caret-right fa-fw"></i>Thống kê thuê bao nợ xấu</a>
+                                        <?php endif;?>
+                                        <?php if($acl->allow("statistics","bieu_do_no_xau")):?>
+                                            <!--<a href="<?php /*echo BASE_URL.'statistics/bieu_do_no_xau'*/?>"><i class="fa  fa-caret-right fa-fw"></i> Đối chiếu số tiền nợ xấu dạng đồ thị</a>-->
+                                        <?php endif;?>
+                                        <?php if($acl->allow("statistics","thong_ke_no_xau_moi_ngay")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/thong_ke_no_xau_moi_ngay'?>"><i class="fa  fa-caret-right fa-fw"></i>Thống kê số tiền nợ xấu mỗi ngày</a>
+                                        <?php endif;?>
+
+                                        <?php if($acl->allow("statistics","thong_ke_sl_no_xau_moi_ngay")):?>
+                                            <a href="<?php echo BASE_URL.'statistics/thong_ke_sl_no_xau_moi_ngay'?>"><i class="fa  fa-caret-right fa-fw"></i>Thống kê số lượng giao dịch nợ xấu mỗi ngày</a>
                                         <?php endif;?>
                                     </li>
                                 </ul>

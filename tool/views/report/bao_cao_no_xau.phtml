@@ -42,17 +42,34 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
+                                <?php
+                                $currentMonth = date("m");
+                                $currentYear = date("Y");
+                                $months = array('01','02','03','04','05','06','07','08','09','10','11','12');
+                                $years = array($currentYear,$currentYear-1,$currentYear-2,$currentYear-3);
+                                ?>
                                 <div class="col-sm-3">
                                     <div class="form-group small">
-                                        <label>Nợ xấu tính đến ngày</label>
-                                        <input class="form-control small" name="t_date" id="t_date"
-                                               placeholder="01/02/2017" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = '01/02/2017'"
-                                               value="<?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>"/>
+                                        <select class="" name="months" id="months">
+                                            <option value="0">Chọn tháng</option>
+                                            <?php foreach($months as $month):?>
+                                                <option <?php if($data['months'] == $month) echo "selected";?> value="<?php echo $month;?>">Tháng <?php echo $month?></option>
+                                            <?php endforeach;?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group small">
+                                        <select class="" name="years" id="years">
+                                            <option value="0">Chọn năm</option>
+                                            <?php foreach($years as $year):?>
+                                                <option <?php if($data['years'] == $year) echo "selected";?> value="<?php echo $year;?>"><?php echo $year?></option>
+                                            <?php endforeach;?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <div class="form-group small" style="margin-top: 20px;">
+                                    <div class="form-group small">
                                         <input type="hidden" name="task" value="filter"/>
                                         <input class="btn btn-primary btn-sm" type="submit" value="Xem thống kê"/>
                                     </div>
@@ -66,9 +83,8 @@
 
         <?php if (count($data['collection']) < 1): ?>
             <p class="no-data empty-data"><?php echo NODATA; ?></p>
-            <?php if ((int)$data['return_value'] != 1 && !empty($data['msisdn'])): ?>
-                <p class="error-mess"><?php echo "Mã kết quả trả về: " . $data['return_value']; ?></p>
-                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+            <?php if (!empty($data['description'])): ?>
+                <p class="error-mess"><?php
                     $mbftext->__($data['description']); ?></p>
             <?php endif; ?>
         <?php else: ?>
@@ -142,13 +158,15 @@
 							</tr>
                         </tbody>
                     </table>
-                    <br>
-                    <p class = "comment-field"> (*) Tỷ lệ % Nợ xấu = Tổng tiền nợ xấu / Tổng tiền gốc đã ứng của hệ thống</p>
-                    <p class = "comment-field"> (**) Tỷ lệ % lượng thuê bao Nợ xấu = số lượng thuê bao nợ xấu / tổng số thuê bao của hệ thống</p>
+
                 </div>
             </div>
         </form>
     </div>
     <?php endif; ?>
+    <br>
+    <p class = "comment-field"> (*) Nợ xấu tháng T là những giao dịch vẫn chưa hoàn ứng trước 24:00:00 của "ngày cuối cùng" trong tháng T+1.</p>
+    <p class = "comment-field"> (**) Tỷ lệ % Nợ xấu = Tổng tiền nợ xấu / Tổng tiền gốc đã ứng của hệ thống trong tháng</p>
+    <p class = "comment-field"> (***) Tỷ lệ % lượng thuê bao Nợ xấu = số lượng thuê bao nợ xấu / tổng số thuê bao của hệ thống trong tháng</p>
 
 </div>

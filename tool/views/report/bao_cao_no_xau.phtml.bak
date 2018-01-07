@@ -20,7 +20,7 @@
     <div class="col-lg-12">
         <ul class="breadcrumb">
             <li><a href="<?php echo BASE_URL . 'admin' ?>">Quản trị</a></li>
-            <li class="active"><?php echo $title;?></li>
+            <li class="active"><?php echo $title; ?></li>
         </ul>
     </div>
 </div>
@@ -73,65 +73,52 @@
             </div>
         </form>
 
-        <?php if (empty($data['chartdata'])): ?>
+        <?php if (count($data['chartdata']) < 1): ?>
             <p class="no-data empty-data"><?php echo NODATA; ?></p>
             <?php if (!empty($data['description'])): ?>
-                <p class="error-mess"><?php echo "Thông tin lỗi : ";
+                <p class="error-mess"><?php
                     $mbftext->__($data['description']); ?></p>
             <?php endif; ?>
         <?php else: ?>
-        <?php
-             $amount = array(
-                'chartdataall' => 'TẤT CẢ MỆNH GIÁ',
-                'chartdata10k' => '10K',
-                'chartdata20k' => '20K',
-                'chartdata30k' => '30K',
-                'chartdata50k' => '50K',
-                'chartdata100k' => '100K',
-                'chartdata200k' => '200K',
-                'chartdata500k' => '500K'
-            );
-        ?>
-        <script type="text/javascript" src="<?php echo SKIN_URL;?>/admin/dist/js/google-chart.js"></script>
-        <?php foreach ($data['chartdata'] as $card => $chart):?>
-            <p class = "chart-title">Biểu đồ biến động tiền nợ xấu theo ngày trên mệnh giá thẻ : <?php echo $amount[$card]; ?> </p>
-            <div id="<?php echo $card;?>" class = "report-chart bad-debt debt body-chart <?php echo $card;?>"></div>
-            <script>
-                google.charts.load('current', {packages: ['corechart', 'line']});
-                google.charts.setOnLoadCallback(drawBackgroundColor<?php echo $card;?>);
+            <p style="text-align:center;font-size: 18px;font-weight: bold;color: red;margin-bottom: 15px;">Tiền nợ xấu theo từng mệnh giá thẻ từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>
+                 đến ngày <?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>
+            </p>
+        <script type="text/javascript" src="<?php echo SKIN_URL; ?>/admin/dist/js/google-chart.js"></script>
+        <div id="columnchart_month_noxau" class="report-chart bad-debt debt body-chart"
+             style="width: 800px; height: 600px;"></div>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['bar']});
+            google.charts.setOnLoadCallback(drawChart);
 
-                function drawBackgroundColor<?php echo $card;?>() {
-                    var data<?php echo $card;?> = new google.visualization.DataTable();
-                    data<?php echo $card;?>.addColumn('string', 'X');
-                    data<?php echo $card;?>.addColumn('number', 'Nợ xấu <?php echo $amount[$card];?>');
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Tháng', 'Tất cả', '10K', '20K', '30K', '50K', '100K', '200K', '500K'],
+                    <?php echo $data['chartdata'];?>
+                ]);
 
-                    data<?php echo $card;?>.addRows([<?php echo $chart;?>
-                    ]);
+                var options = {
+                    chart: {
+                        title: 'Tiền nợ xấu theo từng mệnh giá thẻ',
+                        subtitle: 'Tiền nợ xấu theo từng mệnh giá thẻ',
+                    },
+                    vAxis: {title: 'Số tiền'}
+                };
 
-                    var options<?php echo $card;?> = {
-                        hAxis: {
-                            title: 'Ngày',
-                            ticks: [ <?php echo $data['xaxis'];?>],
-                            textStyle : {
-                                fontSize: 9
-                            },
-                            slantedText: true
-                        },
-                        vAxis: {
-                            title: 'Nợ xấu'
-                        },
-                        backgroundColor: '#f1f8e9',
-                        height: 500
-                    };
+                var chart = new google.charts.Bar(document.getElementById('columnchart_month_noxau'));
 
-                    var chart<?php echo $card;?> = new google.visualization.LineChart(document.getElementById('<?php echo $card;?>'));
-                    chart<?php echo $card;?>.draw(data<?php echo $card;?>, options<?php echo $card;?>);
-                }
-            </script>
-        <?php endforeach;?>
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
 
+            <br>
+            <p class="comment-field"> (*) Nợ xấu đối soát mỗi tháng một lần, nợ xấu tháng T là những giao dịch vẫn chưa hoàn ứng trước 24:00:00 của "ngày cuối
+                cùng" trong tháng T+1.</p>
+            <!--<p class="comment-field"> (**) Tỷ lệ % Nợ xấu = Tổng tiền nợ xấu / Tổng tiền gốc đã ứng của hệ thống trong
+                tháng</p>
+            <p class="comment-field"> (***) Tỷ lệ % lượng thuê bao Nợ xấu = số lượng thuê bao nợ xấu / tổng số thuê bao của
+                hệ thống trong tháng</p>-->
 
-    <?php endif; ?>
     </div>
+    <?php endif; ?>
 
 </div>

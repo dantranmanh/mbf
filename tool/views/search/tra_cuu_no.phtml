@@ -87,7 +87,8 @@
                             <th><?php $mbftext->__('Ngày ứng'); ?></th>
                             <th><?php $mbftext->__('Hạn Thanh toán'); ?></th>
                             <th><?php $mbftext->__('Thời hạn hoàn ứng'); ?></th>
-                            <th><?php $mbftext->__('Trạng thái nợ'); ?></th>
+							<th><?php $mbftext->__('Ngày thanh toán cuối cùng'); ?></th>
+							<th><?php $mbftext->__('Trạng thái nợ'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -111,20 +112,16 @@
                                     <sub class="vnd">đ</sub></td>
                                 <td style="width:150px;"><?php echo number_format($entry['CURRENT_CARD_DEBT'] + $entry['CURRENT_FEE_DEBT']) ?>
                                     <sub class="vnd">đ</sub></td>
-                                <td style="width:150px;"><?php echo ($entry['CREATE_DATE'] == null) ? "Null" : date('d-m-Y H:i:s', strtotime($entry['CREATE_DATE'])); ?></td>
-                                <td style="width:150px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['PAYMENT_DEADLINE'])) ?></td>
-                                <td style="width:150px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['LIMIT_CARD_USING_TIME'])) ?></td>
-                                <td><?php
-                                    if ($entry['DEBT_STATUS'] == 0):
-                                        $mbftext->__("Nợ tạm");
-                                    elseif ($entry['DEBT_STATUS'] == 1):
-                                        $mbftext->__("Nợ chính thức");
-                                    elseif ($entry['DEBT_STATUS'] == 2):
-                                        $mbftext->__("Nợ bị xóa khi không nhận dc mã thẻ");
-                                    elseif ($entry['DEBT_STATUS'] == 3):
-                                        $mbftext->__("Nợ bị xóa khi thuê bao đã cắt hủy");
+                                <td style="width:120px;"><?php echo ($entry['CREATE_DATE'] == null) ? "Null" : date('d-m-Y H:i:s', strtotime($entry['CREATE_DATE'])); ?></td>
+                                <td style="width:120px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['PAYMENT_DEADLINE'])) ?></td>
+                                <td style="width:120px;"><?php echo date('d-m-Y H:i:s', strtotime($entry['LIMIT_CARD_USING_TIME'])) ?></td>
+                                <td style="width:120px;"><?php echo ($entry['LAST_PAYMENT_DATE'] != null) ? date('d-m-Y H:i:s', strtotime($entry['LAST_PAYMENT_DATE'])) : ''; ?></td>
+								<td><?php
+									$check = $entry['CURRENT_CARD_DEBT'] + $entry['CURRENT_FEE_DEBT'];
+                                    if ($check == 0):
+                                        $mbftext->__("Đã trả");
                                     else:
-                                        $mbftext->__("Unknown");
+                                        $mbftext->__("Chưa trả");
                                     endif;
 
                                     ?></td>

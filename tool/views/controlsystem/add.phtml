@@ -1,0 +1,90 @@
+<?php
+
+/**
+* add.phtml
+* 
+* add view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:38
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+                <li><a href="<?php echo BASE_URL.'controlsystem/list'?>">Tra cứu event log</a></li>
+                <li class="active">Tạo trigger</li>
+            </ul>
+            <?php if(isset($message) && ($message != null)):?>
+            <div class="alert alert-success alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">x</button>
+                <?php echo $message;?>
+            </div>
+            <?php endif;?>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-edit fa-fw"></i> 
+            Nhập các thông tin về trigger vào form dưới đây:
+        </div>
+        <div class="panel-body">
+            <form action="" id="addSystemParamForm" method="post" enctype="multipart/form-data">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label>EVENT CODE</label>
+                                <input class="form-control" type="text" name="EVENT_CODE" id="EVENT_CODE" placeholder="RELOAD_SYSTEM_PARAM" onfocus="this.placeholder = ''" onblur="this.placeholder = 'RELOAD_SYSTEM_PARAM'" />
+                            </div>
+							<div class="form-group">
+                                <label>EVENT TIME</label>
+                                <input class="form-control" type="text" name="EVENT_TIME" id="EVENT_TIME" value="<?php echo date('d-M-y H:i:s')?>" />
+                            </div>
+							<div class="form-group">
+                                <label>DES</label>
+                                <textarea rows="5" class="form-control" name="DES" id="DES"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary btn-sm" type="submit" value="Lưu" />
+                            </div>                   
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#addSystemParamForm').validate({
+		rules: {
+			EVENT_CODE: {
+				required: true,
+			},
+			EVENT_TIME: {
+				required: true
+			}
+	    },
+	    messages: {
+	    	// Enter custom error text here.
+		}
+	});
+});
+
+</script>

@@ -1,0 +1,70 @@
+<?php
+
+/**
+* list.phtml
+* 
+* list view file
+* 
+* @project mvc 
+* @author duong bien
+* @email bien.duongvan@yahoo.com 
+* @date 16/7/2015
+* @time 11:41
+* @copyright 2015 Copyright duong bien
+* @license duong bien
+* @version 1.0.0
+*/
+
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="breadcrumb">
+            <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
+            <li class="active">Tra cứu event log</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+<?php if(count($collection) == 0):?>
+<div class="col-sm-12 bottom-10">
+	<div class="">
+		<?php if($acl->allow("controlsystem","add")):?>
+		<a href="<?php echo BASE_URL.'controlsystem/add'?>" class="btn btn-primary btn-sm pull-right">Tạo trigger</a>
+		<?php endif;?>
+	</div>
+</div>
+<p class="no-data"><?php echo NODATA;?></p>
+<?php else:?>
+    <div class="col-lg-12">  
+        <form action="" name="" method="post" id="MyForm">
+            <div class="col-sm-12">
+                <div class="row">
+                    <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                            <tr>
+								<th style="width:300px;">EVENT CODE</th>
+                                <th>EVENT TIME</th>
+								<th>ACTOR</th>
+								<th>STATUS</th>
+								<th>DES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($collection as $row):?>
+                            <tr class="grade odd">
+								<td><?php echo $row['EVENT_CODE'];?></td>
+								<td><?php echo date("d/m/Y H:i:s", strtotime($row['EVENT_TIME']));?></td>
+                                <td><?php echo $row['ACTOR'];?></td>
+								<td><?php echo $row['STATUS'];?></td>
+                                <td><?php echo $row['DES'];?></td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+<?php endif;?>
+</div>
