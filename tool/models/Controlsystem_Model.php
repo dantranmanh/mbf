@@ -23,7 +23,7 @@ class Controlsystem_Model extends Core_Model{
     
     public function getAll(){
 		
-		$select = $this->Select("SELECT * FROM EVENT_TRIGGER ORDER BY EVENT_TIME ASC");
+		$select = $this->Select("SELECT * FROM EVENT_TRIGGER ORDER BY EVENT_TIME + 1 DESC");
 		
 		$result = $this->FetchAll($select);
 		if($this->NumRows($select) > 0){
@@ -31,15 +31,18 @@ class Controlsystem_Model extends Core_Model{
         }
     }
 	
-	public function add($arrParams){
+	public function getAllEvents(){
+		
+		$select = $this->Select("SELECT * FROM DEF_EVENTS ORDER BY EVENT_CODE ASC");
+		
+		$result = $this->FetchAll($select);
+		if($this->NumRows($select) > 0){
+            return $result;
+        }
+    }
+	
+	public function add($arr){
 
-		$arr = array(
-            'EVENT_CODE' => "'".strtoupper($arrParams['EVENT_CODE'])."'",
-			'EVENT_TIME'  => "'".strtoupper($arrParams['EVENT_TIME'])."'",
-			'ACTOR'  => "'".Core_Login::getUserName()."'",
-			'STATUS' => 0,
-			'DES' => "'".strtoupper($arrParams['DES'])."'",
-		);
 		$this->Insert('EVENT_TRIGGER', $arr);
 		//$this->DumpQueriesStack(); 
 		return $this->GetExecuteStatus();

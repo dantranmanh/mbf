@@ -532,20 +532,25 @@ div.content {
     width : 1000px;
     height : 1000px;
 }
-.report-header{
-    background-color:#5CDF62 ;
+.comment-field{
+    font-size: 15px;
+    color: blue;
 }
-.gdu{
-    background-color:#AFDF71;
+.body-chart{
+    clear: both;
 }
-.gdhu{
-    background-color: #09DF10;
+.chart-title{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: brown;
 }
-.tkn{
-    background-color: #DF5E01;
+.align-center{
+    text-align: center;
 }
-.khothe{
-    background-color: #B27FDF;
+.data-bold{
+    font-weight:bold;
+    font-size: 16px;
 }
 /*
 

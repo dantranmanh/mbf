@@ -81,7 +81,7 @@
                 $mbftext->__($data['description']); ?></p>
         <?php endif; ?>
         <?php else: ?>
-            <p style="text-align:center;font-size: 18px;font-weight: bold;color: red;margin-bottom: 15px;">Thống kê nợ xấu từng ngày từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>
+            <p class="success-mess align-center">Thống kê nợ xấu từng ngày từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>
                 đến ngày <?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>
             </p>
             <script type="text/javascript" src="<?php echo SKIN_URL; ?>/admin/dist/js/google-chart.js"></script>

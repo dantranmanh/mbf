@@ -80,7 +80,7 @@
                     $mbftext->__($data['description']); ?></p>
             <?php endif; ?>
         <?php else: ?>
-            <p style="text-align:center;font-size: 18px;font-weight: bold;color: red;margin-bottom: 15px;">Thống kê chi tiết các thuê bao nợ xấu xấu từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>
+            <p class = "success-mess align-center">Thống kê chi tiết các thuê bao nợ xấu xấu từ ngày <?php if (isset($data['f_date'])) : ?><?php echo $data['f_date']; ?><?php endif; ?>
                 đến ngày <?php if (isset($data['t_date'])) : ?><?php echo $data['t_date']; ?><?php endif; ?>
             </p>
         <form action="" name="" method="post" id="MyForm">

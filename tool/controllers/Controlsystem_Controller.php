@@ -36,7 +36,23 @@ class Controlsystem_Controller extends Core_Controller{
         $this->acl = new Core_Acl();
     }
     
-    public function listAction(){
+    public function addAction(){
+		
+		if(!$this->acl->allow($this->controller, $this->action)) {
+            $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
+            exit;
+        } 
+		
+		$model = new Controlsystem_Model();
+		
+        $data = array(
+            'collection' => $model->getAllEvents(),
+            'title' => "Tạo trigger"
+        );
+        $this->view->assign('controlsystem/add', $data, $this->layoutAdmin);
+    }
+	
+	public function listAction(){
 		
 		if(!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
@@ -50,25 +66,24 @@ class Controlsystem_Controller extends Core_Controller{
         );
         $this->view->assign('controlsystem/list', $data, $this->layoutAdmin);
     }
-    
-    public function addAction(){
+	
+	public function insertAction(){
 		
-		if(!$this->acl->allow($this->controller, $this->action)) {
-            $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
-            exit;
-        } 
-		
-        if($_POST){
+		if(IS_AJAX){
             $model = new Controlsystem_Model();
-			$id = $model->add($this->_arrParams);
+			$arr = array(
+				'EVENT_CODE' => "'".strtoupper($this->_arrParams['EVENT_CODE'])."'",
+				'EVENT_TIME'  => "'".date('d-M-Y H:i:s')."'",
+				'ACTOR'  => "'".Core_Login::getUserName()."'",
+				'STATUS' => 0,
+			);
+			//print_r($arr);exit;
+			$id = $model->add($arr);
             if($id){
-                $this->_redirect($this->baseUrl.'controlsystem/list'); 
+                echo $id;
             }
-        }
-        
-        $data['title'] = "Tạo trigger";
-        $this->view->assign('controlsystem/add', $data, $this->layoutAdmin);
-    }
+		}
+	}
 }
 
 

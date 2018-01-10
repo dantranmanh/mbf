@@ -47,6 +47,7 @@ class Report_Controller extends Core_Controller
             exit;
         }
         //ini_set('display_errors', 1);
+        $title = "Thống kê tổng quan";
         $collection = array();
         $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
@@ -54,7 +55,7 @@ class Report_Controller extends Core_Controller
             $t_date = $t_date." 23:59:59";
             $description = "";
             $result = null;
-            $title = "Thống kê tổng quan";
+
 
             $str_fdate = strtotime($f_date);
             $str_tdate = strtotime($t_date);
@@ -226,6 +227,7 @@ class Report_Controller extends Core_Controller
             exit;
         }
         //ini_set('display_errors', 1);
+        $title = "Báo cáo thẻ ứng";
         $collection = array();
         $f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : false;
         $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : false;
@@ -234,7 +236,7 @@ class Report_Controller extends Core_Controller
             $t_date = $t_date." 23:59:59";
             $description = "";
             $result = null;
-            $title = "Báo cáo thẻ ứng";
+
 
             $str_fdate = strtotime($f_date);
             $str_tdate = strtotime($t_date);

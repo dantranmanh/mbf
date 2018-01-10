@@ -27,13 +27,6 @@
 
 <div class="row">
 <?php if(count($collection) == 0):?>
-<div class="col-sm-12 bottom-10">
-	<div class="">
-		<?php if($acl->allow("controlsystem","add")):?>
-		<a href="<?php echo BASE_URL.'controlsystem/add'?>" class="btn btn-primary btn-sm pull-right">Tạo trigger</a>
-		<?php endif;?>
-	</div>
-</div>
 <p class="no-data"><?php echo NODATA;?></p>
 <?php else:?>
     <div class="col-lg-12">  
@@ -47,7 +40,7 @@
                                 <th>EVENT TIME</th>
 								<th>ACTOR</th>
 								<th>STATUS</th>
-								<th>DES</th>
+								<!--<th>DES</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +50,7 @@
 								<td><?php echo date("d/m/Y H:i:s", strtotime($row['EVENT_TIME']));?></td>
                                 <td><?php echo $row['ACTOR'];?></td>
 								<td><?php echo $row['STATUS'];?></td>
-                                <td><?php echo $row['DES'];?></td>
+                                <!--<td><?php echo $row['DES'];?></td>-->
                             </tr>
                         <?php endforeach;?>
                         </tbody>

@@ -59,54 +59,6 @@ class Statistics_Model extends Core_Model
             return isset($result[0]['AMOUNT']) ? $result[0]['AMOUNT'] : 0;
         } else return 'not found';
     }
-
-    /**
-     * @param $date
-     * @param $amount
-     * @return bool
-     */
-    public function insertBadDebt($date, $amount, $card = 0)
-    {
-        if (empty($amount)) $amount = 0;
-        $table = 'IDVN_REPORT_BAD_DEBT';
-        $arr = array(
-            'CARD_AMOUNT' => $card,
-            'DATES' => "'" . $date . "'",
-            'AMOUNT' => $amount,
-            'REPORT_TIME' => "TO_DATE('" . date('Y-m-d H:i:s') . "','yyyy/mm/dd hh24:mi:ss')"
-        );
-        $this->Insert($table, $arr);
-        if ($this->GetExecuteStatus()) {
-            $this->log('Thành công thêm dữ liệu vào bảng ' . $table);
-            $this->log(array('CARD_AMOUNT' => $card, 'DATES' => $date));
-        }
-        return $this->GetExecuteStatus();
-    }
-
-    /**
-     * @param $date
-     * @param $amount
-     * @return bool
-     */
-    public function insertBadDebtCreditTrans($date, $amount, $card = 0, $num)
-    {
-        if (empty($amount)) $amount = 0;
-        $table = 'REPORT_BAD_DEBT_BY_TRANSDATE';
-        $arr = array(
-            'TRANS_DATE' => "'" . $date . "'",
-            'TOTAL' => $amount,
-            'CARD_AMOUNT' => $card,
-            'SUBS_COUNTS' => $num
-        );
-        $this->Insert($table, $arr);
-        if ($this->GetExecuteStatus()) {
-            /*$this->log('Thành công thêm dữ liệu vào bảng '.$table);
-            $this->log(array('CARD_AMOUNT'=>$card,'DATES'=>$date));*/
-            var_dump('insert thanh cong');
-        }
-        return $this->GetExecuteStatus();
-    }
-
     /**
      * @param $t_date
      * @return array|bool
@@ -123,6 +75,11 @@ class Statistics_Model extends Core_Model
         } else return false;
     }
 
+    /**
+     * @param $f_date
+     * @param $t_date
+     * @return array|bool
+     */
     public function getBadDebtByDateByRange($f_date, $t_date)
     {
         $qr = "SELECT * from  REPORT_BAD_DEBT_BY_TRANSDATE WHERE  
@@ -137,7 +94,20 @@ class Statistics_Model extends Core_Model
             return $result;
         } else return false;
     }
+    public function getCreditTransByDateRange($f_date, $t_date)
+    {
+        $qr = "SELECT * from  REPORT_CREDIT_AMOUNT_DATE WHERE  
+          TRANS_DATE >= to_date('" . $f_date . "','dd/mm/yyyy')
+          AND TRANS_DATE <= to_date('" . $t_date . "','dd/mm/yyyy')
+          ";
 
+        $select = $this->Select($qr);
+        $result = $this->FetchAll($select);
+
+        if ($this->NumRows($select) > 0) {
+            return $result;
+        } else return false;
+    }
     /**
      * @param $data
      * @return string
@@ -182,8 +152,22 @@ class Statistics_Model extends Core_Model
     function generateChartDataColumn($data)
     {
         $chart = array();
-        foreach ($data as $debt) {
+        foreach ($data as $index => $debt) {
             $elm = "['" . $debt['date'] . "'," . $debt['all'] . "," . $debt['10k'] . "," . $debt['20k'] . "," . $debt['30k'] . "," .
+                $debt['50k'] . "," . $debt['100k'] . "," . $debt['200k'] . "," . $debt['500k'] . "]";
+            $chart[] = $elm;
+        }
+        return implode(",", $chart);
+    }
+    /**
+     * @param $data
+     * @return string
+     */
+    function generateChartDataColumn_tyle($data)
+    {
+        $chart = array();
+        foreach ($data as $debt) {
+            $elm = "['" . $debt['date'] . "'," .$debt['credit'].",". $debt['all'] . "," . $debt['10k'] . "," . $debt['20k'] . "," . $debt['30k'] . "," .
                 $debt['50k'] . "," . $debt['100k'] . "," . $debt['200k'] . "," . $debt['500k'] . "]";
             $chart[] = $elm;
         }
@@ -253,7 +237,7 @@ class Statistics_Model extends Core_Model
      * @param $t_date
      * @return array
      */
-    public function bao_cao_tien_no_xau($f_date, $t_date)
+    public function thong_ke_tien_no_xau($f_date, $t_date)
     {
         $data = $this->getBadDebtByDateByRange($f_date, $t_date);
         $badDebt = array();
@@ -297,7 +281,7 @@ class Statistics_Model extends Core_Model
         $badDebt[] = $column;
         return $badDebt;
     }
-    public function bao_cao_sl_giao_dich_no_xau($f_date, $t_date)
+    public function thong_ke_sl_giao_dich_no_xau($f_date, $t_date)
     {
         $data = $this->getBadDebtByDateByRange($f_date, $t_date);
         $badDebt = array();
@@ -342,9 +326,74 @@ class Statistics_Model extends Core_Model
         $badDebt[] = $column;
         return $badDebt;
     }
-    public function getNumBadDebtEachDateColumn($f_date, $t_date)
+    public function thong_ke_ty_le_giao_dich_no_xau($f_date, $t_date)
     {
-        $debt = array();
+        $debt = $this->getBadDebtByDateByRange($f_date, $t_date);
+
+        $badDebt = $this->processReportTableTotalData($debt,$f_date,$t_date,"TOTAL");
+        /*$creditDemo = array(
+            'date' => $f_date." đến "."$t_date",
+            'all' => 1277700000,
+            '10k' => 400000000,
+            '20k' => 150360000,
+            '30k' => 12990000,
+            '50k' => 315250000,
+            '100k' => 205000000,
+            '200k' => 140600000,
+            '500k' => 53500000
+        );*/
+        $credit = $this->getCreditTransByDateRange($f_date, $t_date);
+
+        $creditTrans = $this->processReportTableTotalData($credit,$f_date,$t_date,"TOTAL_CREDIT_AMOUNT");
+        $column = array(
+            'date' => $f_date." đến "."$t_date",
+            'credit' => $creditTrans['all'],
+            'all' => $badDebt['all'],
+            '10k' => $badDebt['10k'],
+            '20k' => $badDebt['20k'],
+            '30k' => $badDebt['30k'],
+            '50k' => $badDebt['50k'],
+            '100k' => $badDebt['100k'],
+            '200k' => $badDebt['200k'],
+            '500k' => $badDebt['500k']
+        );
+        return array($column);
+    }
+    public function thong_ke_ty_le_sl_giao_dich_no_xau($f_date, $t_date)
+    {
+        $debt = $this->getBadDebtByDateByRange($f_date, $t_date);
+
+        $badDebt = $this->processReportTableTotalData($debt,$f_date,$t_date,"SUBS_COUNTS");
+        /*$creditDemo = array(
+            'date' => $f_date." đến "."$t_date",
+            'all' => 57116,
+            '10k' => 40000,
+            '20k' => 7518,
+            '30k' => 433,
+            '50k' => 6305,
+            '100k' => 2050,
+            '200k' => 703,
+            '500k' => 107
+        );*/
+        $credit = $this->getCreditTransByDateRange($f_date, $t_date);
+
+        $creditTrans = $this->processReportTableTotalData($credit,$f_date,$t_date,"SUBS_COUNTS");
+        $column = array(
+            'date' => $f_date." đến "."$t_date",
+            'credit' => $creditTrans['all'],
+            'all' => $badDebt['all'],
+            '10k' => $badDebt['10k'],
+            '20k' => $badDebt['20k'],
+            '30k' => $badDebt['30k'],
+            '50k' => $badDebt['50k'],
+            '100k' => $badDebt['100k'],
+            '200k' => $badDebt['200k'],
+            '500k' => $badDebt['500k']
+        );
+        return array($column);
+    }
+    public function thong_ke_sl_no_xau_moi_ngay($f_date, $t_date)
+    {
         $dates = $this->getDatesFromRange($f_date, $t_date);
         $data = $this->getBadDebtByDateByRange($f_date, $t_date);
         $badDebt = array();
@@ -394,7 +443,46 @@ class Statistics_Model extends Core_Model
         }
         return $badDebt;
     }
-
+    public function processReportTableTotalData($data,$f_date,$t_date,$type){
+        $results = array(
+            'date' => $f_date." đến "."$t_date",
+            'all' => 0,
+            '10k' => 0,
+            '20k' => 0,
+            '30k' => 0,
+            '50k' => 0,
+            '100k' => 0,
+            '200k' => 0,
+            '500k' => 0
+        );
+        foreach ($data as $item) {
+            switch ($item['CARD_AMOUNT']) {
+                case 10000:
+                    $results['10k'] = $results['10k'] + $item[$type];
+                    break;
+                case 20000:
+                    $results['20k'] = $results['20k'] + $item[$type];
+                    break;
+                case 30000:
+                    $results['30k'] = $results['30k'] + $item[$type];
+                    break;
+                case 50000:
+                    $results['50k'] = $results['50k'] + $item[$type];
+                    break;
+                case 100000:
+                    $results['100k'] = $results['100k'] + $item[$type];
+                    break;
+                case 200000:
+                    $results['200k'] = $results['200k'] + $item[$type];
+                    break;
+                case 500000:
+                    $results['500k'] = $results['500k'] + $item[$type];
+                    break;
+            }
+            $results['all'] = $results['all'] + $item[$type];
+        }
+        return $results;
+    }
     /**
      * @param $start
      * @param $end
@@ -424,6 +512,53 @@ class Statistics_Model extends Core_Model
     }
 
 
+
+    /**
+     * @param $date
+     * @param $amount
+     * @return bool
+     */
+    public function insertBadDebt($date, $amount, $card = 0)
+    {
+        if (empty($amount)) $amount = 0;
+        $table = 'IDVN_REPORT_BAD_DEBT';
+        $arr = array(
+            'CARD_AMOUNT' => $card,
+            'DATES' => "'" . $date . "'",
+            'AMOUNT' => $amount,
+            'REPORT_TIME' => "TO_DATE('" . date('Y-m-d H:i:s') . "','yyyy/mm/dd hh24:mi:ss')"
+        );
+        $this->Insert($table, $arr);
+        if ($this->GetExecuteStatus()) {
+            $this->log('Thành công thêm dữ liệu vào bảng ' . $table);
+            $this->log(array('CARD_AMOUNT' => $card, 'DATES' => $date));
+        }
+        return $this->GetExecuteStatus();
+    }
+
+    /**
+     * @param $date
+     * @param $amount
+     * @return bool
+     */
+    public function insertBadDebtCreditTrans($date, $amount, $card = 0, $num)
+    {
+        if (empty($amount)) $amount = 0;
+        $table = 'REPORT_BAD_DEBT_BY_TRANSDATE';
+        $arr = array(
+            'TRANS_DATE' => "'" . $date . "'",
+            'TOTAL' => $amount,
+            'CARD_AMOUNT' => $card,
+            'SUBS_COUNTS' => $num
+        );
+        $this->Insert($table, $arr);
+        if ($this->GetExecuteStatus()) {
+            /*$this->log('Thành công thêm dữ liệu vào bảng '.$table);
+            $this->log(array('CARD_AMOUNT'=>$card,'DATES'=>$date));*/
+            var_dump('insert thanh cong');
+        }
+        return $this->GetExecuteStatus();
+    }
     public function makeTestDataBadDebtCreditTrans()
     {
         $cards = array(10000, 20000, 30000, 50000, 100000, 200000, 500000);
@@ -436,6 +571,33 @@ class Statistics_Model extends Core_Model
                 $amount = $num * $card;
                 $this->insertBadDebtCreditTrans($date, $amount, $card, $num);
             }
+        }
+    }
+    public function makeTestDataCreditTransAmountDate()
+    {
+        $cards = array(10000, 20000, 30000, 50000, 100000, 200000, 500000);
+        for ($i = 1; $i <= 30; $i++) {
+            $date = $i . "-11-2017";
+            if ($i < 10)
+                $date = "0" . $i . "-11-2017";
+            $count = 0;
+            foreach ($cards as $card) {
+                $num = rand(0, 300);
+                $amount = $num * $card;
+                $table = 'REPORT_CREDIT_AMOUNT_DATE';
+                $arr = array(
+                    'TRANS_DATE' => "'" . $date . "'",
+                    'TOTAL_CREDIT_AMOUNT' => $amount,
+                    'CARD_AMOUNT' => $card,
+                    'SUBS_COUNTS' => $num
+                );
+                $this->Insert($table, $arr);
+                if ($this->GetExecuteStatus()) {
+                    $count++;
+                }
+            }
+            var_dump('inserting '.count($cards).' into table '.$table);
+            var_dump('insert thành công '.$count.' records');
         }
     }
 }

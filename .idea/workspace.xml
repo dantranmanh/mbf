@@ -2,46 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="840e61c4-9af8-4654-b13c-5c6ba8be64a2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tool/IDVN_CORE_ACTION.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tool/testfunction1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tool/testfunction2.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/skin/admin/bower_components/font-awesome/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/tool/skin/admin/bower_components/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/skin/admin/logosmall.png" afterPath="$PROJECT_DIR$/tool/skin/admin/logosmall.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tool/index.php.edited" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tool/views/report/bao_cao_no_xau.phtml.bak" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/tool/views/statistics/bao_cao_tien_no_xau.phtml" afterPath="$PROJECT_DIR$/tool/views/statistics/thong_ke_tien_no_xau.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/config/config.ini" afterPath="$PROJECT_DIR$/tool/config/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Impactlogs_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Impactlogs_Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Permission_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Permission_Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Search_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Search_Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/User_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/User_Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/config/db.php" afterPath="$PROJECT_DIR$/tool/config/db.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Controlsystem_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Controlsystem_Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Report_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Report_Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/controllers/Statistics_Controller.php" afterPath="$PROJECT_DIR$/tool/controllers/Statistics_Controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/core/Acl.php" afterPath="$PROJECT_DIR$/tool/core/Acl.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/core/Model.php" afterPath="$PROJECT_DIR$/tool/core/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/core/database/oracle.php" afterPath="$PROJECT_DIR$/tool/core/database/oracle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/core/phpexcel/PHPExcel/Calculation/Functions.php" afterPath="$PROJECT_DIR$/tool/core/phpexcel/PHPExcel/Calculation/Functions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/index.php" afterPath="$PROJECT_DIR$/tool/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/library/define.php" afterPath="$PROJECT_DIR$/tool/library/define.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Impactlogs_Model.php" afterPath="$PROJECT_DIR$/tool/models/Impactlogs_Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Message_Model.php" afterPath="$PROJECT_DIR$/tool/models/Message_Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Permission_Model.php" afterPath="$PROJECT_DIR$/tool/models/Permission_Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Translate_Model.php" afterPath="$PROJECT_DIR$/tool/models/Translate_Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/User_Model.php" afterPath="$PROJECT_DIR$/tool/models/User_Model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Controlsystem_Model.php" afterPath="$PROJECT_DIR$/tool/models/Controlsystem_Model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/models/Statistics_Model.php" afterPath="$PROJECT_DIR$/tool/models/Statistics_Model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/skin/admin/js/function.js" afterPath="$PROJECT_DIR$/tool/skin/admin/js/function.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/templates/admin/bottom.phtml" afterPath="$PROJECT_DIR$/tool/templates/admin/bottom.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/templates/admin/default.phtml" afterPath="$PROJECT_DIR$/tool/templates/admin/default.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/translate/Translate.csv" afterPath="$PROJECT_DIR$/tool/translate/Translate.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/errorcode/add.phtml" afterPath="$PROJECT_DIR$/tool/views/errorcode/add.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/errorcode/edit.phtml" afterPath="$PROJECT_DIR$/tool/views/errorcode/edit.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/message/add.phtml" afterPath="$PROJECT_DIR$/tool/views/message/add.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/message/edit.phtml" afterPath="$PROJECT_DIR$/tool/views/message/edit.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/controlsystem/add.phtml" afterPath="$PROJECT_DIR$/tool/views/controlsystem/add.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/controlsystem/list.phtml" afterPath="$PROJECT_DIR$/tool/views/controlsystem/list.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/report/thong_ke_thue_bao_no_xau.phtml" afterPath="$PROJECT_DIR$/tool/views/report/thong_ke_thue_bao_no_xau.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/report/tongquan.phtml" afterPath="$PROJECT_DIR$/tool/views/report/tongquan.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/giao_dich_hoan_ung.phtml" afterPath="$PROJECT_DIR$/tool/views/search/giao_dich_hoan_ung.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/giao_dich_ung_the.phtml" afterPath="$PROJECT_DIR$/tool/views/search/giao_dich_ung_the.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/sms_log.phtml" afterPath="$PROJECT_DIR$/tool/views/search/sms_log.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/thong_tin_thue_bao.phtml" afterPath="$PROJECT_DIR$/tool/views/search/thong_tin_thue_bao.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/tra_cuu_no.phtml" afterPath="$PROJECT_DIR$/tool/views/search/tra_cuu_no.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/search/trang_thai_the_cao.phtml" afterPath="$PROJECT_DIR$/tool/views/search/trang_thai_the_cao.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/user/edit.phtml" afterPath="$PROJECT_DIR$/tool/views/user/edit.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/user/list.phtml" afterPath="$PROJECT_DIR$/tool/views/user/list.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/statistics/bao_cao_sl_giao_dich_no_xau.phtml" afterPath="$PROJECT_DIR$/tool/views/statistics/bao_cao_sl_giao_dich_no_xau.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/statistics/thong_ke_no_xau_moi_ngay.phtml" afterPath="$PROJECT_DIR$/tool/views/statistics/thong_ke_no_xau_moi_ngay.phtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tool/views/statistics/thong_ke_sl_no_xau_moi_ngay.phtml" afterPath="$PROJECT_DIR$/tool/views/statistics/thong_ke_sl_no_xau_moi_ngay.phtml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,147 +37,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ThongkeMBF.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/ThongkeMBF.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Statistics_Model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool/models/Statistics_Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+            <state relative-caret-position="193">
+              <caret line="86" column="41" lean-forward="true" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
               <folding>
-                <marker date="1515145011457" expanded="true" signature="1027:1083" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
-                <marker date="1515145011457" expanded="true" signature="1027:1164" ph="SELECT * FRO... IDVN_REPORT_BADDEBT" />
-                <marker date="1515145011457" expanded="true" signature="1027:1215" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
-                <marker date="1515145011457" expanded="true" signature="2355:2434" ph="SELECT sum(c... bad_debt_list" />
-                <marker date="1515145011457" expanded="true" signature="2355:2601" ph="SELECT sum(c... bad_debt_list" />
-                <marker date="1515145011457" expanded="true" signature="2543:2601" ph="SELECT sum(c... bad_debt_list" />
+                <element signature="n#makeTestDataCreditTransAmountDate#0;n#Statistics_Model#0;n#!!top" expanded="false" />
+                <marker date="1515577998127" expanded="true" signature="1156:1212" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
+                <marker date="1515577998127" expanded="true" signature="1790:1893" ph="SELECT * fro... REPORT_BAD_DEBT_BY_TRANSDATE" />
+                <marker date="1515577998127" expanded="true" signature="2340:2523" ph="SELECT * fro... REPORT_BAD_DEBT_BY_TRANSDATE" />
+                <marker date="1515577998127" expanded="true" signature="2812:2992" ph="SELECT * fro... REPORT_CREDIT_AMOUNT_DATE" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oracle.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/core/database/oracle.php">
+      <file leaf-file-name="thong_ke_thue_bao_no_xau.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/report/thong_ke_thue_bao_no_xau.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="122" column="20" lean-forward="false" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
+            <state relative-caret-position="420">
+              <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
               <folding>
-                <marker date="1514209564630" expanded="true" signature="10360:10405" ph="insert into ${$table}... " />
-                <marker date="1514209564630" expanded="true" signature="11751:11794" ph="update ${$ta... " />
-                <marker date="1514209564630" expanded="true" signature="12654:12690" ph="delete from " />
-                <marker date="1514209564630" expanded="true" signature="15679:15720" ph="select ${$na... dual" />
-                <marker date="1514209564630" expanded="true" signature="15760:15782" ph="select ${$na... dual" />
+                <marker date="1515577461343" expanded="false" signature="6611:6628" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/core/Model.php">
+      <file leaf-file-name="sb-admin-2.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/vars/log/custom.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tool/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Statistics_Controller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/controllers/Statistics_Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1064">
-              <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/config/db.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Report_Model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/models/Report_Model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="37" />
-              <folding>
-                <element signature="n#bao_cao_the_ung#0;n#Report_Model#0;n#!!top" expanded="false" />
-                <element signature="n#getReportPaymentTrans#0;n#Report_Model#0;n#!!top" expanded="false" />
-                <element signature="n#getReportDebt#0;n#Report_Model#0;n#!!top" expanded="false" />
-                <element signature="n#getReportCard#0;n#Report_Model#0;n#!!top" expanded="false" />
-                <marker date="1514822196760" expanded="true" signature="429:502" ph="select count... credit_trans" />
-                <marker date="1514822196760" expanded="true" signature="1205:1278" ph="select count... credit_trans" />
-                <marker date="1514822196760" expanded="true" signature="1936:2340" ph="select log_d... PAYMENT_TRANS" />
-                <marker date="1514822196760" expanded="true" signature="1945:2340" ph="select log_d... CREDIT_TRANS" />
-                <marker date="1514822196760" expanded="true" signature="2340:2342" ph="select * fro... CREDIT_TRANS" />
-                <marker date="1514822196760" expanded="true" signature="2539:2609" ph="/** * @param... " />
-                <marker date="1514822196760" expanded="true" signature="2691:3049" ph="select sum(p... payment_trans" />
-                <marker date="1514822196760" expanded="true" signature="3375:3511" ph="select sum(p... payment_trans" />
-                <marker date="1514822196760" expanded="true" signature="3530:3662" ph="select (sum(... subs_debt" />
-                <marker date="1514822196760" expanded="true" signature="4120:4224" ph="select sum(p... payment_trans" />
-                <marker date="1514822196760" expanded="true" signature="4120:4245" ph="select card_... scratch_card_store" />
-                <marker date="1514822196760" expanded="true" signature="4510:4876" ph="select log_d... PAYMENT_TRANS" />
-                <marker date="1514822196760" expanded="true" signature="5142:5531" ph="select log_d... PAYMENT_TRANS" />
-                <marker date="1514822196760" expanded="true" signature="5142:5560" ph="SELECT creat... bad_debt_list" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bieu_do_no_xau.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/views/statistics/bieu_do_no_xau.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
-              <folding>
-                <element signature="e#7#239#0#PHP" expanded="true" />
-                <marker date="1515145123060" expanded="true" signature="4455:5024" ph="..." />
-                <marker date="1515145123060" expanded="true" signature="4695:5024" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/templates/admin/default.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="381" column="182" lean-forward="false" selection-start-line="381" selection-start-column="182" selection-end-line="381" selection-end-column="182" />
+            <state relative-caret-position="112">
+              <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -204,21 +78,270 @@
       <file leaf-file-name="Acl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool/core/Acl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
+            <state relative-caret-position="280">
               <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
               <folding>
-                <marker date="1515147997886" expanded="true" signature="1205:1355" ph="SELECT COUNT... " />
-                <marker date="1515147997886" expanded="true" signature="1670:1825" ph="SELECT COUNT... " />
+                <marker date="1515592645163" expanded="true" signature="1205:1355" ph="SELECT COUNT... " />
+                <marker date="1515592645163" expanded="true" signature="1670:1825" ph="SELECT COUNT... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bao_cao_the_ung.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_the_ung.phtml">
+      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/config/db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="65" column="56" lean-forward="false" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
+            <state relative-caret-position="84">
+              <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php.bak" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/config/db.php.bak">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="9" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Statistics_Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/controllers/Statistics_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="123" column="44" lean-forward="true" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thong_ke_tien_no_xau.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_tien_no_xau.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2310">
+              <caret line="178" column="43" lean-forward="false" selection-start-line="172" selection-start-column="8" selection-end-line="178" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thong_ke_ty_le_sl_giao_dich_no_xau.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_ty_le_sl_giao_dich_no_xau.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1652">
+              <caret line="131" column="50" lean-forward="false" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bao_cao_thu_no.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_thu_no.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1820">
+              <caret line="143" column="97" lean-forward="false" selection-start-line="143" selection-start-column="81" selection-end-line="143" selection-end-column="105" />
+              <folding>
+                <marker date="1515327386847" expanded="true" signature="3269:3288" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thong_ke_sl_no_xau_moi_ngay.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_sl_no_xau_moi_ngay.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="73" column="15" lean-forward="false" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bao_cao_sl_giao_dich_no_xau.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/bao_cao_sl_giao_dich_no_xau.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1540">
+              <caret line="123" column="52" lean-forward="false" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thong_ke_ty_le_giao_dich_no_xau.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_ty_le_giao_dich_no_xau.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="543">
+              <caret line="145" column="36" lean-forward="false" selection-start-line="145" selection-start-column="36" selection-end-line="145" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/controllers/Report_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="246" column="46" lean-forward="true" selection-start-line="246" selection-start-column="46" selection-end-line="246" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Report_Model.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tool/models/Report_Model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="121" column="8" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
+              <folding>
+                <marker date="1515327905986" expanded="true" signature="393:556" ph="select count... credit_trans" />
+                <marker date="1515327905986" expanded="true" signature="1206:1590" ph="select log_d... CREDIT_TRANS" />
+                <marker date="1515327905986" expanded="true" signature="1931:2186" ph="select sum(p... payment_trans" />
+                <marker date="1515327905986" expanded="true" signature="2512:2648" ph="select (sum(... subs_debt" />
+                <marker date="1515327905986" expanded="true" signature="2667:2799" ph="select (sum(... subs_debt" />
+                <marker date="1515327905986" expanded="true" signature="3257:3382" ph="select card_... scratch_card_store" />
+                <marker date="1515327905986" expanded="true" signature="3792:4272" ph="select a.log... PAYMENT_TRANS" />
+                <marker date="1515327905986" expanded="true" signature="5288:5576" ph="select msisd... bad_debt_list" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Errorcode_Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/controllers/Errorcode_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-714">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Quanlybpm_Model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/models/Quanlybpm_Model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+              <folding>
+                <element signature="e#6#38#0#PHP" expanded="true" />
+                <marker date="1515590743674" expanded="true" signature="199:746" ph="select a.pro... bpm_process" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tongquan.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/report/tongquan.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="202" column="71" lean-forward="false" selection-start-line="202" selection-start-column="71" selection-end-line="202" selection-end-column="71" />
+              <folding>
+                <marker date="1515591227818" expanded="true" signature="3298:11148" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="3681:11147" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:10960" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:10992" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:11004" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:11038" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:11067" ph="..." />
+                <marker date="1515591227818" expanded="true" signature="10921:11090" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Blacklistreason_Model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/models/Blacklistreason_Model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-528">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1510738921579" expanded="true" signature="440:500" ph="SELECT * FRO... def_black_list_reason" />
+                <marker date="1510738921579" expanded="true" signature="720:792" ph="SELECT * FRO... def_black_list_reason" />
+                <marker date="1510738921579" expanded="true" signature="1622:1694" ph="DELETE FROM " />
+                <marker date="1510738921579" expanded="true" signature="2031:2089" ph="SELECT COUNT... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/templates/admin/default.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="386" column="13" lean-forward="true" selection-start-line="386" selection-start-column="13" selection-end-line="386" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Quanlybpm_Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/controllers/Quanlybpm_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="137" column="67" lean-forward="false" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
+              <folding>
+                <marker date="1515592105386" expanded="true" signature="3649:3760" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tra_cuu_process_execution.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/quanlybpm/tra_cuu_process_execution.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-87">
+              <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+              <folding>
+                <marker date="1515592105346" expanded="true" signature="5485:5518" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5547" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5570" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5589" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5605" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5627" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5628" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5485:5634" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5676:6242" ph="..." />
+                <marker date="1515592105346" expanded="true" signature="5708:6230" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="5740:5860" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="5751:5796" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="5764:5789" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="5813:5857" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="5890:6041" ph="{&quot;dateFormat&quot;: 'dd-mm-yy'...}" />
+                <marker date="1515592105346" expanded="true" signature="5975:6038" ph="{...}" />
+                <marker date="1515592105346" expanded="true" signature="6070:6221" ph="{&quot;dateFormat&quot;: 'dd-mm-yy'...}" />
+                <marker date="1515592105346" expanded="true" signature="6155:6218" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phan_tich_moi_ung.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/report/phan_tich_moi_ung.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="87" column="32" lean-forward="false" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thong_ke_no_xau_moi_ngay.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_no_xau_moi_ngay.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="50" column="130" lean-forward="false" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="130" />
               <folding />
             </state>
           </provider>
@@ -228,47 +351,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$credit</find>
-      <find>$total_pc_tt</find>
-      <find>js</find>
-      <find>sb</find>
-      <find>$label</find>
-      <find>create table</find>
-      <find>UngtheMBF.sql</find>
-      <find>DATE</find>
-      <find>insert</find>
-      <find>USER_ID</find>
-      <find>var_</find>
-      <find>getBadDebtByDateInDb</find>
-      <find>getBadDebtEachDate</find>
-      <find>getDatesFromRange</find>
-      <find>insertBadDebt</find>
-      <find>BAD_ID</find>
-      <find>idvn_report_baddebt</find>
-      <find>IDVN_REPORT_BADDEBT</find>
-      <find>&quot;all&quot;</find>
-      <find>$card =</find>
-      <find>getBadDebtByDate</find>
-      <find>$description</find>
-      <find>var_dump</find>
-      <find>var_du</find>
-      <find>CARD_AMOUNT</find>
+      <find>bad_debt_l</find>
+      <find>the_ung</find>
+      <find>$where</find>
+      <find>bieu_do_no_xau</find>
+      <find>ty</find>
+      <find>generateChartDataColumn_tyle_no_xau</find>
+      <find>generateChartDataColumn_tyle</find>
+      <find>Sub</find>
       <find>$debt</find>
-      <find>chartdata</find>
-      <find>selected</find>
-      <find>initMbfForm</find>
-      <find>Nợ xấu</find>
+      <find>&lt;sub class=&quot;vnd&quot;&gt;đ&lt;/sub&gt;</find>
+      <find>&lt;sub class=&quot;%&quot;&gt;đ&lt;/sub&gt;</find>
+      <find>&lt;sub class=&quot;vnd&quot;&gt;%&lt;/sub&gt;</find>
+      <find>((</find>
+      <find>%</find>
+      <find>lần</find>
+      <find>bao_cao_tien_no_xau`</find>
+      <find>bao_cao_tien_no_xau</find>
+      <find>bao_cao_sl_giao_dich_no_xau</find>
+      <find>thong_ke_sl_giao_dich_no_xau</find>
+      <find>bao_cao_ty_le_giao_dich_no_xau</find>
+      <find>bao_cao_ty_le_sl_giao_dich_no_xau</find>
+      <find>getCreditTransByDateRange</find>
+      <find>bao_cao_giao_dich_ung</find>
+      <find>$title =</find>
+      <find>giao dịch</find>
+      <find>tra_cuu_process_execution</find>
+      <find>BPM</find>
+      <find>select</find>
+      <find>model</find>
+      <find>echo echo</find>
     </findStrings>
     <replaceStrings>
-      <replace />
-      <replace>2000</replace>
-      <replace>['</replace>
-      <replace>&lt;th&gt;</replace>
-      <replace>&lt;td&gt;</replace>
-      <replace>no-data empty-</replace>
-      <replace>$entry['</replace>
-      <replace>$entry</replace>
-      <replace>&lt;th</replace>
       <replace>assignGrid</replace>
       <replace>&lt;td</replace>
       <replace>assign</replace>
@@ -281,6 +395,24 @@
       <replace>CARD_AMOUNT</replace>
       <replace>IDVN_REPORT_BAD_DEBT</replace>
       <replace>0</replace>
+      <replace>$month</replace>
+      <replace>$year</replace>
+      <replace>thong_ke_sl_no_xau_moi_ngay</replace>
+      <replace>generateChartDataColumn_tyle</replace>
+      <replace>columnchart_month_noxau</replace>
+      <replace>&lt;sub class=&quot;vnd&quot;&gt;%&lt;/sub&gt;</replace>
+      <replace>%</replace>
+      <replace>(</replace>
+      <replace>&lt;sub class=&quot;vnd&quot;&gt;đ&lt;/sub&gt;</replace>
+      <replace>lần</replace>
+      <replace>gd</replace>
+      <replace>giao dịch</replace>
+      <replace>thong_ke_tien_no_xau</replace>
+      <replace>thong_ke_sl_giao_dich_no_xau</replace>
+      <replace>thong_ke_ty_le_giao_dich_no_xau</replace>
+      <replace>thong_ke_ty_le_sl_giao_dich_no_xau</replace>
+      <replace>$type</replace>
+      <replace>echo</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/tool/config</dir>
@@ -290,9 +422,9 @@
       <dir>$PROJECT_DIR$/tool/templates</dir>
       <dir>$PROJECT_DIR$/tool/controllers</dir>
       <dir>$PROJECT_DIR$/tool/core</dir>
-      <dir>$PROJECT_DIR$</dir>
-      <dir>$PROJECT_DIR$/tool</dir>
       <dir>$PROJECT_DIR$/tool/models</dir>
+      <dir>$PROJECT_DIR$/tool</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -301,24 +433,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tool/translate/Translate.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/tool/skin/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/tool/models/Form_Model.php" />
-        <option value="$PROJECT_DIR$/tool/views/search/thong_tin_thue_bao.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/search/trang_thai_the_cao.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/search/tra_cuu_no.phtml" />
-        <option value="$PROJECT_DIR$/tool/library/define.php" />
-        <option value="$PROJECT_DIR$/tool/views/search/sms_log.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/search/muc_the_ung.phtml" />
-        <option value="$PROJECT_DIR$/tool/controllers/Search_Controller.php" />
-        <option value="$PROJECT_DIR$/tool/views/admin/index.phtml" />
-        <option value="$PROJECT_DIR$/tool/config/config.ini" />
-        <option value="$PROJECT_DIR$/tool/models/Systemparam_Model.php" />
-        <option value="$PROJECT_DIR$/tool/translate/Translate.csv" />
-        <option value="$PROJECT_DIR$/tool/views/search/giao_dich_ung_the.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/search/giao_dich_hoan_ung.phtml" />
-        <option value="$PROJECT_DIR$/tool/templates/admin/bottom.phtml" />
         <option value="$PROJECT_DIR$/tool/controllers/Ajax_Controller.php" />
         <option value="$PROJECT_DIR$/tool/models/Resendsms_Model.php" />
         <option value="$PROJECT_DIR$/tool/skin/admin/js/ajax.js" />
@@ -328,30 +442,48 @@
         <option value="$PROJECT_DIR$/tool/core/View.php" />
         <option value="$PROJECT_DIR$/tool/skin/admin/js/smalljs.js" />
         <option value="$PROJECT_DIR$/tool/core/phpexcel/PHPExcel/Calculation/Functions.php" />
-        <option value="$PROJECT_DIR$/tool/models/Translate_Model.php" />
         <option value="$PROJECT_DIR$/tool/core/database/oracle.php" />
         <option value="$PROJECT_DIR$/tool/views/report/kho_the.phtml" />
         <option value="$PROJECT_DIR$/tool/views/report/bao_cao_kho_the.phtml" />
         <option value="$PROJECT_DIR$/tool/views/report/bao_cao_the_ung.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/report/tongquan.phtml" />
         <option value="$USER_HOME$/Documents/working/mbf/bao cao/Biểu đồ nợ xấu.html" />
         <option value="$USER_HOME$/Documents/working/mbf/bao cao/Biểu đồ nợ xấu.phtml" />
-        <option value="$PROJECT_DIR$/tool/views/report/bao_cao_no_xau.phtml" />
-        <option value="$PROJECT_DIR$/tool/models/Report_Model.php" />
-        <option value="$PROJECT_DIR$/tool/controllers/Report_Controller.php" />
         <option value="$PROJECT_DIR$/tool/skin/admin/dist/js/google-chart.js" />
-        <option value="$PROJECT_DIR$/tool/config/db.php" />
         <option value="$PROJECT_DIR$/tool/ThongkeMBF.sql" />
         <option value="$PROJECT_DIR$/tool/vars/log/custom.log" />
         <option value="$PROJECT_DIR$/tool/core/Model.php" />
-        <option value="$PROJECT_DIR$/tool/skin/admin/js/function.js" />
-        <option value="$PROJECT_DIR$/tool/controllers/Statistics_Controller.php" />
-        <option value="$PROJECT_DIR$/tool/models/Statistics_Model.php" />
         <option value="$PROJECT_DIR$/tool/views/statistics/bieu_do_no_xau.phtml" />
+        <option value="$USER_HOME$/Desktop/REPORT_BAD_DEBT_BY_TRANSDATE.sql" />
+        <option value="$PROJECT_DIR$/tool/models/Columnrp_Model.php" />
+        <option value="$PROJECT_DIR$/tool/views/report/bao_cao_thue_bao_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/report/bao_cao_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bieu_do_so_luong_no_xau_cot.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bieu_do_no_xau_cot.phtml" />
+        <option value="$PROJECT_DIR$/tool/models/Report_Model.php" />
+        <option value="$PROJECT_DIR$/tool/models/Translate_Model.php" />
+        <option value="$PROJECT_DIR$/tool/skin/admin/js/function.js" />
+        <option value="$PROJECT_DIR$/tool/views/report/bao_cao_thu_no.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bao_cao_tien_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bao_cao_ty_le_giao_dich_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bao_cao_sl_giao_dich_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/bao_cao_ty_le_sl_giao_dich_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/report/thong_ke_thue_bao_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/thong_ke_no_xau_moi_ngay.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/thong_ke_sl_no_xau_moi_ngay.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/statistics/thong_ke_ty_le_giao_dich_no_xau.phtml" />
+        <option value="$PROJECT_DIR$/tool/models/Bpm_Model.php" />
+        <option value="$PROJECT_DIR$/tool/controllers/Quanlybpm_Controller.php" />
+        <option value="$PROJECT_DIR$/tool/models/Quanlybpm_Model.php" />
+        <option value="$PROJECT_DIR$/tool/views/quanlybpm/tra_cuu_process_execution.phtml" />
+        <option value="$PROJECT_DIR$/tool/views/report/tongquan.phtml" />
         <option value="$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css" />
         <option value="$PROJECT_DIR$/tool/core/Acl.php" />
-        <option value="$PROJECT_DIR$/tool/templates/admin/default.phtml" />
+        <option value="$PROJECT_DIR$/tool/config/db.php" />
         <option value="$PROJECT_DIR$/tool/index.php" />
+        <option value="$PROJECT_DIR$/tool/controllers/Statistics_Controller.php" />
+        <option value="$PROJECT_DIR$/tool/controllers/Report_Controller.php" />
+        <option value="$PROJECT_DIR$/tool/templates/admin/default.phtml" />
+        <option value="$PROJECT_DIR$/tool/models/Statistics_Model.php" />
       </list>
     </option>
   </component>
@@ -363,10 +495,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="565" />
-    <option name="y" value="200" />
-    <option name="width" value="740" />
-    <option name="height" value="359" />
+    <option name="x" value="348" />
+    <option name="y" value="181" />
+    <option name="width" value="738" />
+    <option name="height" value="572" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -384,8 +516,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -402,7 +532,38 @@
               <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
               <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="core" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="skin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="skin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
@@ -421,33 +582,49 @@
               <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
               <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vars" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
               <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vars" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="log" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="quanlybpm" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="report" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="mbf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mbf" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tool" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="statistics" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/working/mbf/bao cao/bieudonoxau.phtml" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/REPORT_BAD_DEBT_BY_TRANSDATE.sql" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tool/views/statistics" />
-      <recent name="$PROJECT_DIR$/tool" />
-      <recent name="$PROJECT_DIR$/tool/controllers" />
       <recent name="$PROJECT_DIR$/tool/models" />
+      <recent name="$PROJECT_DIR$/tool/views/statistics" />
       <recent name="$PROJECT_DIR$/tool/views/report" />
+      <recent name="$USER_HOME$/Desktop" />
+      <recent name="$PROJECT_DIR$/tool" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -525,12 +702,24 @@
       <workItem from="1515075583272" duration="1577000" />
       <workItem from="1515077663941" duration="6557000" />
       <workItem from="1515120927640" duration="1489000" />
-      <workItem from="1515126693861" duration="15271000" />
+      <workItem from="1515126693861" duration="17482000" />
+      <workItem from="1515158881582" duration="2758000" />
+      <workItem from="1515224200410" duration="8343000" />
+      <workItem from="1515234102684" duration="5055000" />
+      <workItem from="1515239508070" duration="10283000" />
+      <workItem from="1515290600506" duration="11250000" />
+      <workItem from="1515310789534" duration="21431000" />
+      <workItem from="1515342785131" duration="22000" />
+      <workItem from="1515425573229" duration="2375000" />
+      <workItem from="1515489131071" duration="712000" />
+      <workItem from="1515553618766" duration="14343000" />
+      <workItem from="1515586425610" duration="82000" />
+      <workItem from="1515586946666" duration="5613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343437000" />
+    <option name="totallyTimeSpent" value="427915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -542,19 +731,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="565" y="200" width="1321" height="786" extended-state="6" />
-    <editor active="true" />
+    <frame x="47" y="-3" width="1319" height="771" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18802123" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="582" y="47" width="202" height="645" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30553448" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="582" y="47" width="202" height="645" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26500732" sideWeight="0.50554675" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26500732" sideWeight="0.50554675" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -572,9 +760,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18802123" sideWeight="0.49445325" order="0" side_tool="false" content_ui="combo" x="582" y="47" width="202" height="645" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -628,194 +816,17 @@
           <line>42</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tool/controllers/Statistics_Controller.php</url>
+          <line>46</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tool/core/phpexcel/PHPExcel/Calculation/Functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="565" column="38" lean-forward="true" selection-start-line="565" selection-start-column="38" selection-end-line="565" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/phpexcel/PHPExcel/IOFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="128" column="29" lean-forward="false" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/search/giao_dich_ung_the.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="76" column="38" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="76" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/skin/admin/js/smalljs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Form_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Complain_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/controllers/Blacklistreason_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Blacklistreason_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/Rest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/controllers/Search_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="432" column="12" lean-forward="false" selection-start-line="432" selection-start-column="12" selection-end-line="433" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_kho_the.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_thu_no.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="104" column="65" lean-forward="false" selection-start-line="104" selection-start-column="65" selection-end-line="104" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Translate_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-          <folding>
-            <marker date="1513274689543" expanded="true" signature="1225:1383" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/report/tongquan.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="22" column="22" lean-forward="false" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/skin/admin/js/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/working/mbf/bao cao/Biểu đồ nợ xấu.html" />
-    <entry file="file://$USER_HOME$/Documents/working/mbf/bao cao/Biểu đồ nợ xấu.phtml" />
-    <entry file="file://$USER_HOME$/Documents/working/mbf/bao cao/Biểu đồ nợ xấu.php" />
-    <entry file="file://$PROJECT_DIR$/tool/templates/admin/bottom.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_no_xau.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="138" column="52" lean-forward="false" selection-start-line="138" selection-start-column="52" selection-end-line="138" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/library/define.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Search_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Common_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/skin/admin/dist/js/google-chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="196" column="256" lean-forward="false" selection-start-line="196" selection-start-column="256" selection-end-line="196" selection-end-column="256" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/working/mbf/bao cao/bieudonoxau.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="423" column="62" lean-forward="false" selection-start-line="423" selection-start-column="62" selection-end-line="423" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/database/Db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/config/config.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -834,23 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="100" column="20" lean-forward="false" selection-start-line="100" selection-start-column="11" selection-end-line="100" selection-end-column="20" />
-          <folding>
-            <marker date="1510738923543" expanded="true" signature="3048:3133" ph="SELECT * FRO... idvn_core_user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/config/db.php.bak">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/controllers/Report_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="271" column="22" lean-forward="false" selection-start-line="271" selection-start-column="22" selection-end-line="271" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -861,89 +855,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/ThongkeMBF.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="49" lean-forward="false" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/config/db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/models/Impactlogs_Model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="28" column="40" lean-forward="true" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-          <folding>
-            <marker date="1514207848136" expanded="true" signature="413:464" ph="SELECT * FRO... idvn_impact_logs" />
-            <marker date="1514207848136" expanded="true" signature="664:721" ph="SELECT * FRO... idvn_impact_logs" />
-            <marker date="1514207848136" expanded="true" signature="984:1161" ph="SELECT * FRO... idvn_impact_logs" />
-            <marker date="1514207848136" expanded="true" signature="1201:1342" ph="SELECT * FRO... idvn_impact_logs" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/database/oracle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="122" column="20" lean-forward="false" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
-          <folding>
-            <marker date="1514209564630" expanded="true" signature="10360:10405" ph="insert into ${$table}... " />
-            <marker date="1514209564630" expanded="true" signature="11751:11794" ph="update ${$ta... " />
-            <marker date="1514209564630" expanded="true" signature="12654:12690" ph="delete from " />
-            <marker date="1514209564630" expanded="true" signature="15679:15720" ph="select ${$na... dual" />
-            <marker date="1514209564630" expanded="true" signature="15760:15782" ph="select ${$na... dual" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Report_Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="37" />
-          <folding>
-            <element signature="n#bao_cao_the_ung#0;n#Report_Model#0;n#!!top" expanded="false" />
-            <element signature="n#getReportPaymentTrans#0;n#Report_Model#0;n#!!top" expanded="false" />
-            <element signature="n#getReportDebt#0;n#Report_Model#0;n#!!top" expanded="false" />
-            <element signature="n#getReportCard#0;n#Report_Model#0;n#!!top" expanded="false" />
-            <marker date="1514822196760" expanded="true" signature="429:502" ph="select count... credit_trans" />
-            <marker date="1514822196760" expanded="true" signature="1205:1278" ph="select count... credit_trans" />
-            <marker date="1514822196760" expanded="true" signature="1936:2340" ph="select log_d... PAYMENT_TRANS" />
-            <marker date="1514822196760" expanded="true" signature="1945:2340" ph="select log_d... CREDIT_TRANS" />
-            <marker date="1514822196760" expanded="true" signature="2340:2342" ph="select * fro... CREDIT_TRANS" />
-            <marker date="1514822196760" expanded="true" signature="2539:2609" ph="/** * @param... " />
-            <marker date="1514822196760" expanded="true" signature="2691:3049" ph="select sum(p... payment_trans" />
-            <marker date="1514822196760" expanded="true" signature="3375:3511" ph="select sum(p... payment_trans" />
-            <marker date="1514822196760" expanded="true" signature="3530:3662" ph="select (sum(... subs_debt" />
-            <marker date="1514822196760" expanded="true" signature="4120:4224" ph="select sum(p... payment_trans" />
-            <marker date="1514822196760" expanded="true" signature="4120:4245" ph="select card_... scratch_card_store" />
-            <marker date="1514822196760" expanded="true" signature="4510:4876" ph="select log_d... PAYMENT_TRANS" />
-            <marker date="1514822196760" expanded="true" signature="5142:5531" ph="select log_d... PAYMENT_TRANS" />
-            <marker date="1514822196760" expanded="true" signature="5142:5560" ph="SELECT creat... bad_debt_list" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/core/Model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/vars/log/custom.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="784">
+          <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -951,93 +873,396 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_the_ung.phtml">
+    <entry file="file://$USER_HOME$/Desktop/REPORT_BAD_DEBT_BY_TRANSDATE_editted.sql" />
+    <entry file="file://$USER_HOME$/Desktop/REPORT_BAD_DEBT_BY_TRANSDATE.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="65" column="56" lean-forward="false" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
-          <folding />
+        <state relative-caret-position="112">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/models/Statistics_Model.php">
+    <entry file="file://$PROJECT_DIR$/tool/ThongkeMBF.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
-          <folding>
-            <marker date="1515145011457" expanded="true" signature="1027:1083" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
-            <marker date="1515145011457" expanded="true" signature="1027:1164" ph="SELECT * FRO... IDVN_REPORT_BADDEBT" />
-            <marker date="1515145011457" expanded="true" signature="1027:1215" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
-            <marker date="1515145011457" expanded="true" signature="2355:2434" ph="SELECT sum(c... bad_debt_list" />
-            <marker date="1515145011457" expanded="true" signature="2355:2601" ph="SELECT sum(c... bad_debt_list" />
-            <marker date="1515145011457" expanded="true" signature="2543:2601" ph="SELECT sum(c... bad_debt_list" />
-          </folding>
+        <state relative-caret-position="84">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/controllers/Statistics_Controller.php">
+    <entry file="file://$PROJECT_DIR$/tool/core/database/oracle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1064">
-          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="14">
+          <caret line="122" column="20" lean-forward="false" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/skin/admin/js/function.js">
+    <entry file="file://$PROJECT_DIR$/tool/core/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="212" column="27" lean-forward="false" selection-start-line="212" selection-start-column="27" selection-end-line="212" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="168">
+          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css">
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/bieu_do_no_xau_tuan.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="540" column="1" lean-forward="true" selection-start-line="540" selection-start-column="1" selection-end-line="540" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="434">
+          <caret line="44" column="52" lean-forward="false" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Columnrp_Model.php" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/views/statistics/bieu_do_no_xau.phtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+        <state relative-caret-position="564">
+          <caret line="105" column="103" lean-forward="false" selection-start-line="104" selection-start-column="20" selection-end-line="105" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Search_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/templates/admin/bottom.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="26" column="49" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/skin/admin/js/jquery.validate/jquery.validate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="185" column="0" lean-forward="true" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_no_xau.phtml.bak" />
+    <entry file="file://$PROJECT_DIR$/tool/skin/admin/js/function.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="196" column="41" lean-forward="true" selection-start-line="196" selection-start-column="41" selection-end-line="196" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Translate_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
           <folding>
-            <element signature="e#7#239#0#PHP" expanded="true" />
-            <marker date="1515145123060" expanded="true" signature="4455:5024" ph="..." />
-            <marker date="1515145123060" expanded="true" signature="4695:5024" ph="{...}" />
+            <marker date="1515592105342" expanded="true" signature="1225:1383" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Systemparam_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="78" column="9" lean-forward="false" selection-start-line="70" selection-start-column="7" selection-end-line="78" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_the_ung.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="147" column="15" lean-forward="false" selection-start-line="93" selection-start-column="8" selection-end-line="147" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/bao_cao_thu_no.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="143" column="97" lean-forward="false" selection-start-line="143" selection-start-column="81" selection-end-line="143" selection-end-column="105" />
+          <folding>
+            <marker date="1515327386847" expanded="true" signature="3269:3288" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_ty_le_sl_giao_dich_no_xau.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1652">
+          <caret line="131" column="50" lean-forward="false" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/bao_cao_sl_giao_dich_no_xau.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1540">
+          <caret line="123" column="52" lean-forward="false" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_sl_no_xau_moi_ngay.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="73" column="15" lean-forward="false" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_tien_no_xau.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2310">
+          <caret line="178" column="43" lean-forward="false" selection-start-line="172" selection-start-column="8" selection-end-line="178" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_no_xau_moi_ngay.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="50" column="130" lean-forward="false" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="130" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/controllers/Errorcode_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-714">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/statistics/thong_ke_ty_le_giao_dich_no_xau.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="145" column="36" lean-forward="false" selection-start-line="145" selection-start-column="36" selection-end-line="145" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Blacklistreason_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-528">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510738921579" expanded="true" signature="440:500" ph="SELECT * FRO... def_black_list_reason" />
+            <marker date="1510738921579" expanded="true" signature="720:792" ph="SELECT * FRO... def_black_list_reason" />
+            <marker date="1510738921579" expanded="true" signature="1622:1694" ph="DELETE FROM " />
+            <marker date="1510738921579" expanded="true" signature="2031:2089" ph="SELECT COUNT... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Permission_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <marker date="1514207848136" expanded="true" signature="415:506" ph="SELECT * FRO... ${$this-&gt;prefix}" />
+            <marker date="1514207848136" expanded="true" signature="727:834" ph="SELECT * FRO... ${$this-&gt;prefix}" />
+            <marker date="1514207848136" expanded="true" signature="1232:1409" ph="SELECT permi... ${$this-&gt;prefix}" />
+            <marker date="1514207848136" expanded="true" signature="1821:2002" ph="SELECT permi... ${$this-&gt;prefix}" />
+            <marker date="1514207848136" expanded="true" signature="2266:2334" ph="DELETE FROM " />
+            <marker date="1514207848136" expanded="true" signature="2680:2746" ph="DELETE FROM " />
+            <marker date="1514207848136" expanded="true" signature="3199:3258" ph="DELETE FROM " />
+            <marker date="1514207848136" expanded="true" signature="3404:3465" ph="SELECT * FRO... ${$this-&gt;prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/phan_tich_moi_ung.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="87" column="32" lean-forward="false" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/controllers/Quanlybpm_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="137" column="67" lean-forward="false" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
+          <folding>
+            <marker date="1515592105386" expanded="true" signature="3649:3760" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Quanlybpm_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="true" />
+            <marker date="1515590743674" expanded="true" signature="199:746" ph="select a.pro... bpm_process" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/quanlybpm/tra_cuu_process_execution.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-87">
+          <caret line="94" column="28" lean-forward="false" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+          <folding>
+            <marker date="1515592105346" expanded="true" signature="5485:5518" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5547" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5570" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5589" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5605" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5627" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5628" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5485:5634" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5676:6242" ph="..." />
+            <marker date="1515592105346" expanded="true" signature="5708:6230" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="5740:5860" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="5751:5796" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="5764:5789" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="5813:5857" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="5890:6041" ph="{&quot;dateFormat&quot;: 'dd-mm-yy'...}" />
+            <marker date="1515592105346" expanded="true" signature="5975:6038" ph="{...}" />
+            <marker date="1515592105346" expanded="true" signature="6070:6221" ph="{&quot;dateFormat&quot;: 'dd-mm-yy'...}" />
+            <marker date="1515592105346" expanded="true" signature="6155:6218" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/tongquan.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="202" column="71" lean-forward="false" selection-start-line="202" selection-start-column="71" selection-end-line="202" selection-end-column="71" />
+          <folding>
+            <marker date="1515591227818" expanded="true" signature="3298:11148" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="3681:11147" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:10960" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:10992" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:11004" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:11038" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:11067" ph="..." />
+            <marker date="1515591227818" expanded="true" signature="10921:11090" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/skin/admin/dist/css/sb-admin-2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/core/Acl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
+        <state relative-caret-position="280">
           <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
           <folding>
-            <marker date="1515147997886" expanded="true" signature="1205:1355" ph="SELECT COUNT... " />
-            <marker date="1515147997886" expanded="true" signature="1670:1825" ph="SELECT COUNT... " />
+            <marker date="1515592645163" expanded="true" signature="1205:1355" ph="SELECT COUNT... " />
+            <marker date="1515592645163" expanded="true" signature="1670:1825" ph="SELECT COUNT... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/templates/admin/default.phtml">
+    <entry file="file://$PROJECT_DIR$/tool/config/db.php.bak">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="381" column="182" lean-forward="false" selection-start-line="381" selection-start-column="182" selection-end-line="381" selection-end-column="182" />
+        <state relative-caret-position="126">
+          <caret line="9" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="252">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/controllers/Statistics_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="123" column="44" lean-forward="true" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/controllers/Controlsystem_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/controllers/Report_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="246" column="46" lean-forward="true" selection-start-line="246" selection-start-column="46" selection-end-line="246" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/templates/admin/default.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="386" column="13" lean-forward="true" selection-start-line="386" selection-start-column="13" selection-end-line="386" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/views/report/thong_ke_thue_bao_no_xau.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+          <folding>
+            <marker date="1515577461343" expanded="false" signature="6611:6628" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Statistics_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="86" column="41" lean-forward="true" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
+          <folding>
+            <element signature="n#makeTestDataCreditTransAmountDate#0;n#Statistics_Model#0;n#!!top" expanded="false" />
+            <marker date="1515577998127" expanded="true" signature="1156:1212" ph="SELECT * FRO... IDVN_REPORT_BAD_DEBT" />
+            <marker date="1515577998127" expanded="true" signature="1790:1893" ph="SELECT * fro... REPORT_BAD_DEBT_BY_TRANSDATE" />
+            <marker date="1515577998127" expanded="true" signature="2340:2523" ph="SELECT * fro... REPORT_BAD_DEBT_BY_TRANSDATE" />
+            <marker date="1515577998127" expanded="true" signature="2812:2992" ph="SELECT * fro... REPORT_CREDIT_AMOUNT_DATE" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/models/Report_Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="121" column="8" lean-forward="true" selection-start-line="121" selection-start-column="8" selection-end-line="121" selection-end-column="8" />
+          <folding>
+            <marker date="1515327905986" expanded="true" signature="393:556" ph="select count... credit_trans" />
+            <marker date="1515327905986" expanded="true" signature="1206:1590" ph="select log_d... CREDIT_TRANS" />
+            <marker date="1515327905986" expanded="true" signature="1931:2186" ph="select sum(p... payment_trans" />
+            <marker date="1515327905986" expanded="true" signature="2512:2648" ph="select (sum(... subs_debt" />
+            <marker date="1515327905986" expanded="true" signature="2667:2799" ph="select (sum(... subs_debt" />
+            <marker date="1515327905986" expanded="true" signature="3257:3382" ph="select card_... scratch_card_store" />
+            <marker date="1515327905986" expanded="true" signature="3792:4272" ph="select a.log... PAYMENT_TRANS" />
+            <marker date="1515327905986" expanded="true" signature="5288:5576" ph="select msisd... bad_debt_list" />
+          </folding>
         </state>
       </provider>
     </entry>
