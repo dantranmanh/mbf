@@ -199,4 +199,22 @@ class User_Model extends Core_Model{
             }
         }
     }
+	
+	public function import($params = null)
+    {
+        if ($params != null) {
+            $this->Insert($this->prefix.'core_user', $params);
+			$this->DumpQueriesStack();
+			return $this->GetExecuteStatus();
+        }
+    }
+	
+	public function getUserByUserName($user_name){
+		
+		$select = $this->Select("SELECT USER_ID FROM ".$this->prefix."core_user WHERE user_name='".$user_name."'");
+		$result = $this->FetchObject($select);
+        if($this->NumRows($select) > 0){
+            return $result->USER_ID;
+        }
+	}
 }

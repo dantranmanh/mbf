@@ -27,8 +27,8 @@ class User_Controller extends Core_Controller{
         $this->layoutAdmin = "admin";
         $this->LoadModel("Group");
         $this->mdGroup = new Group_Model();
-		//$this->LoadModel("Permission");
-        //$this->mdPermission = new Permission_Model();
+		$this->LoadModel("Permission");
+        $this->mdPermission = new Permission_Model();
         
         $this->controller = $this->getClassMethod("controller");
         $this->action = $this->getClassMethod("action");
@@ -328,6 +328,83 @@ class User_Controller extends Core_Controller{
 		//echo json_encode($response);
         echo str_replace(array('USER_ID','FULL_NAME'), array("id","value"), json_encode($users));
 	}
+	
+	
+	public function import_excelAction()
+    {
+        if($_POST && $_POST['importExcel'] == "Excel"){
+
+            $uploaDdir = "upload/"; 
+            if(isset($_FILES["fileExcle"]) && $_FILES["fileExcle"]['name'] != "") {
+                $resultUpload = Core_Utility::uploadImage("fileExcle", $uploaDdir, "xls,xlsx", 1024 * 1024 * 2);
+                $file = $resultUpload['fileName'];
+                $fileAvatarError = $resultUpload['error'];
+				//echo $fileAvatarError;
+				
+                //if ($fileAvatarError != "") {
+                    require_once(CORE_DIR . DS . 'phpexcel/PHPExcel.php');
+                    $objPHPExcel = PHPExcel_IOFactory::load($uploaDdir."/".$file);
+                    $response = $objPHPExcel->getWorksheetIterator();
+					//print_r($response);
+                    foreach ($response as $worksheet) {
+                        $highestRow = $worksheet->getHighestRow();
+                        //echo $highestRow;
+                        for ($row = 2; $row < $highestRow; $row++) {
+                            $username = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                            $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                            $full_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                            $email = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                            $quyen = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+							
+                            $users = array(
+                                'USER_NAME' 		=> "'".$username."'",
+                                'PASSWORD' 			=> "'".md5($password)."'",
+                                'FULL_NAME' 		=> "'".$full_name."'",
+                                'EMAIL' 			=> "'".$username."@mobifone.vn'",
+                                'IS_ACTIVE' 		=> 1,
+                                'CREATED_DATE' 		=> "TO_DATE('".date('Y-m-d H:i:s')."','yyyy/mm/dd hh24:mi:ss')",
+								'LOGGED_IN_DATE' 	=> "TO_DATE('".date('Y-m-d H:i:s')."','yyyy/mm/dd hh24:mi:ss')",
+								'IS_ONLINE' 		=> 0,
+								'GROUP_ID' 			=> 2,
+								'CREATED_USER_ID'   => "'".Core_Login::getUserId()."'",
+								'TYPE'              => "'TOOL'",
+                            );
+                            //echo  "<pre>";
+                            //print_r($users);
+
+                            $model = new User_Model();
+                            $result = $model->import($users);
+                            if ($result) {
+                                if ($quyen == 1) {
+                                    $p = array("muc_the_ung","giao_dich_ung_the","giao_dich_hoan_ung","tra_cuu_no","danh_sach_blacklist","thong_tin_thue_bao","sms_log");
+                                }elseif($quyen == 2){
+                                    $p = array("muc_the_ung");
+                                }
+
+                                foreach ($p as $value) {
+                                    $permission = array(
+                                        "PERMISSION_NAME" => "'".$value."'",
+                                        "PERMISSION_TYPE" => 1,
+                                        "CONTROLLER_NAME" => "'search'",
+                                        "USERID" => "'".$model->getUserByUserName($username)."'",
+                                    );
+									//echo "<pre>";
+									//print_r($permission);
+                                    $this->mdPermission->addUserPermission($permission);
+                                }
+
+                                $this->_redirect($this->baseUrl . 'user/list');
+                            }
+                        }
+                    }
+               // }
+            }else{
+				$this->_redirect($this->baseUrl . 'user/add');
+			}
+        }
+
+        $this->view->assign('user/import_excel', "", $this->layoutAdmin);
+    }
 }
 
 

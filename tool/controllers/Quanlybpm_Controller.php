@@ -116,43 +116,29 @@ class Quanlybpm_Controller extends Core_Controller{
 		if(!$this->acl->allow($this->controller, $this->action)) {
             $this->view->assign('permission/accessdeny', null, $this->layoutAdmin);
             exit;
-        } 
-		
-		$msisdn = $this->_arrParams['msisdn'];
-		$f_date = isset($this->_arrParams['f_date']) ? $this->_arrParams['f_date'] : date("Y-m-d");
-        $t_date = isset($this->_arrParams['t_date']) ? $this->_arrParams['t_date'] : date("Y-m-d");
+        }
+        $collection = array();
+        $title = "Tra cứu lịch sử các process";
+		$month = $this->_arrParams['proccess_months'];
+        $year = $this->_arrParams['proccess_years'];
+		if(empty($month) || empty($year)){
+            $result = null;
+            $data = array(
+                'title' => $title,
+                'month' =>(int) $month,
+                'year'  => (int) $year
+            );
+        }else{
+		    $md = new Quanlybpm_Model();
+		    $collection = $md->getProcessHistory($month."/".$year);
+            $data = array(
+                'collection' => $collection,
+                'title' => $title,
+                'month' =>(int) $month,
+                'year'  => (int) $year
+            );
+        }
 
-		$str_fdate = strtotime($f_date);
-		$str_tdate = strtotime($t_date);
-		$fdate = date('d-M-y', $str_fdate);
-		$tdate = date('d-M-y', $str_tdate); 
-		
-		$sql = 'BEGIN :v_Return := PKG_QUERY.FUNC_QUERY_PAYMENT_TRANS(:P_MSISDN, :F_DATE, :T_DATE, :P_DATA_CURSOR, :P_OUT); END;';
-		$this->model->con();
-		$stmt = oci_parse($this->model->conn_handle,$sql);
-		$curs = oci_new_cursor($this->model->conn_handle);
-		
-		oci_bind_by_name($stmt,':P_MSISDN', $msisdn, 20);
-		oci_bind_by_name($stmt,':F_DATE', $fdate, 20);
-		oci_bind_by_name($stmt,':T_DATE', $tdate, 20);
-		oci_bind_by_name($stmt,':P_DATA_CURSOR', $curs, -1, OCI_B_CURSOR);
-		oci_bind_by_name($stmt,':P_OUT', $description, 255);
-		oci_bind_by_name($stmt,':v_Return', $result, 5);
-		oci_execute($stmt);
-		oci_execute($curs);
-		
-		$entry = oci_fetch_object($curs);
-		//print_r($entry);
-        $data = array(
-			'msisdn' => $msisdn,
-			'f_date' => $f_date,
-			't_date' => $t_date,
-			'return_value' => $result,
-			'p_data_cursor' => $p_data_cursor,
-			'description' => $description,
-			'curs' => $entry,
-            'title' => "Tra cứu process excution"
-        );
         $this->view->assign('quanlybpm/tra_cuu_process_execution', $data, $this->layoutAdmin);
     }
 	

@@ -316,7 +316,7 @@ $acl = new Core_Acl();
 						
 						<?php if($acl->allow("search","muc_the_ung") | 
 								$acl->allow("search","tra_cuu_lich_su_nap_the") |
-								$acl->allow("search","giao_dich_ung_the") |
+								$acl->allow("search","giao_dich_ung_the") | 
 								$acl->allow("search","giao_dich_hoan_ung") | 
 								$acl->allow("search","tra_cuu_no") | 
 								$acl->allow("search","danh_sach_blacklist") | 
@@ -332,11 +332,9 @@ $acl = new Core_Acl();
                                     <?php endif;?>
 									
 									<?php if($acl->allow("search","tra_cuu_lich_su_nap_the")):?>
-                                    <a href="<?php echo BASE_URL.'search/tra_cuu_lich_su_nap_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu lịch sử nạp thẻ</a>
+                                    <a href="<?php echo BASE_URL.'search/tra_cuu_lich_su_nap_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu lịch sự nạp thẻ</a>
                                     <?php endif;?>
-                                    <?php if($acl->allow("search","tra_cuu_lich_su_nap_the")):?>
-                                        <a href="<?php echo BASE_URL.'search/tra_cuu_lich_su_gui_sms_ma_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Tra cứu lịch sử gửi SMS mã thẻ</a>
-                                    <?php endif;?>
+									
 									<?php if($acl->allow("search","giao_dich_ung_the")):?>
                                     <a href="<?php echo BASE_URL.'search/giao_dich_ung_the'?>"><i class="fa  fa-caret-right fa-fw"></i> Giao dịch ứng thẻ</a>
                                     <?php endif;?>

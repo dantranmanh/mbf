@@ -42,12 +42,12 @@ class Report_Model extends Core_Model
          * status = 1 giao dich thanh cong
          * mt_status = 2 thue bao da nhan dc tin nhan
          */
-		 
-		if($card_amount != null || $card_amount != ''){
-			$where = "and card_amount = '".$card_amount."'"; 
-		}else{
-			$where = '';
-		}
+
+        if($card_amount != null || $card_amount != ''){
+            $where = "and card_amount = '".$card_amount."'";
+        }else{
+            $where = '';
+        }
         $qr = "
         select log_date,card_amount, count(distinct msisdn) subs, count(*)  credit_counts , sum(card_amount)  sum_card
         from CREDIT_TRANS  
@@ -71,7 +71,15 @@ class Report_Model extends Core_Model
      */
     public function getReportPaymentTrans($f, $t)
     {
-        $qr = "select sum(payment_card_amount) as origin , sum(payment_fee_amount) as fee, (sum(payment_card_amount)+ sum(payment_fee_amount)) as total from payment_trans where payment_date >= '" . $f . "' and payment_date <= '" . $t . "' and status =1 and mt_status = 2";
+        $str_fdate = strtotime($f);
+        $str_tdate = strtotime($t);
+        $fdate = date('d-m-Y', $str_fdate);
+        $tdate = date('d-m-Y', $str_tdate);
+        var_dump($fdate,$tdate);
+        $qr = "select sum(payment_card_amount) as origin , sum(payment_fee_amount) as fee, sum(payment_amount) as total 
+            from payment_trans 
+            where log_date >= to_date('".$fdate."','dd-mm-yyyy') and log_date < to_date('".$tdate."','dd-mm-yyyy')+1 
+            and charging_res_code ='CPS-0000'";
         $select = $this->Select($qr);
 
         $result = $this->FetchAll($select);
@@ -111,18 +119,18 @@ class Report_Model extends Core_Model
             return $result;
         }else return array();
     }
-	
-	public function BaoCaoThuNo($f_date, $t_date, $card_amount){
-		
-		if($card_amount != null || $card_amount != ''){
-			$where = "and card_amount = '".$card_amount."'"; 
-		}else{
-			$where = '';
-		}
-		
+
+    public function BaoCaoThuNo($f_date, $t_date, $card_amount){
+
+        if($card_amount != null || $card_amount != ''){
+            $where = "and card_amount = '".$card_amount."'";
+        }else{
+            $where = '';
+        }
+
         $qr = "select a.log_date,card_amount , sum(payment_card_amount) pay_card_amount, sum(payment_fee_amount) pay_fee_amount, SUM(PAYMENT_AMOUNT) TOTAL, count(distinct a.msisdn) subs
 			from PAYMENT_TRANS a, credit_trans b
-			where a.log_date >= to_date('".$f_date."','dd/mm/yyyy') and a.log_date <= to_date('".$t_date."','dd/mm/yyyy') + 1
+			where a.log_date >= to_date('".$f_date."','dd/mm/yyyy') and a.log_date < to_date('".$t_date."','dd/mm/yyyy') + 1
 			and charging_res_code ='CPS-0000' ".$where."
 			and a.credit_trans_id = b.credit_trans_id
 			group by a.log_date ,card_amount 
@@ -130,26 +138,26 @@ class Report_Model extends Core_Model
         $select = $this->Select($qr);
 
         $result = $this->FetchAll($select);
-		//$this->DumpQueriesStack(); 
+        //$this->DumpQueriesStack();
         if ($this->NumRows($select) > 0) {
             return $result;
         }else return array();
     }
-	/**
-	public function BaoCaoThuNo($f_date, $t_date){
-        $qr = "select log_date,sum(payment_card_amount) card_amount, sum(payment_fee_amount) fee_amount, SUM(PAYMENT_AMOUNT) TOTAL, count(distinct msisdn) subs
-			from PAYMENT_TRANS
-			where log_date >= to_date('".$f_date."','dd/mm/yyyy') and log_date <= to_date('".$t_date."','dd/mm/yyyy') + 1
-			and charging_res_code ='CPS-0000'
-			group by log_date
-			order by log_date";
-        $select = $this->Select($qr);
+    /**
+    public function BaoCaoThuNo($f_date, $t_date){
+    $qr = "select log_date,sum(payment_card_amount) card_amount, sum(payment_fee_amount) fee_amount, SUM(PAYMENT_AMOUNT) TOTAL, count(distinct msisdn) subs
+    from PAYMENT_TRANS
+    where log_date >= to_date('".$f_date."','dd/mm/yyyy') and log_date <= to_date('".$t_date."','dd/mm/yyyy') + 1
+    and charging_res_code ='CPS-0000'
+    group by log_date
+    order by log_date";
+    $select = $this->Select($qr);
 
-        $result = $this->FetchAll($select);
+    $result = $this->FetchAll($select);
 
-        if ($this->NumRows($select) > 0) {
-            return $result;
-        }else return array();
+    if ($this->NumRows($select) > 0) {
+    return $result;
+    }else return array();
     }*/
 
     /**

@@ -47,6 +47,35 @@ class Login_Controller extends Core_Controller
         }
         $this->view->assign('login/index', array('error' => null), null);
     }
+	
+	public function cskhttAction()
+    {
+
+        //print_r($this->_arrParams);exit;
+		
+        $login = new Core_Login();
+		//print_r($login->getUser());
+        
+		if ($login->getLoginSession()) {
+            $this->_redirect($this->baseUrl . 'admin');
+        }
+
+        if(isset($this->_arrParams['login']) && ($this->_arrParams['login']=="1")){
+
+            $login->setDatabaseUsersTable('idvn_core_user');
+            $login->setCryptMethod('md5');
+            //$login->setShowMessage(true);          
+            $login->setLoginSession();
+            if ($login->getLoginSession()) {
+                $this->_redirect($this->baseUrl . 'admin');
+            }else{
+				$this->_redirect($this->baseUrl . 'login');
+			}
+            //print_r($_SESSION);
+        }else{
+			$this->_redirect($this->baseUrl . 'login');
+		}
+    }
 
     public function logoutAction()
     {

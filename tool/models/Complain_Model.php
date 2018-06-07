@@ -38,7 +38,7 @@ class Complain_Model extends Core_Model{
 			'CREATE_DATE' => "TO_DATE('".date('Y-m-d H:i:s')."','yyyy/mm/dd hh24:mi:ss')",
 			'REASON_CODE' => "'".$arrParams['reason_code']."'",
 			'DES' => "'".$arrParams['des']."'",
-			'STATUS' => 0,
+			'STATUS' => 1,
 		);
 		$this->Insert('black_list', $arr);
 		return $this->GetExecuteStatus();
@@ -46,7 +46,8 @@ class Complain_Model extends Core_Model{
 	}
 	
     public function delete_blacklist($MSISDN){
-		$sql = "DELETE FROM black_list WHERE MSISDN = '".$MSISDN."'";
+		//$sql = "DELETE FROM black_list WHERE MSISDN = '".$MSISDN."'";
+		$sql = "UPDATE black_list SET STATUS = '0' WHERE MSISDN = '".$MSISDN."'";
         $this->Query($sql);
 		return $this->GetExecuteStatus();
     }

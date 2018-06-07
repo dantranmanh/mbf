@@ -16,7 +16,10 @@ ini_set('memory_limit', '-1');
 */
 
 // Base url
-define("BASE_URL", 'http://mbf.local/');
+//define("BASE_URL", 'http://10.54.151.240:8000/cskh/'); // Vip
+define("BASE_URL", 'http://'.$_SERVER[HTTP_HOST].'/cskh/');
+//define("BASE_URL", 'http://10.54.151.241/cskh/');
+//define("BASE_URL", 'http://mbf.local/');
 define("WSDL_URL", "");
 
 define('DS', 				DIRECTORY_SEPARATOR);

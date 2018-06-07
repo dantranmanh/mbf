@@ -43,6 +43,19 @@
             Nhập các thông tin về người dùng vào form dưới đây:
         </div>
         <div class="panel-body">
+			
+			<form action="<?php echo BASE_URL;?>user/import_excel" method="post" enctype="multipart/form-data">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label>Thêm user từ file excel</label> 
+						<input type="file"  name="fileExcle" id="fileExcle" style="display:inline;" />
+						<input class="btn btn-success btn-sm" type="submit" value="Import" />
+						<input type="hidden" name="importExcel" value="Excel" />
+						<p><a href="<?php echo BASE_URL;?>upload/file_mau.xlsx">Tải file mẫu tại đây</a></p>
+                    </div>
+                </div>
+            </form>
+			
             <form action="" id="addUserForm" method="post" enctype="multipart/form-data">
                 <div class="col-lg-12">
                     <div class="row">

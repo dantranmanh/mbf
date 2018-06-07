@@ -20,47 +20,41 @@
     <div class="col-lg-12">
         <ul class="breadcrumb">
             <li><a href="<?php echo BASE_URL.'admin'?>">Quản trị</a></li>
-            <li class="active">Danh sách thuê bao blacklist</li>
+            <li class="active">Lịch sử gửi SMS mã thẻ</li>
         </ul>
     </div>
 </div>
 
 <div class="row">
-<?php if(count($blacklist) == 0):?>
+<?php if(count($Creditsent) == 0):?>
+<div class="col-sm-12 bottom-10">
+	<div class="">
+
+	</div>
+</div>
 <p class="no-data"><?php echo NODATA;?></p>
 <?php else:?>
     <div class="col-lg-12">  
         <form action="" name="" method="post" id="MyForm">
-			<div class="col-sm-12 bottom-10">
-				<div class="row">
-					<?php if($acl->allow("complain","delete")):?>
-					<input onclick="gotoAction('delete','complain');" type="submit" disabled="" id="delete" class="btn-action btn btn-danger btn-sm pull-right right-10" value="Xóa" />
-                    <?php endif;?>
-					<input type="hidden" name="task-list" value="submit" />
-				</div>
-			</div>
+
             <div class="col-sm-12">
                 <div class="row">
                     <table id="dataTables-example" class="table table-striped table-bordered table-hover dataTable">
                         <thead>
                             <tr>
 								<th class="text-center" style="width:15px;"><input id="checkall" class="ids" onclick="checkAll('ids[]',this);" type="checkbox" /></th>
-                                <th style="width: 200px;">Số thuê bao</th>
-                                <th>Ngày thêm</th>
-								<th>Lý do blacklist</th>
-								<th>Mô tả</th>
-								<th>Trạng thái</th>
+                                <th>REASON CODE</th>
+                                <th>REASON NAME</th>
+								<th>CREATE DATE</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($blacklist as $row):?>
+                        <?php foreach($BlacklistReason as $row):?>
                             <tr class="grade odd">
-								<td class="text-center"><input type="checkbox" id="ids" class="ids" value="<?php echo $row['MSISDN'];?>" name="ids[]" /></td>
-                                <td><?php echo $row['MSISDN'];?></td>
-								<td><?php echo $row['CREATE_DATE'];?></td>
+								<td class="text-center"><input type="checkbox" id="ids" class="ids" value="<?php echo $row['REASON_CODE'];?>" name="ids[]" /></td>
                                 <td><?php echo $row['REASON_CODE'];?></td>
-								<td><?php echo $row['DES'];?></td>
-                                <td><?php echo ($row['STATUS'] == 1) ? "<span style='color:red;'>Đang blacklist</span>" : "<span style='color:green;'>Đã xóa khỏi Blacklist</span>";?></td>
+								<td><?php echo $row['REASON_NAME'];?></td>
+                                <td><?php echo date('d-m-Y H:i:s', strtotime($row['CREATE_DATE'])) ?></td>
                             </tr>
                             
                         <?php endforeach;?>
